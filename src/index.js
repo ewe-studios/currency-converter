@@ -119,12 +119,12 @@ async function main() {
 
       if (options.all) {
         appendResults(newResults, null);
-        console.log(`[batch] +${newResults.length} results (total ${totalCount})...`);
+        console.log(`[batch] +${newResults.length} results (total ${totalCount}) → output/rates.ndjson, output/rates.csv`);
       } else if (isSingleRun(options)) {
         const providerName = Object.keys(providerPairs)[0];
         const slug = getProviderSlug(providerName);
         appendResults(newResults, path.join('output', slug));
-        console.log(`[batch] ${providerName}: +${newResults.length} (total ${totalCount})...`);
+        console.log(`[batch] ${providerName}: +${newResults.length} (total ${totalCount}) → output/${slug}/rates.ndjson, output/${slug}/rates.csv`);
       } else {
         // Multiple providers: append each provider's new results to its own dir
         const grouped = {};
@@ -136,7 +136,8 @@ async function main() {
           const slug = getProviderSlug(providerName);
           appendResults(providerResults, path.join('output', slug));
         }
-        console.log(`[batch] +${newResults.length} results (total ${totalCount})...`);
+        const paths = Object.keys(grouped).map(p => `output/${getProviderSlug(p)}/rates.ndjson`).join(', ');
+        console.log(`[batch] +${newResults.length} results (total ${totalCount}) → ${paths}`);
       }
     },
   });
@@ -152,14 +153,22 @@ async function main() {
     // Determine output path based on run type
     if (options.all) {
       writeResults(results, null);
-      console.log('Results written to output/rates.ndjson, output/rates.json, output/rates.csv');
-      console.log('Provider logs in output/ (e.g. remitly.log, worldremit.log)');
+      console.log(`\nOutput:`);
+      console.log(`  output/rates.ndjson  (incremental results)`);
+      console.log(`  output/rates.json    (final summary)`);
+      console.log(`  output/rates.csv     (flat file)`);
+      console.log(`  output/<provider>.log  (per-provider diagnostics)`);
+      console.log(`  output/errors/       (failure screenshots)`);
     } else if (isSingleRun(options)) {
       const providerName = Object.keys(providerPairs)[0];
       const slug = getProviderSlug(providerName);
       writeResults(results, path.join('output', slug));
-      console.log(`Results written to output/${slug}/rates.ndjson, rates.json, rates.csv`);
-      console.log(`Log written to output/${slug}/${slug}.log`);
+      console.log(`\nOutput:`);
+      console.log(`  output/${slug}/rates.ndjson  (incremental results)`);
+      console.log(`  output/${slug}/rates.json    (final summary)`);
+      console.log(`  output/${slug}/rates.csv     (flat file)`);
+      console.log(`  output/${slug}/${slug}.log     (provider diagnostics)`);
+      console.log(`  output/errors/               (failure screenshots)`);
     } else {
       // Multiple but not all: split by provider
       const grouped = {};
@@ -170,9 +179,13 @@ async function main() {
       for (const [providerName, providerResults] of Object.entries(grouped)) {
         const slug = getProviderSlug(providerName);
         writeResults(providerResults, path.join('output', slug));
-        console.log(`Results written to output/${slug}/rates.json and output/${slug}/rates.csv`);
-        console.log(`Log written to output/${slug}/${slug}.log`);
       }
+      console.log(`\nOutput:`);
+      for (const [providerName] of Object.entries(grouped)) {
+        const slug = getProviderSlug(providerName);
+        console.log(`  output/${slug}/`);
+      }
+      console.log(`  output/errors/  (failure screenshots)`);
     }
   }
 }
