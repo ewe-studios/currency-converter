@@ -1,0 +1,423 @@
+provider_name,provider_url,send_currency,receive_currency,currency_pair
+Wise,https://wise.com,AED,GHS,AED/GHS
+Wise,https://wise.com,AED,INR,AED/INR
+Wise,https://wise.com,AED,KES,AED/KES
+Wise,https://wise.com,AED,MXN,AED/MXN
+Wise,https://wise.com,AED,NGN,AED/NGN
+Wise,https://wise.com,AED,PHP,AED/PHP
+Wise,https://wise.com,AED,PKR,AED/PKR
+Wise,https://wise.com,AUD,GHS,AUD/GHS
+Wise,https://wise.com,AUD,INR,AUD/INR
+Wise,https://wise.com,AUD,KES,AUD/KES
+Wise,https://wise.com,AUD,MXN,AUD/MXN
+Wise,https://wise.com,AUD,NGN,AUD/NGN
+Wise,https://wise.com,AUD,PHP,AUD/PHP
+Wise,https://wise.com,AUD,PKR,AUD/PKR
+Wise,https://wise.com,CAD,GHS,CAD/GHS
+Wise,https://wise.com,CAD,INR,CAD/INR
+Wise,https://wise.com,CAD,KES,CAD/KES
+Wise,https://wise.com,CAD,MXN,CAD/MXN
+Wise,https://wise.com,CAD,NGN,CAD/NGN
+Wise,https://wise.com,CAD,PHP,CAD/PHP
+Wise,https://wise.com,CAD,PKR,CAD/PKR
+Wise,https://wise.com,EUR,GHS,EUR/GHS
+Wise,https://wise.com,EUR,INR,EUR/INR
+Wise,https://wise.com,EUR,KES,EUR/KES
+Wise,https://wise.com,EUR,MXN,EUR/MXN
+Wise,https://wise.com,EUR,NGN,EUR/NGN
+Wise,https://wise.com,EUR,PHP,EUR/PHP
+Wise,https://wise.com,EUR,PKR,EUR/PKR
+Wise,https://wise.com,GBP,GHS,GBP/GHS
+Wise,https://wise.com,GBP,INR,GBP/INR
+Wise,https://wise.com,GBP,KES,GBP/KES
+Wise,https://wise.com,GBP,MXN,GBP/MXN
+Wise,https://wise.com,GBP,NGN,GBP/NGN
+Wise,https://wise.com,GBP,PHP,GBP/PHP
+Wise,https://wise.com,GBP,PKR,GBP/PKR
+Wise,https://wise.com,PLN,GHS,PLN/GHS
+Wise,https://wise.com,PLN,INR,PLN/INR
+Wise,https://wise.com,PLN,KES,PLN/KES
+Wise,https://wise.com,PLN,MXN,PLN/MXN
+Wise,https://wise.com,PLN,NGN,PLN/NGN
+Wise,https://wise.com,PLN,PHP,PLN/PHP
+Wise,https://wise.com,PLN,PKR,PLN/PKR
+Wise,https://wise.com,USD,GHS,USD/GHS
+Wise,https://wise.com,USD,INR,USD/INR
+Wise,https://wise.com,USD,KES,USD/KES
+Wise,https://wise.com,USD,MXN,USD/MXN
+Wise,https://wise.com,USD,NGN,USD/NGN
+Wise,https://wise.com,USD,PHP,USD/PHP
+Wise,https://wise.com,USD,PKR,USD/PKR
+Remitly,https://remitly.com,AED,GHS,AED/GHS
+Remitly,https://remitly.com,AED,INR,AED/INR
+Remitly,https://remitly.com,AED,KES,AED/KES
+Remitly,https://remitly.com,AED,MXN,AED/MXN
+Remitly,https://remitly.com,AED,NGN,AED/NGN
+Remitly,https://remitly.com,AED,PHP,AED/PHP
+Remitly,https://remitly.com,AED,PKR,AED/PKR
+Remitly,https://remitly.com,AUD,GHS,AUD/GHS
+Remitly,https://remitly.com,AUD,INR,AUD/INR
+Remitly,https://remitly.com,AUD,KES,AUD/KES
+Remitly,https://remitly.com,AUD,MXN,AUD/MXN
+Remitly,https://remitly.com,AUD,NGN,AUD/NGN
+Remitly,https://remitly.com,AUD,PHP,AUD/PHP
+Remitly,https://remitly.com,AUD,PKR,AUD/PKR
+Remitly,https://remitly.com,CAD,GHS,CAD/GHS
+Remitly,https://remitly.com,CAD,INR,CAD/INR
+Remitly,https://remitly.com,CAD,KES,CAD/KES
+Remitly,https://remitly.com,CAD,MXN,CAD/MXN
+Remitly,https://remitly.com,CAD,NGN,CAD/NGN
+Remitly,https://remitly.com,CAD,PHP,CAD/PHP
+Remitly,https://remitly.com,CAD,PKR,CAD/PKR
+Remitly,https://remitly.com,EUR,GHS,EUR/GHS
+Remitly,https://remitly.com,EUR,INR,EUR/INR
+Remitly,https://remitly.com,EUR,KES,EUR/KES
+Remitly,https://remitly.com,EUR,MXN,EUR/MXN
+Remitly,https://remitly.com,EUR,NGN,EUR/NGN
+Remitly,https://remitly.com,EUR,PHP,EUR/PHP
+Remitly,https://remitly.com,EUR,PKR,EUR/PKR
+Remitly,https://remitly.com,GBP,GHS,GBP/GHS
+Remitly,https://remitly.com,GBP,INR,GBP/INR
+Remitly,https://remitly.com,GBP,KES,GBP/KES
+Remitly,https://remitly.com,GBP,MXN,GBP/MXN
+Remitly,https://remitly.com,GBP,NGN,GBP/NGN
+Remitly,https://remitly.com,GBP,PHP,GBP/PHP
+Remitly,https://remitly.com,GBP,PKR,GBP/PKR
+Remitly,https://remitly.com,PLN,GHS,PLN/GHS
+Remitly,https://remitly.com,PLN,INR,PLN/INR
+Remitly,https://remitly.com,PLN,KES,PLN/KES
+Remitly,https://remitly.com,PLN,MXN,PLN/MXN
+Remitly,https://remitly.com,PLN,NGN,PLN/NGN
+Remitly,https://remitly.com,PLN,PHP,PLN/PHP
+Remitly,https://remitly.com,PLN,PKR,PLN/PKR
+Remitly,https://remitly.com,USD,GHS,USD/GHS
+Remitly,https://remitly.com,USD,INR,USD/INR
+Remitly,https://remitly.com,USD,KES,USD/KES
+Remitly,https://remitly.com,USD,MXN,USD/MXN
+Remitly,https://remitly.com,USD,NGN,USD/NGN
+Remitly,https://remitly.com,USD,PHP,USD/PHP
+Remitly,https://remitly.com,USD,PKR,USD/PKR
+WorldRemit,https://worldremit.com,AUD,GHS,AUD/GHS
+WorldRemit,https://worldremit.com,AUD,INR,AUD/INR
+WorldRemit,https://worldremit.com,AUD,KES,AUD/KES
+WorldRemit,https://worldremit.com,AUD,MXN,AUD/MXN
+WorldRemit,https://worldremit.com,AUD,NGN,AUD/NGN
+WorldRemit,https://worldremit.com,AUD,PHP,AUD/PHP
+WorldRemit,https://worldremit.com,AUD,PKR,AUD/PKR
+WorldRemit,https://worldremit.com,CAD,GHS,CAD/GHS
+WorldRemit,https://worldremit.com,CAD,INR,CAD/INR
+WorldRemit,https://worldremit.com,CAD,KES,CAD/KES
+WorldRemit,https://worldremit.com,CAD,MXN,CAD/MXN
+WorldRemit,https://worldremit.com,CAD,NGN,CAD/NGN
+WorldRemit,https://worldremit.com,CAD,PHP,CAD/PHP
+WorldRemit,https://worldremit.com,CAD,PKR,CAD/PKR
+WorldRemit,https://worldremit.com,EUR,GHS,EUR/GHS
+WorldRemit,https://worldremit.com,EUR,INR,EUR/INR
+WorldRemit,https://worldremit.com,EUR,KES,EUR/KES
+WorldRemit,https://worldremit.com,EUR,MXN,EUR/MXN
+WorldRemit,https://worldremit.com,EUR,NGN,EUR/NGN
+WorldRemit,https://worldremit.com,EUR,PHP,EUR/PHP
+WorldRemit,https://worldremit.com,EUR,PKR,EUR/PKR
+WorldRemit,https://worldremit.com,GBP,GHS,GBP/GHS
+WorldRemit,https://worldremit.com,GBP,INR,GBP/INR
+WorldRemit,https://worldremit.com,GBP,KES,GBP/KES
+WorldRemit,https://worldremit.com,GBP,MXN,GBP/MXN
+WorldRemit,https://worldremit.com,GBP,NGN,GBP/NGN
+WorldRemit,https://worldremit.com,GBP,PHP,GBP/PHP
+WorldRemit,https://worldremit.com,GBP,PKR,GBP/PKR
+WorldRemit,https://worldremit.com,PLN,GHS,PLN/GHS
+WorldRemit,https://worldremit.com,PLN,INR,PLN/INR
+WorldRemit,https://worldremit.com,PLN,KES,PLN/KES
+WorldRemit,https://worldremit.com,PLN,MXN,PLN/MXN
+WorldRemit,https://worldremit.com,PLN,NGN,PLN/NGN
+WorldRemit,https://worldremit.com,PLN,PHP,PLN/PHP
+WorldRemit,https://worldremit.com,PLN,PKR,PLN/PKR
+WorldRemit,https://worldremit.com,USD,GHS,USD/GHS
+WorldRemit,https://worldremit.com,USD,INR,USD/INR
+WorldRemit,https://worldremit.com,USD,KES,USD/KES
+WorldRemit,https://worldremit.com,USD,MXN,USD/MXN
+WorldRemit,https://worldremit.com,USD,NGN,USD/NGN
+WorldRemit,https://worldremit.com,USD,PHP,USD/PHP
+WorldRemit,https://worldremit.com,USD,PKR,USD/PKR
+Western Union,https://westernunion.com,AED,GHS,AED/GHS
+Western Union,https://westernunion.com,AED,INR,AED/INR
+Western Union,https://westernunion.com,AED,KES,AED/KES
+Western Union,https://westernunion.com,AED,MXN,AED/MXN
+Western Union,https://westernunion.com,AED,NGN,AED/NGN
+Western Union,https://westernunion.com,AED,PHP,AED/PHP
+Western Union,https://westernunion.com,AED,PKR,AED/PKR
+Western Union,https://westernunion.com,AUD,GHS,AUD/GHS
+Western Union,https://westernunion.com,AUD,INR,AUD/INR
+Western Union,https://westernunion.com,AUD,KES,AUD/KES
+Western Union,https://westernunion.com,AUD,MXN,AUD/MXN
+Western Union,https://westernunion.com,AUD,NGN,AUD/NGN
+Western Union,https://westernunion.com,AUD,PHP,AUD/PHP
+Western Union,https://westernunion.com,AUD,PKR,AUD/PKR
+Western Union,https://westernunion.com,CAD,GHS,CAD/GHS
+Western Union,https://westernunion.com,CAD,INR,CAD/INR
+Western Union,https://westernunion.com,CAD,KES,CAD/KES
+Western Union,https://westernunion.com,CAD,MXN,CAD/MXN
+Western Union,https://westernunion.com,CAD,NGN,CAD/NGN
+Western Union,https://westernunion.com,CAD,PHP,CAD/PHP
+Western Union,https://westernunion.com,CAD,PKR,CAD/PKR
+Western Union,https://westernunion.com,EUR,GHS,EUR/GHS
+Western Union,https://westernunion.com,EUR,INR,EUR/INR
+Western Union,https://westernunion.com,EUR,KES,EUR/KES
+Western Union,https://westernunion.com,EUR,MXN,EUR/MXN
+Western Union,https://westernunion.com,EUR,NGN,EUR/NGN
+Western Union,https://westernunion.com,EUR,PHP,EUR/PHP
+Western Union,https://westernunion.com,EUR,PKR,EUR/PKR
+Western Union,https://westernunion.com,GBP,GHS,GBP/GHS
+Western Union,https://westernunion.com,GBP,INR,GBP/INR
+Western Union,https://westernunion.com,GBP,KES,GBP/KES
+Western Union,https://westernunion.com,GBP,MXN,GBP/MXN
+Western Union,https://westernunion.com,GBP,NGN,GBP/NGN
+Western Union,https://westernunion.com,GBP,PHP,GBP/PHP
+Western Union,https://westernunion.com,GBP,PKR,GBP/PKR
+Western Union,https://westernunion.com,PLN,GHS,PLN/GHS
+Western Union,https://westernunion.com,PLN,INR,PLN/INR
+Western Union,https://westernunion.com,PLN,KES,PLN/KES
+Western Union,https://westernunion.com,PLN,MXN,PLN/MXN
+Western Union,https://westernunion.com,PLN,NGN,PLN/NGN
+Western Union,https://westernunion.com,PLN,PHP,PLN/PHP
+Western Union,https://westernunion.com,PLN,PKR,PLN/PKR
+Western Union,https://westernunion.com,USD,GHS,USD/GHS
+Western Union,https://westernunion.com,USD,INR,USD/INR
+Western Union,https://westernunion.com,USD,KES,USD/KES
+Western Union,https://westernunion.com,USD,MXN,USD/MXN
+Western Union,https://westernunion.com,USD,NGN,USD/NGN
+Western Union,https://westernunion.com,USD,PHP,USD/PHP
+Western Union,https://westernunion.com,USD,PKR,USD/PKR
+Xoom,https://xoom.com,AUD,GHS,AUD/GHS
+Xoom,https://xoom.com,AUD,INR,AUD/INR
+Xoom,https://xoom.com,AUD,KES,AUD/KES
+Xoom,https://xoom.com,AUD,MXN,AUD/MXN
+Xoom,https://xoom.com,AUD,NGN,AUD/NGN
+Xoom,https://xoom.com,AUD,PHP,AUD/PHP
+Xoom,https://xoom.com,AUD,PKR,AUD/PKR
+Xoom,https://xoom.com,CAD,GHS,CAD/GHS
+Xoom,https://xoom.com,CAD,INR,CAD/INR
+Xoom,https://xoom.com,CAD,KES,CAD/KES
+Xoom,https://xoom.com,CAD,MXN,CAD/MXN
+Xoom,https://xoom.com,CAD,NGN,CAD/NGN
+Xoom,https://xoom.com,CAD,PHP,CAD/PHP
+Xoom,https://xoom.com,CAD,PKR,CAD/PKR
+Xoom,https://xoom.com,EUR,GHS,EUR/GHS
+Xoom,https://xoom.com,EUR,INR,EUR/INR
+Xoom,https://xoom.com,EUR,KES,EUR/KES
+Xoom,https://xoom.com,EUR,MXN,EUR/MXN
+Xoom,https://xoom.com,EUR,NGN,EUR/NGN
+Xoom,https://xoom.com,EUR,PHP,EUR/PHP
+Xoom,https://xoom.com,EUR,PKR,EUR/PKR
+Xoom,https://xoom.com,GBP,GHS,GBP/GHS
+Xoom,https://xoom.com,GBP,INR,GBP/INR
+Xoom,https://xoom.com,GBP,KES,GBP/KES
+Xoom,https://xoom.com,GBP,MXN,GBP/MXN
+Xoom,https://xoom.com,GBP,NGN,GBP/NGN
+Xoom,https://xoom.com,GBP,PHP,GBP/PHP
+Xoom,https://xoom.com,GBP,PKR,GBP/PKR
+Xoom,https://xoom.com,USD,GHS,USD/GHS
+Xoom,https://xoom.com,USD,INR,USD/INR
+Xoom,https://xoom.com,USD,KES,USD/KES
+Xoom,https://xoom.com,USD,MXN,USD/MXN
+Xoom,https://xoom.com,USD,NGN,USD/NGN
+Xoom,https://xoom.com,USD,PHP,USD/PHP
+Xoom,https://xoom.com,USD,PKR,USD/PKR
+MoneyGram,https://moneygram.com,AED,GHS,AED/GHS
+MoneyGram,https://moneygram.com,AED,INR,AED/INR
+MoneyGram,https://moneygram.com,AED,KES,AED/KES
+MoneyGram,https://moneygram.com,AED,MXN,AED/MXN
+MoneyGram,https://moneygram.com,AED,NGN,AED/NGN
+MoneyGram,https://moneygram.com,AED,PHP,AED/PHP
+MoneyGram,https://moneygram.com,AED,PKR,AED/PKR
+MoneyGram,https://moneygram.com,AUD,GHS,AUD/GHS
+MoneyGram,https://moneygram.com,AUD,INR,AUD/INR
+MoneyGram,https://moneygram.com,AUD,KES,AUD/KES
+MoneyGram,https://moneygram.com,AUD,MXN,AUD/MXN
+MoneyGram,https://moneygram.com,AUD,NGN,AUD/NGN
+MoneyGram,https://moneygram.com,AUD,PHP,AUD/PHP
+MoneyGram,https://moneygram.com,AUD,PKR,AUD/PKR
+MoneyGram,https://moneygram.com,CAD,GHS,CAD/GHS
+MoneyGram,https://moneygram.com,CAD,INR,CAD/INR
+MoneyGram,https://moneygram.com,CAD,KES,CAD/KES
+MoneyGram,https://moneygram.com,CAD,MXN,CAD/MXN
+MoneyGram,https://moneygram.com,CAD,NGN,CAD/NGN
+MoneyGram,https://moneygram.com,CAD,PHP,CAD/PHP
+MoneyGram,https://moneygram.com,CAD,PKR,CAD/PKR
+MoneyGram,https://moneygram.com,EUR,GHS,EUR/GHS
+MoneyGram,https://moneygram.com,EUR,INR,EUR/INR
+MoneyGram,https://moneygram.com,EUR,KES,EUR/KES
+MoneyGram,https://moneygram.com,EUR,MXN,EUR/MXN
+MoneyGram,https://moneygram.com,EUR,NGN,EUR/NGN
+MoneyGram,https://moneygram.com,EUR,PHP,EUR/PHP
+MoneyGram,https://moneygram.com,EUR,PKR,EUR/PKR
+MoneyGram,https://moneygram.com,GBP,GHS,GBP/GHS
+MoneyGram,https://moneygram.com,GBP,INR,GBP/INR
+MoneyGram,https://moneygram.com,GBP,KES,GBP/KES
+MoneyGram,https://moneygram.com,GBP,MXN,GBP/MXN
+MoneyGram,https://moneygram.com,GBP,NGN,GBP/NGN
+MoneyGram,https://moneygram.com,GBP,PHP,GBP/PHP
+MoneyGram,https://moneygram.com,GBP,PKR,GBP/PKR
+MoneyGram,https://moneygram.com,PLN,GHS,PLN/GHS
+MoneyGram,https://moneygram.com,PLN,INR,PLN/INR
+MoneyGram,https://moneygram.com,PLN,KES,PLN/KES
+MoneyGram,https://moneygram.com,PLN,MXN,PLN/MXN
+MoneyGram,https://moneygram.com,PLN,NGN,PLN/NGN
+MoneyGram,https://moneygram.com,PLN,PHP,PLN/PHP
+MoneyGram,https://moneygram.com,PLN,PKR,PLN/PKR
+MoneyGram,https://moneygram.com,USD,GHS,USD/GHS
+MoneyGram,https://moneygram.com,USD,INR,USD/INR
+MoneyGram,https://moneygram.com,USD,KES,USD/KES
+MoneyGram,https://moneygram.com,USD,MXN,USD/MXN
+MoneyGram,https://moneygram.com,USD,NGN,USD/NGN
+MoneyGram,https://moneygram.com,USD,PHP,USD/PHP
+MoneyGram,https://moneygram.com,USD,PKR,USD/PKR
+Taptap Send,https://www.taptapsend.com/,AED,GHS,AED/GHS
+Taptap Send,https://www.taptapsend.com/,AED,INR,AED/INR
+Taptap Send,https://www.taptapsend.com/,AED,KES,AED/KES
+Taptap Send,https://www.taptapsend.com/,AED,MXN,AED/MXN
+Taptap Send,https://www.taptapsend.com/,AED,NGN,AED/NGN
+Taptap Send,https://www.taptapsend.com/,AED,PHP,AED/PHP
+Taptap Send,https://www.taptapsend.com/,AED,PKR,AED/PKR
+Taptap Send,https://www.taptapsend.com/,AUD,GHS,AUD/GHS
+Taptap Send,https://www.taptapsend.com/,AUD,INR,AUD/INR
+Taptap Send,https://www.taptapsend.com/,AUD,KES,AUD/KES
+Taptap Send,https://www.taptapsend.com/,AUD,MXN,AUD/MXN
+Taptap Send,https://www.taptapsend.com/,AUD,NGN,AUD/NGN
+Taptap Send,https://www.taptapsend.com/,AUD,PHP,AUD/PHP
+Taptap Send,https://www.taptapsend.com/,AUD,PKR,AUD/PKR
+Taptap Send,https://www.taptapsend.com/,CAD,GHS,CAD/GHS
+Taptap Send,https://www.taptapsend.com/,CAD,INR,CAD/INR
+Taptap Send,https://www.taptapsend.com/,CAD,KES,CAD/KES
+Taptap Send,https://www.taptapsend.com/,CAD,MXN,CAD/MXN
+Taptap Send,https://www.taptapsend.com/,CAD,NGN,CAD/NGN
+Taptap Send,https://www.taptapsend.com/,CAD,PHP,CAD/PHP
+Taptap Send,https://www.taptapsend.com/,CAD,PKR,CAD/PKR
+Taptap Send,https://www.taptapsend.com/,EUR,GHS,EUR/GHS
+Taptap Send,https://www.taptapsend.com/,EUR,INR,EUR/INR
+Taptap Send,https://www.taptapsend.com/,EUR,KES,EUR/KES
+Taptap Send,https://www.taptapsend.com/,EUR,MXN,EUR/MXN
+Taptap Send,https://www.taptapsend.com/,EUR,NGN,EUR/NGN
+Taptap Send,https://www.taptapsend.com/,EUR,PHP,EUR/PHP
+Taptap Send,https://www.taptapsend.com/,EUR,PKR,EUR/PKR
+Taptap Send,https://www.taptapsend.com/,GBP,GHS,GBP/GHS
+Taptap Send,https://www.taptapsend.com/,GBP,INR,GBP/INR
+Taptap Send,https://www.taptapsend.com/,GBP,KES,GBP/KES
+Taptap Send,https://www.taptapsend.com/,GBP,MXN,GBP/MXN
+Taptap Send,https://www.taptapsend.com/,GBP,NGN,GBP/NGN
+Taptap Send,https://www.taptapsend.com/,GBP,PHP,GBP/PHP
+Taptap Send,https://www.taptapsend.com/,GBP,PKR,GBP/PKR
+Taptap Send,https://www.taptapsend.com/,PLN,GHS,PLN/GHS
+Taptap Send,https://www.taptapsend.com/,PLN,INR,PLN/INR
+Taptap Send,https://www.taptapsend.com/,PLN,KES,PLN/KES
+Taptap Send,https://www.taptapsend.com/,PLN,MXN,PLN/MXN
+Taptap Send,https://www.taptapsend.com/,PLN,NGN,PLN/NGN
+Taptap Send,https://www.taptapsend.com/,PLN,PHP,PLN/PHP
+Taptap Send,https://www.taptapsend.com/,PLN,PKR,PLN/PKR
+Taptap Send,https://www.taptapsend.com/,USD,GHS,USD/GHS
+Taptap Send,https://www.taptapsend.com/,USD,INR,USD/INR
+Taptap Send,https://www.taptapsend.com/,USD,KES,USD/KES
+Taptap Send,https://www.taptapsend.com/,USD,MXN,USD/MXN
+Taptap Send,https://www.taptapsend.com/,USD,NGN,USD/NGN
+Taptap Send,https://www.taptapsend.com/,USD,PHP,USD/PHP
+Taptap Send,https://www.taptapsend.com/,USD,PKR,USD/PKR
+Ria,https://www.riamoneytransfer.com/,AUD,GHS,AUD/GHS
+Ria,https://www.riamoneytransfer.com/,AUD,INR,AUD/INR
+Ria,https://www.riamoneytransfer.com/,AUD,KES,AUD/KES
+Ria,https://www.riamoneytransfer.com/,AUD,MXN,AUD/MXN
+Ria,https://www.riamoneytransfer.com/,AUD,NGN,AUD/NGN
+Ria,https://www.riamoneytransfer.com/,AUD,PHP,AUD/PHP
+Ria,https://www.riamoneytransfer.com/,AUD,PKR,AUD/PKR
+Ria,https://www.riamoneytransfer.com/,CAD,GHS,CAD/GHS
+Ria,https://www.riamoneytransfer.com/,CAD,INR,CAD/INR
+Ria,https://www.riamoneytransfer.com/,CAD,KES,CAD/KES
+Ria,https://www.riamoneytransfer.com/,CAD,MXN,CAD/MXN
+Ria,https://www.riamoneytransfer.com/,CAD,NGN,CAD/NGN
+Ria,https://www.riamoneytransfer.com/,CAD,PHP,CAD/PHP
+Ria,https://www.riamoneytransfer.com/,CAD,PKR,CAD/PKR
+Ria,https://www.riamoneytransfer.com/,EUR,GHS,EUR/GHS
+Ria,https://www.riamoneytransfer.com/,EUR,INR,EUR/INR
+Ria,https://www.riamoneytransfer.com/,EUR,KES,EUR/KES
+Ria,https://www.riamoneytransfer.com/,EUR,MXN,EUR/MXN
+Ria,https://www.riamoneytransfer.com/,EUR,NGN,EUR/NGN
+Ria,https://www.riamoneytransfer.com/,EUR,PHP,EUR/PHP
+Ria,https://www.riamoneytransfer.com/,EUR,PKR,EUR/PKR
+Ria,https://www.riamoneytransfer.com/,GBP,GHS,GBP/GHS
+Ria,https://www.riamoneytransfer.com/,GBP,INR,GBP/INR
+Ria,https://www.riamoneytransfer.com/,GBP,KES,GBP/KES
+Ria,https://www.riamoneytransfer.com/,GBP,MXN,GBP/MXN
+Ria,https://www.riamoneytransfer.com/,GBP,NGN,GBP/NGN
+Ria,https://www.riamoneytransfer.com/,GBP,PHP,GBP/PHP
+Ria,https://www.riamoneytransfer.com/,GBP,PKR,GBP/PKR
+Ria,https://www.riamoneytransfer.com/,PLN,GHS,PLN/GHS
+Ria,https://www.riamoneytransfer.com/,PLN,INR,PLN/INR
+Ria,https://www.riamoneytransfer.com/,PLN,KES,PLN/KES
+Ria,https://www.riamoneytransfer.com/,PLN,MXN,PLN/MXN
+Ria,https://www.riamoneytransfer.com/,PLN,NGN,PLN/NGN
+Ria,https://www.riamoneytransfer.com/,PLN,PHP,PLN/PHP
+Ria,https://www.riamoneytransfer.com/,PLN,PKR,PLN/PKR
+Ria,https://www.riamoneytransfer.com/,USD,GHS,USD/GHS
+Ria,https://www.riamoneytransfer.com/,USD,INR,USD/INR
+Ria,https://www.riamoneytransfer.com/,USD,KES,USD/KES
+Ria,https://www.riamoneytransfer.com/,USD,MXN,USD/MXN
+Ria,https://www.riamoneytransfer.com/,USD,NGN,USD/NGN
+Ria,https://www.riamoneytransfer.com/,USD,PHP,USD/PHP
+Ria,https://www.riamoneytransfer.com/,USD,PKR,USD/PKR
+Panda Remit,https://www.pandaremit.com/,AUD,GHS,AUD/GHS
+Panda Remit,https://www.pandaremit.com/,AUD,INR,AUD/INR
+Panda Remit,https://www.pandaremit.com/,AUD,MXN,AUD/MXN
+Panda Remit,https://www.pandaremit.com/,AUD,PHP,AUD/PHP
+Panda Remit,https://www.pandaremit.com/,AUD,PKR,AUD/PKR
+Panda Remit,https://www.pandaremit.com/,CAD,GHS,CAD/GHS
+Panda Remit,https://www.pandaremit.com/,CAD,INR,CAD/INR
+Panda Remit,https://www.pandaremit.com/,CAD,MXN,CAD/MXN
+Panda Remit,https://www.pandaremit.com/,CAD,PHP,CAD/PHP
+Panda Remit,https://www.pandaremit.com/,CAD,PKR,CAD/PKR
+Panda Remit,https://www.pandaremit.com/,EUR,GHS,EUR/GHS
+Panda Remit,https://www.pandaremit.com/,EUR,INR,EUR/INR
+Panda Remit,https://www.pandaremit.com/,EUR,MXN,EUR/MXN
+Panda Remit,https://www.pandaremit.com/,EUR,PHP,EUR/PHP
+Panda Remit,https://www.pandaremit.com/,EUR,PKR,EUR/PKR
+Panda Remit,https://www.pandaremit.com/,GBP,GHS,GBP/GHS
+Panda Remit,https://www.pandaremit.com/,GBP,INR,GBP/INR
+Panda Remit,https://www.pandaremit.com/,GBP,MXN,GBP/MXN
+Panda Remit,https://www.pandaremit.com/,GBP,PHP,GBP/PHP
+Panda Remit,https://www.pandaremit.com/,GBP,PKR,GBP/PKR
+Panda Remit,https://www.pandaremit.com/,USD,GHS,USD/GHS
+Panda Remit,https://www.pandaremit.com/,USD,INR,USD/INR
+Panda Remit,https://www.pandaremit.com/,USD,MXN,USD/MXN
+Panda Remit,https://www.pandaremit.com/,USD,PHP,USD/PHP
+Panda Remit,https://www.pandaremit.com/,USD,PKR,USD/PKR
+Sendwave,https://www.sendwave.com/,CAD,GHS,CAD/GHS
+Sendwave,https://www.sendwave.com/,CAD,INR,CAD/INR
+Sendwave,https://www.sendwave.com/,CAD,KES,CAD/KES
+Sendwave,https://www.sendwave.com/,CAD,MXN,CAD/MXN
+Sendwave,https://www.sendwave.com/,CAD,NGN,CAD/NGN
+Sendwave,https://www.sendwave.com/,CAD,PHP,CAD/PHP
+Sendwave,https://www.sendwave.com/,CAD,PKR,CAD/PKR
+Sendwave,https://www.sendwave.com/,EUR,GHS,EUR/GHS
+Sendwave,https://www.sendwave.com/,EUR,INR,EUR/INR
+Sendwave,https://www.sendwave.com/,EUR,KES,EUR/KES
+Sendwave,https://www.sendwave.com/,EUR,MXN,EUR/MXN
+Sendwave,https://www.sendwave.com/,EUR,NGN,EUR/NGN
+Sendwave,https://www.sendwave.com/,EUR,PHP,EUR/PHP
+Sendwave,https://www.sendwave.com/,EUR,PKR,EUR/PKR
+Sendwave,https://www.sendwave.com/,GBP,GHS,GBP/GHS
+Sendwave,https://www.sendwave.com/,GBP,INR,GBP/INR
+Sendwave,https://www.sendwave.com/,GBP,KES,GBP/KES
+Sendwave,https://www.sendwave.com/,GBP,MXN,GBP/MXN
+Sendwave,https://www.sendwave.com/,GBP,NGN,GBP/NGN
+Sendwave,https://www.sendwave.com/,GBP,PHP,GBP/PHP
+Sendwave,https://www.sendwave.com/,GBP,PKR,GBP/PKR
+Sendwave,https://www.sendwave.com/,USD,GHS,USD/GHS
+Sendwave,https://www.sendwave.com/,USD,INR,USD/INR
+Sendwave,https://www.sendwave.com/,USD,KES,USD/KES
+Sendwave,https://www.sendwave.com/,USD,MXN,USD/MXN
+Sendwave,https://www.sendwave.com/,USD,NGN,USD/NGN
+Sendwave,https://www.sendwave.com/,USD,PHP,USD/PHP
+Sendwave,https://www.sendwave.com/,USD,PKR,USD/PKR
+TransferGo,https://www.transfergo.com/,EUR,INR,EUR/INR
+TransferGo,https://www.transfergo.com/,EUR,NGN,EUR/NGN
+TransferGo,https://www.transfergo.com/,GBP,INR,GBP/INR
+TransferGo,https://www.transfergo.com/,GBP,NGN,GBP/NGN
+TransferGo,https://www.transfergo.com/,PLN,NGN,PLN/NGN

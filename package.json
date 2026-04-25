@@ -1,0 +1,19 @@
+{
+  "name": "rates-fetcher",
+  "version": "1.0.0",
+  "description": "Scrapes exchange rates from remittance providers using Playwright",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "scrape": "node src/index.js",
+    "test-provider": "node src/test-provider.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "csv-parse": "^6.2.1",
+    "playwright": "^1.59.1"
+  }
+}
