@@ -6,10 +6,11 @@ module.exports = {
 
   async fetchRate(page, sendCurrency, receiveCurrency, sendAmount) {
     await page.goto('https://www.sendwave.com/en/', { waitUntil: 'domcontentloaded', timeout: TIMEOUTS.navigation });
-    await page.waitForTimeout(4000);
 
     await dismissCookieBanner(page);
-    await page.waitForTimeout(1000);
+
+    // Wait for calculator inputs
+    await page.locator('input[type="decimal"]').first().waitFor({ timeout: 5000 });
 
     // Fill the send amount input
     await page.evaluate((val) => {
@@ -21,7 +22,12 @@ module.exports = {
         inputs[0].dispatchEvent(new Event('change', { bubbles: true }));
       }
     }, String(sendAmount));
-    await page.waitForTimeout(3000);
+
+    // Wait for receive amount to populate
+    await page.waitForFunction(() => {
+      const inputs = document.querySelectorAll('input[type="decimal"]');
+      return inputs.length >= 2 && inputs[1].value && parseFloat(inputs[1]) > 0;
+    }, { timeout: 5000 }).catch(() => {});
 
     const html = await page.content();
     const $ = cheerio.load(html);
@@ -74,9 +80,8 @@ async function dismissCookieBanner(page) {
     const selectors = ['#onetrust-accept-btn-handler', 'button:has-text("Accept")'];
     for (const sel of selectors) {
       const btn = page.locator(sel).first();
-      if (await btn.isVisible({ timeout: 1500 }).catch(() => false)) {
+      if (await btn.isVisible({ timeout: 1000 }).catch(() => false)) {
         await btn.click();
-        await page.waitForTimeout(500);
         break;
       }
     }

@@ -83,6 +83,13 @@ src/providers/ria.js
 - Calculator loads as skeleton then populates
 - 5s wait recommended for full render
 
+### Send Currency Grouping Optimization
+
+CSV pairs are grouped by send currency (AUD→*, CAD→*, EUR→*, etc.). Provider tracks `currentPage` and `currentSendCurrency` at module level:
+- Skips page navigation when already on the correct page (`currentPage` matches requested currency)
+- Only clicks the send currency dropdown when `currentSendCurrency` differs from the requested send currency
+- Saves ~5s per pair within the same send-currency group by avoiding redundant dropdown clicks
+
 ## Tasks
 
 - [ ] Task 1: Implement static page navigation

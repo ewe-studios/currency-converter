@@ -42,6 +42,43 @@ function writeResults(results, outputDir = null) {
   fs.writeFileSync(path.join(dirPath, 'rates.csv'), csvContent, 'utf-8');
 }
 
+function appendResults(results, outputDir = null) {
+  const dirPath = outputDir
+    ? path.join(process.cwd(), outputDir)
+    : BASE_OUTPUT_DIR;
+
+  ensureDirs(dirPath);
+
+  const ndjsonPath = path.join(dirPath, 'rates.ndjson');
+  const csvPath = path.join(dirPath, 'rates.csv');
+
+  // Append each result as one JSON line to NDJSON
+  const ndjsonLines = results.map(r => JSON.stringify(r)).join('\n') + '\n';
+  fs.appendFileSync(ndjsonPath, ndjsonLines, 'utf-8');
+
+  // CSV: write header if file doesn't exist, then append rows
+  const csvHeaders = ['provider', 'sendCurrency', 'receiveCurrency', 'sendAmount', 'exchangeRate', 'receiveAmount', 'fee', 'timestamp', 'success', 'error'];
+  const csvRows = results.map(r => [
+    r.provider,
+    r.sendCurrency,
+    r.receiveCurrency,
+    r.sendAmount,
+    r.exchangeRate ?? '',
+    r.receiveAmount ?? '',
+    r.fee ?? '',
+    r.timestamp,
+    r.success,
+    (r.error || '').replace(/,/g, ';'),
+  ]);
+  const csvContent = csvRows.map(r => r.join(',')).join('\n') + '\n';
+
+  if (!fs.existsSync(csvPath)) {
+    fs.writeFileSync(csvPath, csvHeaders.join(',') + '\n' + csvContent, 'utf-8');
+  } else {
+    fs.appendFileSync(csvPath, csvContent, 'utf-8');
+  }
+}
+
 function saveErrorScreenshot(page, provider, sendCurrency, receiveCurrency) {
   ensureDirs(BASE_OUTPUT_DIR);
   const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
@@ -49,4 +86,19 @@ function saveErrorScreenshot(page, provider, sendCurrency, receiveCurrency) {
   page.screenshot({ path: path.join(ERROR_DIR, filename) }).catch(() => {});
 }
 
-module.exports = { writeResults, saveErrorScreenshot };
+function appendLog(provider, message, outputDir = null) {
+  const dirPath = outputDir
+    ? path.join(process.cwd(), outputDir)
+    : BASE_OUTPUT_DIR;
+
+  ensureDirs(dirPath);
+
+  const slug = typeof provider === 'string'
+    ? provider.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')
+    : provider;
+  const logPath = path.join(dirPath, `${slug}.log`);
+  const line = `[${new Date().toISOString()}] ${message}\n`;
+  fs.appendFileSync(logPath, line, 'utf-8');
+}
+
+module.exports = { writeResults, appendResults, appendLog, saveErrorScreenshot };

@@ -64,6 +64,13 @@ Some rate information may be displayed on the page.
 7. Wait for calculation
 8. Extract rate from text matching `{FROM} 1 = {rate} {TO}`
 
+### Send Currency Grouping Optimization
+
+CSV pairs are grouped by send currency (EUR→*, GBP→*, PLN→*, etc.). Provider tracks `currentPage` and `currentSendCurrency` at module level:
+- Skips page navigation when already on the correct page (`currentPage` matches requested currency)
+- Only clicks the send currency dropdown when `currentSendCurrency` differs from the requested send currency
+- Saves ~5s per pair within the same send-currency group by avoiding redundant dropdown clicks
+
 ## Architecture
 
 ### File Structure

@@ -14,7 +14,9 @@ module.exports = {
     const url = `https://www.xoom.com/en-us/${currency}/send-money/transfer?countryCode=${receiveCountry.code}`;
 
     await page.goto(url, { waitUntil: 'domcontentloaded', timeout: TIMEOUTS.navigation });
-    await page.waitForTimeout(5000);
+
+    // Wait for rate paragraph to appear
+    await page.waitForSelector('p._18ax91o1._18ax91o0', { timeout: 5000 }).catch(() => {});
 
     const currentUrl = page.url();
     if (currentUrl.includes('paypal') || currentUrl.includes('login') || currentUrl.includes('signin')) {

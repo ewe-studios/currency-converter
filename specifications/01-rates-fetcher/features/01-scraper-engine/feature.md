@@ -5,15 +5,15 @@ feature_directory: "specifications/01-rates-fetcher/features/01-scraper-engine"
 this_file: "specifications/01-rates-fetcher/features/01-scraper-engine/feature.md"
 
 feature: "Scraper Engine"
-description: "Browser lifecycle management, provider interface, orchestration, retry logic, and result collection"
+description: "Browser lifecycle management, provider interface, orchestration, retry logic, result collection, and NDJSON batch output"
 status: completed
 
 depends_on: ["00-core-infrastructure"]
 
 tasks:
-  completed: 10
+  completed: 13
   uncompleted: 0
-  total: 10
+  total: 13
   completion_percentage: 100
 ---
 
@@ -21,13 +21,14 @@ tasks:
 
 ## Overview
 
-The scraper engine manages the Playwright browser lifecycle, dispatches scraping work to provider modules, handles retries and errors, and collects results. It is the central orchestrator that connects CSV input to provider scrapers to output.
+The scraper engine manages the Playwright browser lifecycle, dispatches scraping work to provider modules, handles retries and errors, collects results, and streams them incrementally to NDJSON/CSV output files. It is the central orchestrator that connects CSV input to provider scrapers to output.
 
 ## Requirements
 
 1. **Browser Lifecycle** (`src/scraper.js`)
    - Launch Chromium using `BROWSER_OPTIONS` from config
    - Create one browser context per provider using `CONTEXT_OPTIONS`
+   - One page per provider (reused across all pairs for that provider)
    - Close context after each provider completes
    - Close browser after all providers complete
    - Handle graceful shutdown on SIGINT/SIGTERM
@@ -40,6 +41,7 @@ The scraper engine manages the Playwright browser lifecycle, dispatches scraping
 3. **Orchestration**
    - Process providers sequentially (one at a time)
    - Process currency pairs within a provider sequentially
+   - **Page reuse**: One page per provider is reused across all pairs (important for providers like WorldRemit that cache state)
    - Wait `TIMEOUTS.betweenRequests` (2s) between pairs to avoid rate limiting
    - Log progress: `[ProviderName] 3/49 USD→NGN: rate=1580.50`
 
@@ -51,23 +53,24 @@ The scraper engine manages the Playwright browser lifecycle, dispatches scraping
    - Capture screenshot on failure to `output/errors/` for debugging
 
 5. **Result Collection**
-   - Each result includes: provider, sendCurrency, receiveCurrency, sendAmount, exchangeRate, receiveAmount, fee, timestamp
+   - Each result includes: provider, sendCurrency, receiveCurrency, sendAmount, exchangeRate, receiveAmount, fee, timestamp, success, error
    - Accumulate all results in memory
-   - Return full results array to caller
+   - Support `onBatch` callback for incremental result delivery
+   - Report "not found" pairs with `success: false` and `error` field populated
 
 6. **Entry Point** (`src/index.js`)
-   - Parse CLI args (optional: `--provider=Wise`, `--pair=USD/NGN`, `--headful`)
-   - Load Provider.csv
-   - Filter to specific provider/pair if CLI args given
-   - Run scraper engine
-   - Write output via output.js
+   - Parse CLI args: `--all`, `--provider=X`, `--pair=USD/NGN`, `--headful`
+   - Support multiple providers: `--providers=wise,remitly`
+   - Load Provider.csv, filter by CLI args
+   - Clean old output files before starting run
+   - Run scraper with `onBatch` callback for incremental NDJSON writes
+   - Write final summary via `writeResults()` (JSON + CSV)
    - Print summary stats (total pairs, successful, failed)
 
 7. **Test Runner** (`src/test-provider.js`)
    - Quick test of a single provider with a single currency pair
    - Usage: `node src/test-provider.js Wise USD NGN`
    - Launches browser, runs one fetchRate, prints result, exits
-   - Useful for developing/debugging individual providers
 
 ## Architecture
 
@@ -81,11 +84,12 @@ graph TD
 
         Browser --> |create context| Context[Browser Context]
         Context --> |new page| Page[Page]
-        Page --> |passed to| Provider
+        Page --> |reused for all pairs| Provider
 
         Provider --> |result| Collector[Result Collector]
-        Collector --> |all results| Index
-        Index --> |write| Output[src/output.js]
+        Collector --> |onBatch| Index
+        Index --> |append| NDJSON[rates.ndjson]
+        Index --> |write final| Output[src/output.js]
     end
 ```
 
@@ -99,18 +103,17 @@ sequenceDiagram
     participant Provider as Provider Module
     participant Browser as Chromium
 
-    CLI->>Engine: scrape(providerPairs, options)
+    CLI->>Engine: scrape(providerPairs, { onBatch })
     Engine->>Browser: launch()
 
     loop For each provider
         Engine->>Registry: getProvider(name)
         Registry-->>Engine: providerModule
         Engine->>Browser: newContext()
+        Engine->>Browser: newPage()
 
         loop For each currency pair
-            Engine->>Browser: newPage()
             Engine->>Provider: fetchRate(page, from, to, amount)
-
             alt Success
                 Provider-->>Engine: { rate, amount, fee }
             else Failure (retry once)
@@ -121,7 +124,6 @@ sequenceDiagram
                     Provider-->>Engine: null (logged)
                 end
             end
-
             Engine->>Engine: collect result
             Engine->>Engine: wait 2s
         end
@@ -131,6 +133,16 @@ sequenceDiagram
 
     Engine->>Browser: close()
     Engine-->>CLI: results[]
+
+    loop onBatch triggered
+        CLI->>Output: appendResults(newResults)
+        Output->>NDJSON: append lines
+        Output->>CSVOut: append rows
+    end
+
+    CLI->>Output: writeResults(allResults)
+    Output->>JSON: write summary
+    Output->>CSVOut: write final CSV
 ```
 
 ### Interface Definitions
@@ -150,8 +162,8 @@ module.exports = {
 
 // Scraper engine
 async function scrape(providerPairs, options) {
-  // providerPairs: { [name]: { name, url, pairs: [{ sendCurrency, receiveCurrency }] } }
-  // options: { headless, providerFilter, pairFilter }
+  // options: { headless, providerFilter, pairFilter, onBatch }
+  // onBatch: (allResultsSoFar) => void — called when 10+ new results accumulated
   // returns: Result[]
 }
 
@@ -172,7 +184,7 @@ async function scrape(providerPairs, options) {
 
 ### Error Handling Strategy
 
-- Each `fetchRate` is wrapped in try/catch with retry
+- Each `fetchRate` is wrapped in try/catch with single retry
 - Screenshot saved to `output/errors/{provider}_{from}_{to}_{timestamp}.png`
 - Error message stored in result object
 - Provider-level errors don't propagate to other providers
@@ -182,14 +194,15 @@ async function scrape(providerPairs, options) {
 
 - Sequential per-provider to avoid IP-based rate limiting
 - 2s delay between requests within a provider
-- Single browser instance, one context per provider (avoids memory bloat)
-- Page closed after each pair (prevents memory leaks)
+- Single browser instance, one context per provider
+- **Page reuse within provider** — one page created per provider, reused for all pairs (providers like WorldRemit rely on this for state caching)
+- NDJSON incremental writes — results flushed every 10 pairs, not at end
 
 ## Tasks
 
 - [ ] Task 1: Implement `src/providers/index.js` — provider registry with `getProvider()`
 - [ ] Task 2: Implement `src/scraper.js` — browser launch/close lifecycle
-- [ ] Task 3: Add context creation and page management to scraper.js
+- [ ] Task 3: Add context creation and single-page-per-provider management
 - [ ] Task 4: Add sequential provider + pair orchestration loop
 - [ ] Task 5: Add error handling with single retry and 5s delay
 - [ ] Task 6: Add screenshot capture on failure to `output/errors/`
@@ -197,6 +210,9 @@ async function scrape(providerPairs, options) {
 - [ ] Task 8: Implement `src/index.js` — CLI args, CSV loading, scraper invocation, output
 - [ ] Task 9: Implement `src/test-provider.js` — single-provider test runner
 - [ ] Task 10: Add graceful shutdown handler (SIGINT/SIGTERM)
+- [ ] Task 11: Add `onBatch` callback for incremental result delivery
+- [ ] Task 12: Implement NDJSON append output (`appendResults`)
+- [ ] Task 13: Add output cleanup at start of run
 
 ## Testing
 
@@ -227,6 +243,12 @@ async function scrape(providerPairs, options) {
    - When: Pair is scraped
    - Then: Result has `success: false` and error message
 
+6. **NDJSON append — incremental writes**
+   - Given: `onBatch` callback configured
+   - When: 10+ results accumulated
+   - Then: `appendResults` called with only new results
+   - And: NDJSON file grows incrementally, not overwritten
+
 ## Success Criteria
 
 - [ ] All tasks completed
@@ -235,6 +257,8 @@ async function scrape(providerPairs, options) {
 - [ ] Errors are isolated per provider
 - [ ] Progress is logged clearly
 - [ ] Screenshots captured on failure
+- [ ] NDJSON output is incremental (not overwritten)
+- [ ] Page reuse works correctly for providers with state
 
 ---
 

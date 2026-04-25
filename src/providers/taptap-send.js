@@ -1,22 +1,29 @@
 const { TIMEOUTS } = require('../config');
 
+let currentPage = null;
+let currentOriginCurrency = null;
+
 module.exports = {
   name: 'Taptap Send',
 
   async fetchRate(page, sendCurrency, receiveCurrency, sendAmount) {
-    await page.goto('https://www.taptapsend.com/', { waitUntil: 'domcontentloaded', timeout: TIMEOUTS.navigation });
-    await page.waitForTimeout(4000);
+    // Navigate only once per provider session
+    if (currentPage !== page) {
+      await page.goto('https://www.taptapsend.com/', { waitUntil: 'domcontentloaded', timeout: TIMEOUTS.navigation });
+      await dismissCookieBanner(page);
+      await page.locator('#origin-amount').waitFor({ timeout: 5000 });
+      currentPage = page;
+      currentOriginCurrency = null;
+    }
 
-    await dismissCookieBanner(page);
-    await page.waitForTimeout(1000);
+    // Only change origin currency if different
+    if (sendCurrency !== currentOriginCurrency) {
+      await selectCurrency(page, '#origin-currency', sendCurrency);
+      currentOriginCurrency = sendCurrency;
+    }
 
-    // Select send currency via native <select>
-    await selectCurrency(page, '#origin-currency', sendCurrency);
-    await page.waitForTimeout(1500);
-
-    // Select receive currency via native <select>
+    // Always change destination currency
     await selectCurrency(page, '#destination-currency', receiveCurrency);
-    await page.waitForTimeout(3000);
 
     // Fill the send amount
     await page.evaluate((val) => {
@@ -27,9 +34,14 @@ module.exports = {
         input.dispatchEvent(new Event('change', { bubbles: true }));
       }
     }, String(sendAmount));
-    await page.waitForTimeout(3000);
 
-    // Read live values via JS (SPA, React/Webflow state)
+    // Wait for destination amount to populate
+    await page.waitForFunction(() => {
+      const dest = document.getElementById('destination-amount');
+      return dest && dest.value && parseFloat(dest.value.replace(/,/g, '')) > 0;
+    }, { timeout: 5000 }).catch(() => {});
+
+    // Read live values via JS
     const amounts = await page.evaluate(() => {
       const origin = document.getElementById('origin-amount');
       const dest = document.getElementById('destination-amount');
@@ -68,9 +80,8 @@ async function dismissCookieBanner(page) {
     const selectors = ['#onetrust-accept-btn-handler', 'button:has-text("Accept")'];
     for (const sel of selectors) {
       const btn = page.locator(sel).first();
-      if (await btn.isVisible({ timeout: 1500 }).catch(() => false)) {
+      if (await btn.isVisible({ timeout: 1000 }).catch(() => false)) {
         await btn.click();
-        await page.waitForTimeout(500);
         break;
       }
     }

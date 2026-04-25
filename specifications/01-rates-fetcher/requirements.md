@@ -125,7 +125,7 @@ flowchart TD
 |----------|------|-----------------|-------------------|-------------|
 | Wise | wise.com | AED,AUD,CAD,EUR,GBP,PLN,USD | GHS,INR,KES,MXN,NGN,PHP,PKR | 49 |
 | Remitly | remitly.com | AED,AUD,CAD,EUR,GBP,PLN,USD | GHS,INR,KES,MXN,NGN,PHP,PKR | 49 |
-| WorldRemit | worldremit.com | AUD,CAD,EUR,GBP,PLN,USD | GHS,INR,KES,MXN,NGN,PHP,PKR | 42 |
+| WorldRemit | worldremit.com | AUD,CAD,EUR,GBP,PLN,USD | GHS,INR,KES,MXN,NGN,PHP,PKR | 42 (send currencies limited to 6) |
 | Western Union | westernunion.com | AED,AUD,CAD,EUR,GBP,PLN,USD | GHS,INR,KES,MXN,NGN,PHP,PKR | 49 |
 | Xoom | xoom.com | AUD,CAD,EUR,GBP,USD | GHS,INR,KES,MXN,NGN,PHP,PKR | 35 |
 | MoneyGram | moneygram.com | AED,AUD,CAD,EUR,GBP,PLN,USD | GHS,INR,KES,MXN,NGN,PHP,PKR | 49 |

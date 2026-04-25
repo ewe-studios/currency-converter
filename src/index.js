@@ -1,7 +1,8 @@
+const fs = require('fs');
 const path = require('path');
 const { loadProviderPairs } = require('./csv-parser');
 const { scrape } = require('./scraper');
-const { writeResults } = require('./output');
+const { writeResults, appendResults } = require('./output');
 
 function parseArgs() {
   const args = process.argv.slice(2);
@@ -69,15 +70,75 @@ async function main() {
   const pairCount = Object.values(providerPairs).reduce((sum, p) => sum + p.pairs.length, 0);
   console.log(`Running ${Object.keys(providerPairs).length} provider(s), ${pairCount} total pairs`);
 
+  // Clean old output files before starting
+  const outputDirs = [];
+  if (options.all) {
+    outputDirs.push(path.join(process.cwd(), 'output'));
+  } else if (isSingleRun(options)) {
+    const slug = getProviderSlug(Object.keys(providerPairs)[0]);
+    outputDirs.push(path.join(process.cwd(), 'output', slug));
+  } else {
+    for (const providerName of Object.keys(providerPairs)) {
+      const slug = getProviderSlug(providerName);
+      outputDirs.push(path.join(process.cwd(), 'output', slug));
+    }
+  }
+  for (const dir of outputDirs) {
+    if (!fs.existsSync(dir)) continue;
+    for (const ext of ['rates.ndjson', 'rates.csv']) {
+      const fp = path.join(dir, ext);
+      if (fs.existsSync(fp)) {
+        fs.unlinkSync(fp);
+        console.log(`Cleaned ${fp}`);
+      }
+    }
+    // Also clean old provider log files
+    for (const file of fs.readdirSync(dir).filter(f => f.endsWith('.log'))) {
+      const fp = path.join(dir, file);
+      fs.unlinkSync(fp);
+      console.log(`Cleaned ${fp}`);
+    }
+  }
+
   if (options.pair) {
     console.log(`Filtering to pair: ${options.pair}`);
   }
 
   const startTime = Date.now();
+  let totalCount = 0;
   const results = await scrape(providerPairs, {
     headless: options.headless,
     providerFilter: null,
     pairFilter: options.pair,
+    onBatch: (currentResults) => {
+      // currentResults is the full accumulated list from scraper; only append new ones
+      const newCount = currentResults.length - totalCount;
+      if (newCount <= 0) return;
+      const newResults = currentResults.slice(totalCount);
+      totalCount = currentResults.length;
+
+      if (options.all) {
+        appendResults(newResults, null);
+        console.log(`[batch] +${newResults.length} results (total ${totalCount})...`);
+      } else if (isSingleRun(options)) {
+        const providerName = Object.keys(providerPairs)[0];
+        const slug = getProviderSlug(providerName);
+        appendResults(newResults, path.join('output', slug));
+        console.log(`[batch] ${providerName}: +${newResults.length} (total ${totalCount})...`);
+      } else {
+        // Multiple providers: append each provider's new results to its own dir
+        const grouped = {};
+        for (const r of newResults) {
+          if (!grouped[r.provider]) grouped[r.provider] = [];
+          grouped[r.provider].push(r);
+        }
+        for (const [providerName, providerResults] of Object.entries(grouped)) {
+          const slug = getProviderSlug(providerName);
+          appendResults(providerResults, path.join('output', slug));
+        }
+        console.log(`[batch] +${newResults.length} results (total ${totalCount})...`);
+      }
+    },
   });
   const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
 
@@ -91,12 +152,14 @@ async function main() {
     // Determine output path based on run type
     if (options.all) {
       writeResults(results, null);
-      console.log('Results written to output/rates.json and output/rates.csv');
+      console.log('Results written to output/rates.ndjson, output/rates.json, output/rates.csv');
+      console.log('Provider logs in output/ (e.g. remitly.log, worldremit.log)');
     } else if (isSingleRun(options)) {
       const providerName = Object.keys(providerPairs)[0];
       const slug = getProviderSlug(providerName);
       writeResults(results, path.join('output', slug));
-      console.log(`Results written to output/${slug}/rates.json and output/${slug}/rates.csv`);
+      console.log(`Results written to output/${slug}/rates.ndjson, rates.json, rates.csv`);
+      console.log(`Log written to output/${slug}/${slug}.log`);
     } else {
       // Multiple but not all: split by provider
       const grouped = {};
@@ -108,6 +171,7 @@ async function main() {
         const slug = getProviderSlug(providerName);
         writeResults(providerResults, path.join('output', slug));
         console.log(`Results written to output/${slug}/rates.json and output/${slug}/rates.csv`);
+        console.log(`Log written to output/${slug}/${slug}.log`);
       }
     }
   }

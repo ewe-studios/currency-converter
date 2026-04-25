@@ -1,66 +1,55 @@
 const { TIMEOUTS } = require('../config');
+const cheerio = require('cheerio');
+
+let currentSendCurrency = null;
 
 module.exports = {
   name: 'WorldRemit',
 
   async fetchRate(page, sendCurrency, receiveCurrency, sendAmount) {
-    await page.goto('https://www.worldremit.com/en/currency-converter', { waitUntil: 'domcontentloaded', timeout: TIMEOUTS.navigation });
-    await page.waitForTimeout(4000);
+    if (!page.url().includes('currency-converter')) {
+      await page.goto('https://www.worldremit.com/en/currency-converter', { waitUntil: 'domcontentloaded', timeout: TIMEOUTS.navigation });
+      await page.evaluate(() => window.scrollTo(0, 0));
+      await page.waitForTimeout(300);
 
-    await dismissCookieBanner(page);
-    await page.waitForTimeout(1000);
-
-    // Select send currency
-    const sendBtn = page.locator('[data-testid="calculator-v2-send-country-select"]').first();
-    if (await sendBtn.isVisible({ timeout: 5000 }).catch(() => false)) {
-      await sendBtn.click();
-      await page.waitForTimeout(800);
-      const sendInput = page.locator('#calculator-v2-send-country-search-input');
-      if (await sendInput.isVisible({ timeout: 5000 }).catch(() => false)) {
-        await sendInput.fill(sendCurrency);
-        await page.waitForTimeout(800);
-        const sendLb = page.locator('#calculator-v2-send-country-search-input-listbox');
-        if (await sendLb.isVisible({ timeout: 5000 }).catch(() => false)) {
-          await sendLb.locator('li').first().click({ timeout: 5000 });
-          await page.waitForTimeout(3000);
-        }
+      try {
+        const acceptBtn = page.locator('#onetrust-accept-btn-handler').first();
+        await acceptBtn.waitFor({ state: 'visible', timeout: 5000 });
+        await acceptBtn.scrollIntoViewIfNeeded();
+        await acceptBtn.click();
+        await page.evaluate(() => window.scrollTo(0, 0));
+        await page.waitForTimeout(300);
+      } catch (err) {
+        // Cookie popup not found
       }
+      await page.waitForTimeout(200);
+      currentSendCurrency = null;
     }
 
-    // Select receive currency
-    const recvBtn = page.locator('[data-testid="calculator-v2-receive-country-select"]').first();
-    if (await recvBtn.isVisible({ timeout: 5000 }).catch(() => false)) {
-      await recvBtn.click();
-      await page.waitForTimeout(800);
-      const recvInput = page.locator('#calculator-v2-receive-country-search-input');
-      if (await recvInput.isVisible({ timeout: 5000 }).catch(() => false)) {
-        await recvInput.fill(receiveCurrency);
-        await page.waitForTimeout(800);
-        const recvLb = page.locator('#calculator-v2-receive-country-search-input-listbox');
-        if (await recvLb.isVisible({ timeout: 5000 }).catch(() => false)) {
-          await recvLb.locator('li').first().click({ timeout: 5000 });
-          await page.waitForTimeout(3000);
-        }
-      }
+    // Only click send dropdown if currency changed
+    if (sendCurrency !== currentSendCurrency) {
+      await selectCountry(page, '[data-testid="calculator-v2-send-country-select"]', sendCurrency);
+      currentSendCurrency = sendCurrency;
     }
 
-    // Set send amount
+    await selectCountry(page, '[data-testid="calculator-v2-receive-country-select"]', receiveCurrency);
+
+    await page.evaluate(() => window.scrollTo(0, 0));
+
     const calcInputs = page.locator('input[aria-label="pricing-calculator-input-label"]');
-    if (await calcInputs.first().isVisible({ timeout: 5000 }).catch(() => false)) {
-      await calcInputs.first().fill(String(sendAmount));
-      await page.waitForTimeout(3000);
-    }
+    await calcInputs.first().fill(String(sendAmount));
 
-    // Read values from calculator inputs
-    const inputs = await page.evaluate(() => {
+    await page.waitForTimeout(2000);
+
+    const values = await page.evaluate(() => {
       const els = document.querySelectorAll('input[aria-label="pricing-calculator-input-label"]');
-      return Array.from(els).map(e => e.value);
+      return Array.from(els).map(e => e.value.replace(/[\s,]/g, ''));
     });
 
-    if (inputs.length >= 2 && inputs[1] && parseFloat(inputs[1]) > 0) {
-      const recvAmt = parseFloat(inputs[1]);
-      const sendVal = parseFloat(inputs[0]);
-      if (recvAmt > 0 && sendVal > 0 && recvAmt !== sendVal) {
+    if (values.length >= 2 && parseFloat(values[1]) > 0) {
+      const sendVal = parseFloat(values[0]);
+      const recvAmt = parseFloat(values[1]);
+      if (recvAmt > 0 && sendVal > 0) {
         const exchangeRate = recvAmt / sendVal;
         if (exchangeRate > 0.001 && exchangeRate < 1000000) {
           return { exchangeRate, receiveAmount: exchangeRate * sendAmount, fee: null };
@@ -68,20 +57,42 @@ module.exports = {
       }
     }
 
+    // Fallback: cheerio parse
+    const html = await page.content();
+    const $ = cheerio.load(html);
+    const bodyText = $('body').text();
+    const rateMatch = bodyText.match(
+      new RegExp(`1\\s+${sendCurrency}\\s*=\\s*([\\d.,]+)\\s*${receiveCurrency}`, 'i')
+    );
+    if (rateMatch) {
+      const exchangeRate = parseFloat(rateMatch[1].replace(/,/g, ''));
+      if (exchangeRate > 0.001 && exchangeRate < 1000000) {
+        return { exchangeRate, receiveAmount: exchangeRate * sendAmount, fee: null };
+      }
+    }
+
     return { exchangeRate: null, receiveAmount: null, fee: null };
   },
 };
 
-async function dismissCookieBanner(page) {
-  try {
-    const selectors = ['#onetrust-accept-btn-handler', 'button:has-text("Accept")', 'button:has-text("Got it")'];
-    for (const sel of selectors) {
-      const btn = page.locator(sel).first();
-      if (await btn.isVisible({ timeout: 1500 }).catch(() => false)) {
-        await btn.click();
-        await page.waitForTimeout(500);
-        break;
+async function selectCountry(page, buttonSelector, currencyCode) {
+  await page.locator(buttonSelector).first().click();
+  await page.waitForTimeout(500);
+
+  await page.evaluate((code) => {
+    const listboxes = document.querySelectorAll('[role="listbox"]');
+    for (const lb of listboxes) {
+      if (lb.offsetParent !== null && lb.children.length > 0) {
+        const items = Array.from(lb.querySelectorAll('li'));
+        const match = items.find(li => li.textContent.trim().includes(code));
+        if (match) {
+          match.click();
+          return true;
+        }
       }
     }
-  } catch {}
+    return false;
+  }, currencyCode);
+
+  await page.waitForTimeout(2000);
 }

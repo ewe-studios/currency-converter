@@ -1,16 +1,18 @@
+const path = require('path');
 const { chromium } = require('playwright');
 const { getProvider } = require('./providers');
 const { BROWSER_OPTIONS, CONTEXT_OPTIONS, TIMEOUTS, SEND_AMOUNT } = require('./config');
-const { saveErrorScreenshot } = require('./output');
+const { saveErrorScreenshot, appendLog } = require('./output');
 
 async function scrape(providerPairs, options = {}) {
-  const { headless = true, providerFilter = null, pairFilter = null } = options;
+  const { headless = true, providerFilter = null, pairFilter = null, onBatch = null } = options;
 
   const browserOptions = { ...BROWSER_OPTIONS, headless };
   const browser = await chromium.launch(browserOptions);
 
   const results = [];
   let shuttingDown = false;
+  let lastBatchSize = 0;
 
   const shutdown = async () => {
     shuttingDown = true;
@@ -36,8 +38,27 @@ async function scrape(providerPairs, options = {}) {
 
       if (providerFilter && name !== providerFilter) continue;
 
+      const providerSlug = name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+
       const context = await browser.newContext(CONTEXT_OPTIONS);
       const page = await context.newPage();
+
+      let supportedPairs = null;
+
+      if (typeof provider.discoverSupportedPairs === 'function') {
+        try {
+          supportedPairs = await provider.discoverSupportedPairs(page);
+          if (supportedPairs) {
+            const msg = `Discovered ${supportedPairs.size} supported pair(s) from main page`;
+            appendLog(name, msg, path.join('output', providerSlug));
+            console.log(`[${name}] ${msg}`);
+          }
+        } catch (err) {
+          const msg = `Failed to discover supported pairs: ${err.message}, falling back to all pairs`;
+          appendLog(name, msg, path.join('output', providerSlug));
+          console.log(`[${name}] ${msg}`);
+        }
+      }
 
       try {
         for (let i = 0; i < pairs.length; i++) {
@@ -48,6 +69,28 @@ async function scrape(providerPairs, options = {}) {
           if (pairFilter) {
             const [pfFrom, pfTo] = pairFilter.toUpperCase().split('/');
             if (sendCurrency !== pfFrom || receiveCurrency !== pfTo) continue;
+          }
+
+          if (supportedPairs && !supportedPairs.has(`${sendCurrency}-${receiveCurrency}`)) {
+            console.log(`[${name}] ${i + 1}/${pairs.length} ${sendCurrency}→${receiveCurrency}: not found on site (reported)`);
+            appendLog(name, `${sendCurrency}→${receiveCurrency}: not found on site (reported by discoverSupportedPairs)`, path.join('output', providerSlug));
+            results.push({
+              provider: name,
+              sendCurrency,
+              receiveCurrency,
+              sendAmount: SEND_AMOUNT,
+              exchangeRate: null,
+              receiveAmount: null,
+              fee: null,
+              timestamp: new Date().toISOString(),
+              success: false,
+              error: 'unable to acquire',
+            });
+            if (onBatch && results.length - lastBatchSize >= 10) {
+              lastBatchSize = results.length;
+              onBatch([...results]);
+            }
+            continue;
           }
 
           const label = `${sendCurrency}→${receiveCurrency}`;
@@ -83,7 +126,9 @@ async function scrape(providerPairs, options = {}) {
                 break;
               } else {
                 if (attempt === maxAttempts) {
-                  result.error = 'Rate not found on page';
+                  result.error = 'unable to acquire';
+                  const detail = `${label}: rate not found on page after ${maxAttempts} attempts`;
+                  appendLog(name, detail, path.join('output', providerSlug));
                   console.log(`[${name}] ${pairNum}/${pairs.length} ${label}: no rate found`);
                 }
               }
@@ -91,7 +136,9 @@ async function scrape(providerPairs, options = {}) {
               if (attempt < maxAttempts) {
                 await page.waitForTimeout(5000);
               } else {
-                result.error = err.message;
+                result.error = 'unable to acquire';
+                const detail = `${label}: ${err.message}`;
+                appendLog(name, detail, path.join('output', providerSlug));
                 saveErrorScreenshot(page, name, sendCurrency, receiveCurrency);
                 console.log(`[${name}] ${pairNum}/${pairs.length} ${label}: ${err.message} [screenshot saved]`);
               }
@@ -100,13 +147,21 @@ async function scrape(providerPairs, options = {}) {
 
           results.push(result);
 
+          if (onBatch && results.length - lastBatchSize >= 10) {
+            lastBatchSize = results.length;
+            onBatch([...results]);
+          }
+
           if (i < pairs.length - 1) {
             await page.waitForTimeout(TIMEOUTS.betweenRequests);
           }
         }
       } catch (err) {
-        console.error(`[${name}] Provider-level error: ${err.message}`);
+        const msg = `Provider-level error: ${err.message}`;
+        appendLog(name, msg, path.join('output', providerSlug));
+        console.error(`[${name}] ${msg}`);
       } finally {
+        appendLog(name, `Done. ${pairs.length} pairs processed.`, path.join('output', providerSlug));
         await context.close();
       }
     }

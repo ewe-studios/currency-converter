@@ -45,7 +45,7 @@ Set up the Node.js project foundation: package.json, dependencies, configuration
    - Default send amount: 1000
    - Currency-to-country mapping (14 currencies → country code, name, slug)
    - Browser launch options (headless, no-sandbox, disable automation detection)
-   - Browser context options (realistic user-agent, viewport 1280x800, locale en-US)
+   - Browser context options (realistic user-agent, viewport 600x1000, locale en-US)
    - Timeout settings (navigation: 30s, element: 15s, between requests: 2s)
 
 3. **CSV Parser** (`src/csv-parser.js`)
@@ -55,10 +55,12 @@ Set up the Node.js project foundation: package.json, dependencies, configuration
    - Return object keyed by provider name
 
 4. **Output Writer** (`src/output.js`)
-   - Write results array to `output/rates.json` (pretty-printed)
-   - Write results array to `output/rates.csv` with headers
-   - Create `output/` directory if it doesn't exist
-   - Each result row: provider, sendCurrency, receiveCurrency, sendAmount, exchangeRate, receiveAmount, fee, timestamp
+   - `writeResults(results)` — write final summary to `output/rates.json` (pretty-printed)
+   - `writeResults(results)` — write final CSV to `output/rates.csv` with headers
+   - `appendResults(results)` — incremental NDJSON append to `output/rates.ndjson`, CSV append to `output/rates.csv`
+   - `saveErrorScreenshot(page, provider, from, to)` — capture failure screenshot to `output/errors/`
+   - Create output directory structure if it doesn't exist
+   - Each result row: provider, sendCurrency, receiveCurrency, sendAmount, exchangeRate, receiveAmount, fee, timestamp, success, error
 
 ## Architecture
 
@@ -69,6 +71,7 @@ graph TD
         CSV[src/csv-parser.js] --> |provides pairs| Engine
         Engine --> |sends results| Output[src/output.js]
         Output --> JSON[output/rates.json]
+        Output --> NDJSON[output/rates.ndjson]
         Output --> CSVOut[output/rates.csv]
     end
 ```
@@ -103,8 +106,8 @@ rates-fetcher/
    - **Dependencies**: `csv-parse/sync`, `fs`, `path`
 
 3. **output.js**
-   - **Purpose**: Write scraping results to files
-   - **Exports**: `writeResults(results)` → writes to `output/rates.json` and `output/rates.csv`
+   - **Purpose**: Write scraping results to files (final + incremental)
+   - **Exports**: `writeResults(results)`, `appendResults(results)`, `saveErrorScreenshot(page, provider, from, to)`
    - **Dependencies**: `fs`, `path`
 
 ### Output Schema

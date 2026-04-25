@@ -1,28 +1,48 @@
-const { TIMEOUTS } = require('../config');
+const { TIMEOUTS, CURRENCY_COUNTRY_MAP } = require('../config');
 const cheerio = require('cheerio');
+
+let currentPage = null;
+let currentSendCurrency = null;
 
 module.exports = {
   name: 'Remitly',
 
   async fetchRate(page, sendCurrency, receiveCurrency, sendAmount) {
+    const fromCountry = CURRENCY_COUNTRY_MAP[sendCurrency];
+    const toCountry = CURRENCY_COUNTRY_MAP[receiveCurrency];
+    if (!fromCountry || !toCountry) {
+      return { exchangeRate: null, receiveAmount: null, fee: null };
+    }
+
+    const countryCode = fromCountry.code.toLowerCase();
     const from = sendCurrency.toLowerCase();
     const to = receiveCurrency.toLowerCase();
-    const converterUrl = `https://www.remitly.com/us/en/currency-converter/${from}-to-${to}-rate`;
+    const converterUrl = `https://www.remitly.com/${countryCode}/en/currency-converter/${from}-to-${to}-rate`;
 
-    await page.goto(converterUrl, { waitUntil: 'domcontentloaded', timeout: TIMEOUTS.navigation });
-    await page.waitForTimeout(3000);
+    // Navigate only once per provider session
+    if (currentPage !== page || sendCurrency !== currentSendCurrency) {
+      await page.goto(converterUrl, { waitUntil: 'domcontentloaded', timeout: TIMEOUTS.navigation });
+      currentPage = page;
+      currentSendCurrency = sendCurrency;
+    }
 
     const html = await page.content();
     const $ = cheerio.load(html);
 
-    // 1. Get rate from "Special rate" div: "1 USD = 62.03 PHP"
-    const specialRate = $('div').filter((_, el) => {
+    // Check for 404 page early
+    if ($('h1').text().includes('404') || $('title').text().includes('404') || $('title').text().includes('Not Found')) {
+      return { exchangeRate: null, receiveAmount: null, fee: null };
+    }
+
+    // 1. Get rate from "Special rate" or "Everyday rate" div: "1 USD = 62.03 PHP"
+    const rateDiv = $('div').filter((_, el) => {
       const text = $(el).text().trim();
-      return text.includes('Special rate') && text.includes(sendCurrency) && text.includes(receiveCurrency);
+      return (text.includes('Special rate') || text.includes('Everyday rate')) &&
+             text.includes(sendCurrency) && text.includes(receiveCurrency);
     }).first().text().trim();
 
-    if (specialRate) {
-      const rateMatch = specialRate.match(
+    if (rateDiv) {
+      const rateMatch = rateDiv.match(
         new RegExp(`1\\s+${sendCurrency}\\s*=\\s*([\\d.,]+)\\s*${receiveCurrency}`, 'i')
       );
       if (rateMatch) {
@@ -33,14 +53,13 @@ module.exports = {
       }
     }
 
-    // 2. Get receive amount from "You receive" or "They receive" section
+    // 2. Get receive amount from "They receive" or "You receive" section
     const receiveSection = $('div').filter((_, el) => {
       const text = $(el).text().trim();
       return text.includes('They receive') || text.includes('You receive');
     }).first();
 
     if (receiveSection.length) {
-      // The total amount follows "They receive" text
       const text = receiveSection.text();
       const match = text.match(new RegExp(`([\\d.,]+)\\s*${receiveCurrency}`, 'i'));
       if (match) {

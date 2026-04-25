@@ -15,52 +15,40 @@ module.exports = {
     const url = `https://www.westernunion.com/${countrySlug}/en/currency-converter.html`;
 
     await page.goto(url, { waitUntil: 'domcontentloaded', timeout: TIMEOUTS.navigation });
-    await page.waitForTimeout(5000);
 
     await dismissCookieBanner(page);
-    await page.waitForTimeout(1000);
+
+    // Wait for amount input to be ready
+    const amountInput = page.locator(`input[id="wu-input-${sendCurrency}"]`).first();
+    await amountInput.waitFor({ timeout: 5000 });
 
     // Fill the send amount
-    try {
-      const amountInput = page.locator(`input[id="wu-input-${sendCurrency}"]`).first();
-      if (!await amountInput.isVisible({ timeout: 3000 }).catch(() => false)) {
-        const fallback = page.locator('input[name="wu-input"][inputmode="numeric"]').first();
-        if (await fallback.isVisible({ timeout: 2000 }).catch(() => false)) {
-          await fallback.click({ clickCount: 3 });
-          await fallback.fill(String(sendAmount));
-        }
-      } else {
-        await amountInput.click({ clickCount: 3 });
-        await amountInput.fill(String(sendAmount));
-      }
-      await page.waitForTimeout(1500);
-    } catch {}
+    await amountInput.click({ clickCount: 3 });
+    await amountInput.fill(String(sendAmount));
 
-    // Change receive currency - items have role="presentation", not role="option"
-    try {
-      const receiveBtn = page.locator('#receiverCurrencyDrop').first();
-      if (await receiveBtn.isVisible({ timeout: 3000 }).catch(() => false)) {
-        await receiveBtn.click();
-        await page.waitForTimeout(1500);
+    // Change receive currency
+    const receiveBtn = page.locator('#receiverCurrencyDrop').first();
+    await receiveBtn.waitFor({ timeout: 5000 }).catch(() => {});
+    if (await receiveBtn.isVisible({ timeout: 2000 }).catch(() => false)) {
+      await receiveBtn.click();
+      const currencyOption = page.locator('.b-flag-select__item')
+        .filter({ hasText: `${receiveCurrency} –` })
+        .first();
+      await currencyOption.waitFor({ timeout: 5000 });
+      await currencyOption.click({ timeout: 5000 });
+    }
 
-        // Use .b-flag-select__item selector with currency code filter
-        const currencyOption = page.locator('.b-flag-select__item')
-          .filter({ hasText: `${receiveCurrency} –` })
-          .first();
-        if (await currencyOption.isVisible({ timeout: 5000 }).catch(() => false)) {
-          await currencyOption.click({ timeout: 5000 });
-          await page.waitForTimeout(3000);
-        }
-      }
-    } catch {}
-
-    await page.waitForTimeout(2000);
+    // Wait for rate to populate
+    await page.waitForFunction((cur) => {
+      const el = document.querySelector('.fx-to');
+      return el && el.textContent.includes(cur);
+    }, receiveCurrency, { timeout: 5000 }).catch(() => {});
 
     // Get HTML, parse with cheerio
     const html = await page.content();
     const $ = cheerio.load(html);
 
-    // 1. Look for .fx-to span (contains "59.9429 PHP")
+    // 1. Look for .fx-to span
     const fxTo = $('.fx-to');
     for (let i = 0; i < fxTo.length; i++) {
       const text = $(fxTo[i]).text().trim();
@@ -99,9 +87,8 @@ async function dismissCookieBanner(page) {
     ];
     for (const sel of selectors) {
       const btn = page.locator(sel).first();
-      if (await btn.isVisible({ timeout: 1500 }).catch(() => false)) {
+      if (await btn.isVisible({ timeout: 1000 }).catch(() => false)) {
         await btn.click();
-        await page.waitForTimeout(500);
         break;
       }
     }

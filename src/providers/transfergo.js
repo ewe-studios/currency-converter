@@ -1,35 +1,40 @@
 const { TIMEOUTS } = require('../config');
 
+let currentPage = null;
+let currentSendCurrency = null;
+
 module.exports = {
   name: 'TransferGo',
 
   async fetchRate(page, sendCurrency, receiveCurrency, sendAmount) {
-    const url = 'https://www.transfergo.com/currency-converter';
-
-    await page.goto(url, { waitUntil: 'domcontentloaded', timeout: TIMEOUTS.navigation });
-    await page.waitForTimeout(4000);
-
-    // Remove overlays that intercept clicks
-    await page.evaluate(() => {
-      const cmp = document.getElementById('cmpwrapper');
-      if (cmp) cmp.remove();
-      // Also remove any other common overlay elements
-      document.querySelectorAll('[class*="overlay"], [class*="cookie"], [class*="consent"]').forEach(el => {
-        if (el.offsetParent !== null && el.getBoundingClientRect().width > window.innerWidth * 0.5) {
-          el.remove();
-        }
+    // Navigate only once per provider session
+    if (currentPage !== page) {
+      const url = 'https://www.transfergo.com/currency-converter';
+      await page.goto(url, { waitUntil: 'domcontentloaded', timeout: TIMEOUTS.navigation });
+      await page.evaluate(() => {
+        const cmp = document.getElementById('cmpwrapper');
+        if (cmp) cmp.remove();
+        document.querySelectorAll('[class*="overlay"], [class*="cookie"], [class*="consent"]').forEach(el => {
+          if (el.offsetParent !== null && el.getBoundingClientRect().width > window.innerWidth * 0.5) {
+            el.remove();
+          }
+        });
       });
-    });
-    await page.waitForTimeout(1000);
+      await page.locator('input.currency-converter-calculator__currency-amount').first().waitFor({ timeout: 5000 });
+      currentPage = page;
+      currentSendCurrency = null;
+    }
 
-    // Select receive currency FIRST (last button), then send currency (first button)
+    // Select receive currency first (always needed)
     await selectCurrency(page, 1, receiveCurrency);
     await page.keyboard.press('Escape');
-    await page.waitForTimeout(500);
 
-    await selectCurrency(page, 0, sendCurrency);
+    // Select send currency only if different from current
+    if (sendCurrency !== currentSendCurrency) {
+      await selectCurrency(page, 0, sendCurrency);
+      currentSendCurrency = sendCurrency;
+    }
     await page.keyboard.press('Escape');
-    await page.waitForTimeout(3000);
 
     // Fill send amount via JS to trigger React events
     await page.evaluate((val) => {
@@ -41,9 +46,14 @@ module.exports = {
         inputs[0].dispatchEvent(new Event('change', { bubbles: true }));
       }
     }, String(sendAmount));
-    await page.waitForTimeout(3000);
 
-    // Read live values via JS (React state, not HTML attributes)
+    // Wait for receive amount to populate
+    await page.waitForFunction(() => {
+      const inputs = document.querySelectorAll('input.currency-converter-calculator__currency-amount');
+      return inputs.length >= 2 && inputs[1].value && parseFloat(inputs[1].value.replace(/[\s,]/g, '')) > 0;
+    }, { timeout: 5000 }).catch(() => {});
+
+    // Read live values via JS
     const amounts = await page.evaluate(() => {
       const inputs = document.querySelectorAll('input.currency-converter-calculator__currency-amount');
       return Array.from(inputs).map(i => i.value.replace(/[\s,]/g, ''));
@@ -82,11 +92,9 @@ async function selectCurrency(page, buttonIndex, currencyCode) {
     const btn = allBtns.nth(buttonIndex);
     if (await btn.isVisible({ timeout: 3000 }).catch(() => false)) {
       await btn.click();
-      await page.waitForTimeout(2000);
+      // Wait for listbox to open
+      await page.locator('.currency-converter-calculator__currencies-options--open').first().waitFor({ timeout: 3000 });
 
-      // Click the option from the OPEN listbox using native JS click
-      // Iterate through all 111 options (no search needed)
-      // Use Array.from() + for loop and textContent (e.g. "PHP Philippine Peso")
       const clicked = await page.evaluate((code) => {
         const openListbox = document.querySelector('.currency-converter-calculator__currencies-options--open');
         if (!openListbox) return 'no_open_listbox';
@@ -100,8 +108,13 @@ async function selectCurrency(page, buttonIndex, currencyCode) {
         return 'not_found';
       }, currencyCode.toUpperCase());
 
-      if (clicked === 'clicked') {
-        await page.waitForTimeout(2000);
+      if (clicked !== 'clicked') {
+        // Try fallback: native click on filtered option
+        await page.locator('.currency-converter-calculator__currencies-option')
+          .filter({ hasText: currencyCode })
+          .first()
+          .click()
+          .catch(() => {});
       }
     }
   } catch {}

@@ -74,6 +74,13 @@ src/providers/taptap-send.js
 - **Dependencies**: `../config` (TIMEOUTS)
 - **Strategy**: Static page read → interactive homepage calculator
 
+### Send Currency Grouping Optimization
+
+CSV pairs are grouped by send currency (AED→*, AUD→*, CAD→*, etc.). Provider tracks `currentPage` and `currentOriginCurrency` at module level:
+- Skips page navigation when already on the correct page (`currentPage` matches requested currency)
+- Only clicks the send/origin dropdown when `currentOriginCurrency` differs from the requested send currency
+- Saves ~5s per pair within the same send-currency group by avoiding redundant dropdown clicks
+
 ### Cookie/Consent Handling
 
 Taptap Send may show cookie banner — dismiss before interacting.

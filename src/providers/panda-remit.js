@@ -23,10 +23,11 @@ module.exports = {
     const url = `https://www.pandaremit.com/en/${pair.source}/${pair.dest[receiveCurrency]}/${sendCurrency.toLowerCase()}-${receiveCurrency.toLowerCase()}-converter?amount=${sendAmount}`;
 
     await page.goto(url, { waitUntil: 'domcontentloaded', timeout: TIMEOUTS.navigation });
-    await page.waitForTimeout(5000);
 
     await dismissCookieBanner(page);
-    await page.waitForTimeout(2000);
+
+    // Wait for the converter result to appear
+    await page.waitForFunction((cur) => document.body.innerText.includes(cur), receiveCurrency, { timeout: 5000 }).catch(() => {});
 
     const html = await page.content();
     const $ = cheerio.load(html);
@@ -46,7 +47,7 @@ module.exports = {
       }
     }
 
-    // Fallback: look for "100 USD 61.4114" pattern in amount table
+    // Fallback: look for "100 USD 61.4114" pattern
     const fallbackMatch = bodyText.match(
       new RegExp(`100\\s+${sendCurrency}\\s*([\\d.]+)\\s*${receiveCurrency}`, 'i')
     );
@@ -69,9 +70,8 @@ async function dismissCookieBanner(page) {
     ];
     for (const sel of selectors) {
       const btn = page.locator(sel).first();
-      if (await btn.isVisible({ timeout: 1500 }).catch(() => false)) {
+      if (await btn.isVisible({ timeout: 1000 }).catch(() => false)) {
         await btn.click();
-        await page.waitForTimeout(500);
         break;
       }
     }

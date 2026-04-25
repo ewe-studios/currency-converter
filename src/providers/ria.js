@@ -1,65 +1,59 @@
 const { TIMEOUTS, CURRENCY_COUNTRY_MAP } = require('../config');
 const cheerio = require('cheerio');
 
+let currentPage = null;
+let currentSendCurrency = null;
+
 module.exports = {
   name: 'Ria',
 
   async fetchRate(page, sendCurrency, receiveCurrency, sendAmount) {
-    const url = 'https://www.riamoneytransfer.com/en-us/rates-conversion/';
+    // Navigate only once per provider session
+    if (currentPage !== page) {
+      const url = 'https://www.riamoneytransfer.com/en-us/rates-conversion/';
+      await page.goto(url, { waitUntil: 'domcontentloaded', timeout: TIMEOUTS.navigation });
+      await dismissCookieBanner(page);
+      await page.locator('#currencyFrom').waitFor({ timeout: 5000 });
+      currentPage = page;
+      currentSendCurrency = null;
+    }
 
-    await page.goto(url, { waitUntil: 'domcontentloaded', timeout: TIMEOUTS.navigation });
-    await page.waitForTimeout(5000);
+    // Change receive currency (always needed)
+    const recvCombobox = page.locator('#currency-selector-currencyTo').first();
+    await recvCombobox.waitFor({ timeout: 5000 }).catch(() => {});
+    if (await recvCombobox.isVisible({ timeout: 2000 }).catch(() => false)) {
+      await recvCombobox.click();
+      const option = page.locator('[role="option"]').filter({ hasText: receiveCurrency }).first();
+      await option.waitFor({ timeout: 5000 });
+      await option.click();
+    }
 
-    await dismissCookieBanner(page);
-    await page.waitForTimeout(2000);
-
-    // Change receive currency by clicking the combobox dropdown
-    try {
-      const recvCombobox = page.locator('#currency-selector-currencyTo').first();
-      if (await recvCombobox.isVisible({ timeout: 3000 }).catch(() => false)) {
-        await recvCombobox.click();
-        await page.waitForTimeout(1500);
-
-        const option = page.locator('[role="option"]').filter({ hasText: receiveCurrency }).first();
-        if (await option.isVisible({ timeout: 3000 }).catch(() => false)) {
-          await option.click();
-          await page.waitForTimeout(2000);
-        }
+    // Change send currency only if different from current
+    if (sendCurrency !== currentSendCurrency) {
+      const sendCombobox = page.locator('#currency-selector-currencyFrom').first();
+      if (await sendCombobox.isVisible({ timeout: 2000 }).catch(() => false)) {
+        await sendCombobox.click();
+        const option = page.locator('[role="option"]').filter({ hasText: sendCurrency }).first();
+        await option.waitFor({ timeout: 5000 });
+        await option.click();
       }
-    } catch {}
-
-    // Change send currency if not USD
-    if (sendCurrency !== 'USD') {
-      try {
-        const sendCombobox = page.locator('#currency-selector-currencyFrom').first();
-        if (await sendCombobox.isVisible({ timeout: 3000 }).catch(() => false)) {
-          await sendCombobox.click();
-          await page.waitForTimeout(1500);
-
-          const option = page.locator('[role="option"]').filter({ hasText: sendCurrency }).first();
-          if (await option.isVisible({ timeout: 3000 }).catch(() => false)) {
-            await option.click();
-            await page.waitForTimeout(2000);
-          }
-        }
-      } catch {}
+      currentSendCurrency = sendCurrency;
     }
 
     // Fill send amount
-    try {
-      const amountInput = page.locator('#currencyFrom').first();
-      if (await amountInput.isVisible({ timeout: 3000 }).catch(() => false)) {
-        await amountInput.click({ clickCount: 3 });
-        await amountInput.fill(String(sendAmount));
-        await page.waitForTimeout(2000);
-      }
-    } catch {}
+    const amountInput = page.locator('#currencyFrom').first();
+    await amountInput.click({ clickCount: 3 });
+    await amountInput.fill(String(sendAmount));
 
-    // Extract from HTML
+    // Wait for rate to appear in body text
+    await page.waitForFunction((cur) => {
+      return document.body.innerText.includes(cur);
+    }, receiveCurrency, { timeout: 5000 }).catch(() => {});
+
+    // Extract rate from HTML
     const html = await page.content();
     const $ = cheerio.load(html);
 
-    // Extract rate from page text
     const bodyText = $('body').text();
     const rateMatch = bodyText.match(
       new RegExp(`1[.,]?0+\\s+${sendCurrency}\\s*=?\\s*([\\d.,]+)\\s*${receiveCurrency}`, 'i')
@@ -83,9 +77,8 @@ async function dismissCookieBanner(page) {
     ];
     for (const sel of selectors) {
       const btn = page.locator(sel).first();
-      if (await btn.isVisible({ timeout: 1500 }).catch(() => false)) {
+      if (await btn.isVisible({ timeout: 1000 }).catch(() => false)) {
         await btn.click();
-        await page.waitForTimeout(500);
         break;
       }
     }
