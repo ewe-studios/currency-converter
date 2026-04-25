@@ -15,12 +15,13 @@ module.exports = {
     const url = `https://www.westernunion.com/${countrySlug}/en/currency-converter.html`;
 
     await page.goto(url, { waitUntil: 'domcontentloaded', timeout: TIMEOUTS.navigation });
+    await page.waitForTimeout(200);
 
     await dismissCookieBanner(page);
 
     // Wait for amount input to be ready
     const amountInput = page.locator(`input[id="wu-input-${sendCurrency}"]`).first();
-    await amountInput.waitFor({ timeout: 5000 });
+    await amountInput.waitFor({ timeout: 10000 });
 
     // Fill the send amount
     await amountInput.click({ clickCount: 3 });
@@ -28,13 +29,13 @@ module.exports = {
 
     // Change receive currency
     const receiveBtn = page.locator('#receiverCurrencyDrop').first();
-    await receiveBtn.waitFor({ timeout: 5000 }).catch(() => {});
-    if (await receiveBtn.isVisible({ timeout: 2000 }).catch(() => false)) {
+    await receiveBtn.waitFor({ timeout: 10000 }).catch(() => {});
+    if (await receiveBtn.isVisible({ timeout: 5000 }).catch(() => false)) {
       await receiveBtn.click();
       const currencyOption = page.locator('.b-flag-select__item')
         .filter({ hasText: `${receiveCurrency} –` })
         .first();
-      await currencyOption.waitFor({ timeout: 5000 });
+      await currencyOption.waitFor({ timeout: 10000 });
       await currencyOption.click({ timeout: 5000 });
     }
 
@@ -42,7 +43,7 @@ module.exports = {
     await page.waitForFunction((cur) => {
       const el = document.querySelector('.fx-to');
       return el && el.textContent.includes(cur);
-    }, receiveCurrency, { timeout: 5000 }).catch(() => {});
+    }, receiveCurrency, { timeout: 10000 }).catch(() => {});
 
     // Get HTML, parse with cheerio
     const html = await page.content();
