@@ -23,6 +23,8 @@ npm run scrape:all
 | Flag | Description |
 |---|---|
 | `--all` | Scrape all providers from Provider.csv |
+| `--fast` | Scrape all providers except Western Union and MoneyGram |
+| `--slow` | Scrape Western Union and MoneyGram only |
 | `--provider=Name` | Scrape a specific provider (case-insensitive) |
 | `--providers=Name1,Name2` | Scrape multiple providers, comma-separated |
 | `--pair=AUD/GHS` | Filter to a single currency pair |
@@ -33,6 +35,12 @@ npm run scrape:all
 ```bash
 # Scrape all providers (headless)
 npm run scrape:all
+
+# Fast mode: skip Western Union and MoneyGram
+node src/index.js --fast
+
+# Slow mode: Western Union and MoneyGram only
+node src/index.js --slow
 
 # Scrape one provider
 npm run scrape:remitly

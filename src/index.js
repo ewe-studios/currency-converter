@@ -177,7 +177,7 @@ async function main() {
 
   if (results.length > 0) {
     // Determine output path based on run type
-    if (options.all) {
+    if (isMultiRootRun(options)) {
       writeJsonFromNdjson(null);
       console.log(`\nOutput:`);
       console.log(`  output/rates.ndjson  (incremental results)`);

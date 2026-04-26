@@ -7,6 +7,8 @@
     "start": "node src/index.js",
     "scrape": "node src/index.js",
     "scrape:all": "node src/index.js --all",
+    "scrape:fast": "node src/index.js --fast",
+    "scrape:slow": "node src/index.js --slow",
     "scrape:wise": "node src/index.js --provider=Wise",
     "scrape:remitly": "node src/index.js --provider=Remitly",
     "scrape:worldremit": "node src/index.js --provider=WorldRemit",
