@@ -1,16 +1,16 @@
 {
-  "timestamp": "2026-04-26T02:38:06.641Z",
+  "timestamp": "2026-04-26T02:53:14.486Z",
   "count": 1,
   "results": [
     {
       "provider": "Western Union",
       "sendCurrency": "AED",
-      "receiveCurrency": "INR",
+      "receiveCurrency": "GHS",
       "sendAmount": 1000,
-      "exchangeRate": 25.6283,
-      "receiveAmount": 25628.3,
+      "exchangeRate": 3.0102,
+      "receiveAmount": 3010.2000000000003,
       "fee": null,
-      "timestamp": "2026-04-26T02:38:00.423Z",
+      "timestamp": "2026-04-26T02:53:03.631Z",
       "success": true,
       "error": null
     }
