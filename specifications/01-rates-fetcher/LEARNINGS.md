@@ -145,4 +145,66 @@ Track current send currency at module level; only click send dropdown when curre
 
 ---
 
-_Last Updated: 2026-04-25_
+## Western Union Deep Dive (2026-04-26)
+
+### Dropdown Structure
+
+The receiver currency dropdown (`#receiverCurrencyDrop`) contains `<a>` elements whose `href` attribute includes the pair URL pattern: `/{from}-to-{to}-rate.html`. Clicking the `<a>` navigates to a pair-specific page where the rate is immediately visible in `.fx-to` span.
+
+### Href Link Click Strategy (Method 1)
+
+1. Click `#receiverCurrencyDrop` to open dropdown
+2. Find `a[href*="/{from}-to-{to}-rate.html"]` in the dropdown
+3. Click the `<a>` — navigates to pair page
+4. Wait 2s for rate, extract from `.fx-to` or body text
+
+### Send Money Flow Fallback (Method 2)
+
+When the currency is not in the converter dropdown, use:
+`/web/send-money/start?ReceiveCountry={CC}&ISOCurrency={CUR}&SendAmount={N}&FundsOut=BA&FundsIn=undefined`
+
+This may redirect to `/estimate-details` (React SPA). Rate extraction via HTML element selectors:
+- `#exchangeRate` — "1.00 GBP = 15.0395 GHS" (UK-style)
+- `#smoExchangeRate` — "1.00 GBP = 15.0395 Ghanaian Cedi (GHS)"
+- `span.label_estimate_details_exchangeRate` — "1 AED = 3.0102 GHS" (estimate page)
+- `.FIFOSelect_option-label-sub__m3NRy` — "Fees 7.50 AED, 1 AED = 3.0102 GHS" (payment method dropdown)
+
+### Wait Times for Send Money Flow
+
+- 5000ms after page load for redirect + rate rendering (React SPA)
+
+### Verified
+
+All 49 pairs: 49/49 successful headless.
+
+---
+
+## Remitly Page Reuse Bug (2026-04-26)
+
+### Problem: All pairs returned the same wrong rate
+
+The provider tracked `currentPage` and `currentSendCurrency` at module level, skipping navigation when the send currency matched. But Remitly has a unique URL per pair, so pairs sharing a send currency still needed fresh navigation.
+
+### Solution
+
+Remove `currentPage` / `currentSendCurrency` module-level state. Navigate every time with `page.goto(converterUrl, { waitUntil: 'domcontentloaded', timeout: TIMEOUTS.navigation })` followed by 1000ms wait.
+
+---
+
+## Panda Remit Timing Fix (2026-04-26)
+
+### Problem: Rate data loads via API after DOM ready
+
+Using `domcontentloaded` fired before the rate API completed. Changed to `networkidle` which waits for all network activity to settle. Added 500ms wait after navigation.
+
+### EUR→PKR Support
+
+Added `PKR: 'pakistan'` to EUR's COUNTRY_MAP — this pair was missing.
+
+### Pair Discovery
+
+AUD→GHS, CAD→GHS, EUR→MXN, GBP→MXN, USD→GHS return 404s on Panda's site — correctly blocked by COUNTRY_MAP. 15/25 pairs supported.
+
+---
+
+_Last Updated: 2026-04-26_

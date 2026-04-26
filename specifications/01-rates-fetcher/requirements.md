@@ -55,6 +55,13 @@ Build a Node.js web scraper that fetches exchange rates from 11 remittance provi
 
 None currently identified.
 
+### Resolved Issues
+
+- **Western Union first-pair failures** (2026-04-26): Currency dropdown stayed open from previous selection, blocking rate display. Fixed by clicking the `<a href>` link inside the dropdown which navigates to the pair-specific page.
+- **Western Union unsupported pairs returning null** (2026-04-26): GHS not available from UAE in converter dropdown. Fixed by adding send money flow fallback (`/web/send-money/start`) which supports more corridors.
+- **Remitly returning same rate for all pairs** (2026-04-26): Module-level page reuse tracking caused pairs sharing a send currency to skip navigation. Removed `currentPage`/`currentSendCurrency` state — navigate every time.
+- **Panda Remit timing issues** (2026-04-26): Rate API loaded after DOM ready. Changed from `domcontentloaded` to `networkidle` + 500ms wait.
+
 ## Language Stack
 
 ### Languages Used
@@ -191,7 +198,7 @@ Status Key: ⬜ Pending | 🔄 In Progress | ✅ Complete
 This specification was created through collaborative requirements gathering:
 - User provided Provider.csv with 423 provider/currency pair rows across 11 remittance providers
 - User specified Node.js + Playwright (headless Chromium) as the stack
-- User provided specific URL patterns for Western Union (`/sg/en/currency-converter.html`) and Xoom (`?countryCode=XX`)
+- User provided specific URL patterns for Western Union (`/{country}/en/currency-converter.html` with dropdown → send money flow fallback) and Xoom (`?countryCode=XX`)
 - User specified Remitly country-based URL pattern (`/{fromCountry}/en/{toCountry}`)
 - User specified Wise has both static converter and interactive send-money pages
 - User mandated **static-first, interactive-fallback** scraping strategy for all providers
