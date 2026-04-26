@@ -24,6 +24,12 @@ async function scrape(providerPairs, options = {}) {
 
   try {
     const providerNames = Object.keys(providerPairs);
+    // Always run MoneyGram last — it's the slowest and most likely to 403/time out
+    const moneygramIndex = providerNames.indexOf('MoneyGram');
+    if (moneygramIndex !== -1) {
+      providerNames.splice(moneygramIndex, 1);
+      providerNames.push('MoneyGram');
+    }
 
     for (const providerName of providerNames) {
       if (shuttingDown) break;
