@@ -19,27 +19,27 @@ module.exports = {
 
     await dismissCookieBanner(page);
 
-    // Wait for amount input to be ready
+    // Fill the send amount
     const amountInput = page.locator(`input[id="wu-input-${sendCurrency}"]`).first();
     await amountInput.waitFor({ timeout: 10000 });
-
-    // Fill the send amount
     await amountInput.click({ clickCount: 3 });
     await amountInput.fill(String(sendAmount));
 
-    // Change receive currency
-    const receiveBtn = page.locator('#receiverCurrencyDrop').first();
-    await receiveBtn.waitFor({ timeout: 10000 }).catch(() => {});
-    if (await receiveBtn.isVisible({ timeout: 5000 }).catch(() => false)) {
-      await receiveBtn.click();
-      const currencyOption = page.locator('.b-flag-select__item')
-        .filter({ hasText: `${receiveCurrency} –` })
-        .first();
-      await currencyOption.waitFor({ timeout: 10000 });
-      await currencyOption.click({ timeout: 5000 });
+    // 1. Click the dropdown trigger to open it
+    await page.locator('#receiverCurrencyDrop').first().click({ timeout: 10000 });
+    await page.waitForTimeout(500);
+
+    // 2. Find and click the <a> element that matches our pair
+    const targetLink = page.locator(`a[href*="/${sendCurrency.toLowerCase()}-to-${receiveCurrency.toLowerCase()}-rate.html"]`).first();
+    if (await targetLink.isVisible({ timeout: 3000 }).catch(() => false)) {
+      await targetLink.click({ timeout: 5000 });
+    } else {
+      // Currency not in dropdown list - pair not supported from this country
+      return { exchangeRate: null, receiveAmount: null, fee: null };
     }
 
-    // Wait for rate to populate
+    // 3. Wait for page to navigate and rate to populate
+    await page.waitForTimeout(2000);
     await page.waitForFunction((cur) => {
       const el = document.querySelector('.fx-to');
       return el && el.textContent.includes(cur);
