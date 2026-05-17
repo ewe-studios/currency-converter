@@ -29,6 +29,7 @@ npm run scrape:all
 | `--providers=Name1,Name2` | Scrape multiple providers, comma-separated |
 | `--pair=AUD/GHS` | Filter to a single currency pair |
 | `--headful` | Open a visible browser window (default: headless) |
+| `--retry` | Re-fetch only failed/rejected pairs from existing output |
 
 ### Running Individual Providers
 
@@ -46,6 +47,15 @@ npm run scrape:panda         # Panda Remit (25 pairs)
 npm run scrape:sendwave      # Sendwave (42 pairs)
 npm run scrape:transfergo    # TransferGo (5 pairs)
 npm run scrape:moneygram     # MoneyGram (49 pairs)
+```
+
+Retry scripts re-fetch only failed pairs for each provider:
+
+```bash
+npm run retry                # all providers
+npm run retry:wise           # Wise failed pairs only
+npm run retry:remitly        # Remitly failed pairs only
+# ... same pattern for all providers
 ```
 
 Or use the CLI flag directly (provider name is case-insensitive):
@@ -88,6 +98,26 @@ npm run scrape:all           # all providers
 node src/index.js --fast     # skip Western Union and MoneyGram
 node src/index.js --slow     # only Western Union and MoneyGram
 ```
+
+### Retrying Failed Pairs
+
+After a scrape run, use `--retry` to re-fetch only the pairs that failed, returned null, or were rejected by the validator. Results are merged into the existing output files — successful entries are preserved.
+
+```bash
+# Retry all providers' failed pairs
+npm run retry
+
+# Retry a single provider's failed pairs
+npm run retry:wise
+node src/index.js --retry --provider=Wise
+```
+
+What counts as a "failed" pair:
+- `success: false` — the scraper could not acquire a rate
+- `exchangeRate: null` — the rate was not found on the page
+- `validation.status: "invalid"` — the extracted rate was rejected by the market-rate validator
+
+If no failed pairs are found, the command exits immediately with a message.
 
 ## Currency Pairs
 
