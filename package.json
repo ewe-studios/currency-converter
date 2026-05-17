@@ -21,7 +21,10 @@
     "scrape:transfergo": "node src/index.js --provider=TransferGo",
     "scrape:moneygram": "node src/index.js --provider=MoneyGram",
     "test": "node tests/runner.js",
-    "test-provider": "node src/test-provider.js"
+    "test-provider": "node src/test-provider.js",
+    "generate-sql": "node scripts/generate-sql.js",
+    "d1:init": "wrangler d1 create currency-rates && wrangler d1 execute currency-rates --remote --file=./schema.sql",
+    "d1:migrate": "wrangler d1 execute currency-rates --remote --file=./schema.sql"
   },
   "keywords": [],
   "author": "",
