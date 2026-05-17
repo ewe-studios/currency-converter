@@ -69,6 +69,8 @@ const COUNTRY_MAP = {
       SGD: "singapore",
       MYR: "malaysia",
       MXN: "mexico",
+      GHS: "ghana",
+      PKR: "pakistan",
     },
   },
 };

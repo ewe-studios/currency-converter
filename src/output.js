@@ -46,7 +46,7 @@ function writeResults(results, outputDir = null) {
     'utf-8',
   );
 
-  const headers = ['provider', 'sendCurrency', 'receiveCurrency', 'sendAmount', 'exchangeRate', 'receiveAmount', 'fee', 'timestamp', 'success', 'error'];
+  const headers = ['provider', 'sendCurrency', 'receiveCurrency', 'sendAmount', 'exchangeRate', 'receiveAmount', 'fee', 'timestamp', 'success', 'error', 'validationStatus', 'deviationFromMid', 'boundsMin', 'boundsMax'];
   const rows = results.map(r => [
     r.provider,
     r.sendCurrency,
@@ -58,6 +58,10 @@ function writeResults(results, outputDir = null) {
     r.timestamp,
     r.success,
     (r.error || '').replace(/,/g, ';'),
+    r.validation?.status ?? '',
+    r.validation?.deviationFromMid ?? '',
+    r.validation?.boundsMin ?? '',
+    r.validation?.boundsMax ?? '',
   ]);
 
   const csvContent = [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
@@ -79,7 +83,7 @@ function appendResults(results, outputDir = null) {
   fs.appendFileSync(ndjsonPath, ndjsonLines, 'utf-8');
 
   // CSV: write header if file doesn't exist, then append rows
-  const csvHeaders = ['provider', 'sendCurrency', 'receiveCurrency', 'sendAmount', 'exchangeRate', 'receiveAmount', 'fee', 'timestamp', 'success', 'error'];
+  const csvHeaders = ['provider', 'sendCurrency', 'receiveCurrency', 'sendAmount', 'exchangeRate', 'receiveAmount', 'fee', 'timestamp', 'success', 'error', 'validationStatus', 'deviationFromMid', 'boundsMin', 'boundsMax'];
   const csvRows = results.map(r => [
     r.provider,
     r.sendCurrency,
@@ -91,6 +95,10 @@ function appendResults(results, outputDir = null) {
     r.timestamp,
     r.success,
     (r.error || '').replace(/,/g, ';'),
+    r.validation?.status ?? '',
+    r.validation?.deviationFromMid ?? '',
+    r.validation?.boundsMin ?? '',
+    r.validation?.boundsMax ?? '',
   ]);
   const csvContent = csvRows.map(r => r.join(',')).join('\n') + '\n';
 

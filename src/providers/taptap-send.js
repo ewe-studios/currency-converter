@@ -3,11 +3,16 @@ const { TIMEOUTS } = require('../config');
 let currentPage = null;
 let currentOriginCurrency = null;
 
+function reset() {
+  currentPage = null;
+  currentOriginCurrency = null;
+}
+
 module.exports = {
   name: 'Taptap Send',
+  reset,
 
   async fetchRate(page, sendCurrency, receiveCurrency, sendAmount) {
-    // Navigate only once per provider session
     if (currentPage !== page) {
       await page.goto('https://www.taptapsend.com/', { waitUntil: 'domcontentloaded', timeout: TIMEOUTS.navigation });
       await dismissCookieBanner(page);
@@ -16,20 +21,26 @@ module.exports = {
       currentOriginCurrency = null;
     }
 
-    // Only change origin currency if different
+    // Change origin currency if different
     if (sendCurrency !== currentOriginCurrency) {
-      await selectCurrency(page, '#origin-currency', sendCurrency);
+      const changed = await selectCurrencyByClick(page, '#origin-currency', sendCurrency);
+      if (!changed) {
+        await page.reload({ waitUntil: 'domcontentloaded' }).catch(() => {});
+        currentOriginCurrency = null;
+        return { exchangeRate: null, receiveAmount: null, fee: null };
+      }
       currentOriginCurrency = sendCurrency;
     }
 
     // Always change destination currency
-    await selectCurrency(page, '#destination-currency', receiveCurrency);
+    await selectCurrencyByClick(page, '#destination-currency', receiveCurrency);
 
-    // Fill the send amount
+    // Fill send amount via native input setter
     await page.evaluate((val) => {
       const input = document.getElementById('origin-amount');
       if (input) {
-        input.value = val;
+        const nativeSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set;
+        nativeSetter.call(input, val);
         input.dispatchEvent(new Event('input', { bubbles: true }));
         input.dispatchEvent(new Event('change', { bubbles: true }));
       }
@@ -40,6 +51,16 @@ module.exports = {
       const dest = document.getElementById('destination-amount');
       return dest && dest.value && parseFloat(dest.value.replace(/,/g, '')) > 0;
     }, { timeout: 5000 }).catch(() => {});
+
+    // Verify the displayed currency actually matches what we selected
+    const displayed = await page.evaluate(() => {
+      const originEl = document.getElementById('origin-currency');
+      const destEl = document.getElementById('destination-amount');
+      return {
+        originText: originEl?.textContent?.trim() || '',
+        destValue: destEl?.value || '',
+      };
+    });
 
     // Read live values via JS
     const amounts = await page.evaluate(() => {
@@ -88,22 +109,29 @@ async function dismissCookieBanner(page) {
   } catch {}
 }
 
-async function selectCurrency(page, selectId, currencyCode) {
+async function selectCurrencyByClick(page, selectId, currencyCode) {
   try {
-    const optionValue = await page.evaluate(({ id, code }) => {
-      const sel = document.querySelector(id);
-      if (!sel) return null;
-      const opts = Array.from(sel.options);
-      for (let i = 0; i < opts.length; i++) {
-        if (opts[i].text.includes(code)) {
-          return opts[i].value;
+    // Open the dropdown by clicking the select
+    const selectEl = page.locator(selectId).first();
+    await selectEl.click();
+    await page.waitForTimeout(500);
+
+    // Find and click the option by text — exact match approach instead of selectOption
+    const clicked = await page.evaluate((code) => {
+      const options = Array.from(document.querySelectorAll('option'));
+      for (const opt of options) {
+        if (opt.text.includes(code) || opt.textContent.includes(code)) {
+          opt.click();
+          return true;
         }
       }
-      return null;
-    }, { id: selectId, code: currencyCode });
+      return false;
+    }, currencyCode);
 
-    if (optionValue !== null) {
-      await page.selectOption(selectId, optionValue);
+    if (clicked) {
+      await page.waitForTimeout(500);
+      return true;
     }
   } catch {}
+  return false;
 }

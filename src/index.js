@@ -1,8 +1,9 @@
-const fs = require('fs');
-const path = require('path');
 const { loadProviderPairs } = require('./csv-parser');
 const { scrape } = require('./scraper');
 const { writeResults, writeJsonFromNdjson, appendResults } = require('./output');
+const { generateValidationReport } = require('./validator');
+const fs = require('fs');
+const path = require('path');
 
 function parseArgs() {
   const args = process.argv.slice(2);
@@ -13,6 +14,7 @@ function parseArgs() {
     providers: [],
     pair: null,
     headless: true,
+    strict: false,
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -25,6 +27,7 @@ function parseArgs() {
     else if (arg === '--providers' && i + 1 < args.length) options.providers.push(...args[++i].split(','));
     else if (arg.startsWith('--pair=')) options.pair = arg.split('=').slice(1).join('=');
     else if (arg === '--headful') options.headless = false;
+    else if (arg === '--strict') options.strict = true;
   }
 
   return options;
@@ -137,6 +140,7 @@ async function main() {
     headless: options.headless,
     providerFilter: null,
     pairFilter: options.pair,
+    strict: options.strict,
     onBatch: (currentResults) => {
       // currentResults is the full accumulated list from scraper; only append new ones
       const newCount = currentResults.length - totalCount;
@@ -215,6 +219,12 @@ async function main() {
       console.log(`  output/errors/  (failure screenshots)`);
     }
   }
+
+  const report = generateValidationReport(results);
+  const reportPath = path.join(process.cwd(), 'output', 'validation-report.json');
+  fs.writeFileSync(reportPath, JSON.stringify(report, null, 2), 'utf-8');
+  console.log(`\nValidation: ${report.validRates} valid, ${report.suspectRates} suspect, ${report.invalidRates} invalid, ${report.nullRates} null`);
+  console.log(`Report: output/validation-report.json`);
 }
 
 main().catch(err => {

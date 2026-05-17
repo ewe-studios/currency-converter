@@ -36,15 +36,22 @@ module.exports = {
     // Wait for calculator inputs to render
     await page.locator('input[type="decimal"]').first().waitFor({ timeout: 5000 });
 
-    // Select send currency (opens a MUI Drawer with autocomplete)
-    await selectCountry(page, sendCountry, 'send');
+    // Select send currency
+    const sendOk = await selectCountry(page, sendCountry, 'send');
+    if (!sendOk) {
+      return { exchangeRate: null, receiveAmount: null, fee: null };
+    }
 
-    // Select receive currency (opens a MUI Drawer with autocomplete)
-    await selectCountry(page, receiveCountry, 'receive');
+    // Select receive currency
+    const recvOk = await selectCountry(page, receiveCountry, 'receive');
+    if (!recvOk) {
+      return { exchangeRate: null, receiveAmount: null, fee: null };
+    }
 
     // Wait for rate to update
     await page.waitForTimeout(2000);
 
+    // Try to read rate from body text first
     const bodyText = await page.evaluate(() => document.body.innerText);
     const rateRegex = new RegExp(`1\\s+${sendCurrency}\\s*=\\s*([\\d.,]+)\\s*${receiveCurrency}`, 'i');
     const rateMatch = bodyText.match(rateRegex);
@@ -56,7 +63,7 @@ module.exports = {
       }
     }
 
-    // Fallback: try to read receive amount from calculator input
+    // Fallback: read receive amount from calculator input
     const inputs = await page.evaluate(() => {
       return Array.from(document.querySelectorAll('input[type="decimal"]')).map(i => i.value);
     });
@@ -78,19 +85,42 @@ async function selectCountry(page, countryName, side) {
     ? '[data-testid="exchange-calculator-send-country-select"]'
     : '[data-testid="exchange-calculator-receive-country-select"]';
 
-  await page.click(selector);
-  await page.waitForTimeout(500);
+  const btn = page.locator(selector).first();
+  if (!(await btn.isVisible({ timeout: 3000 }).catch(() => false))) {
+    return false;
+  }
 
-  // Type in the autocomplete search input
+  await btn.click();
+  await page.waitForTimeout(1000);
+
   const searchInput = page.locator('input.MuiAutocomplete-input, input[role="combobox"]').last();
+  if (!(await searchInput.isVisible({ timeout: 2000 }).catch(() => false))) {
+    return false;
+  }
+
   await searchInput.click();
   await searchInput.fill(countryName);
-  await page.waitForTimeout(500);
+  await page.waitForTimeout(1000);
 
-  // Click the matching option
-  const option = page.locator(`li.MuiAutocomplete-option:has-text("${countryName}")`).first();
+  const option = page.locator(`li.MuiAutocomplete-option`).filter({ hasText: countryName }).first();
+  if (!(await option.isVisible({ timeout: 2000 }).catch(() => false))) {
+    return false;
+  }
+
   await option.click();
   await page.waitForTimeout(1000);
+
+  // The select button shows the currency code (e.g. "EUR"), not the country name
+  const btnText = await btn.textContent().catch(() => '');
+  const expectedCode = side === 'send'
+    ? Object.entries(SEND_COUNTRY_MAP).find(([, v]) => v === countryName)?.[0]
+    : Object.entries(RECEIVE_COUNTRY_MAP).find(([, v]) => v === countryName)?.[0];
+
+  if (expectedCode && !btnText.includes(expectedCode)) {
+    return false;
+  }
+
+  return true;
 }
 
 async function dismissCookieBanner(page) {

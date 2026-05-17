@@ -4,6 +4,7 @@ let isRestricted = false;
 
 module.exports = {
   name: "MoneyGram",
+  maxAttempts: 3,
 
   async fetchRate(page, sendCurrency, receiveCurrency, sendAmount) {
     if (isRestricted) {
@@ -21,7 +22,6 @@ module.exports = {
       { waitUntil: "domcontentloaded", timeout: TIMEOUTS.navigation },
     );
 
-    // Check for DataDome block early
     const hasDataDome = page
       .frames()
       .some((f) => f.url() && f.url().includes("captcha-delivery.com"));
@@ -31,14 +31,9 @@ module.exports = {
     }
 
     await dismissCookieBanner(page);
-
-    // Select receive country
     await selectCountry(page, "Country", toCountry.name);
-
-    // Click send money
     await trySendMoney(page, fromCountry);
 
-    // Check for DataDome after interactions
     if (
       page
         .frames()
@@ -48,13 +43,11 @@ module.exports = {
       throw new Error("Temporarily restricted — DataDome bot detection");
     }
 
-    // Check for captcha slider
     const mainSlider = page.locator(".slider").first();
     if (await mainSlider.isVisible({ timeout: 1000 }).catch(() => false)) {
       await dragSlider(page, mainSlider);
     }
 
-    // Wait for calculator to populate
     await page
       .waitForFunction(
         () => {
@@ -65,7 +58,6 @@ module.exports = {
       )
       .catch(() => {});
 
-    // Extract rate from calculator inputs
     return await extractRateFromCalculator(
       page,
       sendCurrency,

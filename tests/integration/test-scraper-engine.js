@@ -9,7 +9,7 @@ module.exports = async ({ test, assert, assertEqual }) => {
     PROVIDERS['Mock'] = {
       name: 'Mock',
       async fetchRate(page) {
-        return { exchangeRate: 100, receiveAmount: 100000, fee: 5 };
+        return { exchangeRate: 1550, receiveAmount: 1550000, fee: 5 };
       },
     };
 
@@ -26,8 +26,9 @@ module.exports = async ({ test, assert, assertEqual }) => {
 
       const results = await scrape(pairs);
       assertEqual(results.length, 1);
-      assertEqual(results[0].exchangeRate, 100);
+      assertEqual(results[0].exchangeRate, 1550);
       assertEqual(results[0].success, true);
+      assertEqual(results[0].validation.status, 'valid');
     } finally {
       delete PROVIDERS['Mock'];
     }
@@ -63,9 +64,11 @@ module.exports = async ({ test, assert, assertEqual }) => {
     let callCount = 0;
     PROVIDERS['MockMulti'] = {
       name: 'MockMulti',
-      async fetchRate() {
+      async fetchRate(page, sendCurrency, receiveCurrency) {
         callCount++;
-        return { exchangeRate: callCount * 10, receiveAmount: callCount * 1000, fee: null };
+        const rates = { 'USD-NGN': 1550, 'USD-GHS': 15 };
+        const key = `${sendCurrency}-${receiveCurrency}`;
+        return { exchangeRate: rates[key], receiveAmount: rates[key] * 1000, fee: null };
       },
     };
 
@@ -83,8 +86,10 @@ module.exports = async ({ test, assert, assertEqual }) => {
 
       const results = await scrape(pairs);
       assertEqual(results.length, 2);
-      assertEqual(results[0].exchangeRate, 10);
-      assertEqual(results[1].exchangeRate, 20);
+      assertEqual(results[0].exchangeRate, 1550);
+      assertEqual(results[1].exchangeRate, 15);
+      assertEqual(results[0].validation.status, 'valid');
+      assertEqual(results[1].validation.status, 'valid');
     } finally {
       delete PROVIDERS['MockMulti'];
     }

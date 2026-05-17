@@ -1,5 +1,6 @@
 const { TIMEOUTS, CURRENCY_COUNTRY_MAP } = require('../config');
 const cheerio = require('cheerio');
+const { getBounds } = require('../market-rates');
 
 module.exports = {
   name: 'Remitly',
@@ -16,38 +17,36 @@ module.exports = {
     const to = receiveCurrency.toLowerCase();
     const converterUrl = `https://www.remitly.com/${countryCode}/en/currency-converter/${from}-to-${to}-rate`;
 
-    // Each pair has its own dedicated URL, so navigate every time
     await page.goto(converterUrl, { waitUntil: 'domcontentloaded', timeout: TIMEOUTS.navigation });
     await page.waitForTimeout(1000);
 
     const html = await page.content();
     const $ = cheerio.load(html);
 
-    // Check for 404 page early
     if ($('h1').text().includes('404') || $('title').text().includes('404') || $('title').text().includes('Not Found')) {
       return { exchangeRate: null, receiveAmount: null, fee: null };
     }
 
-    // 1. Get rate from "Special rate" or "Everyday rate" div: "1 USD = 62.03 PHP"
+    // 1. Rate from "Special rate" or "Everyday rate" div
+    // Extract ONLY the first number after "1 SEND = X RECEIVE"
     const rateDiv = $('div').filter((_, el) => {
       const text = $(el).text().trim();
       return (text.includes('Special rate') || text.includes('Everyday rate')) &&
              text.includes(sendCurrency) && text.includes(receiveCurrency);
     }).first().text().trim();
 
+    let extractedRate = null;
     if (rateDiv) {
       const rateMatch = rateDiv.match(
-        new RegExp(`1\\s+${sendCurrency}\\s*=\\s*([\\d.,]+)\\s*${receiveCurrency}`, 'i')
+        new RegExp(`1\\s+${sendCurrency}\\s*=\\s*([\\d.,]+)`, 'i')
       );
       if (rateMatch) {
-        const exchangeRate = parseFloat(rateMatch[1].replace(/,/g, ''));
-        if (exchangeRate > 0) {
-          return { exchangeRate, receiveAmount: exchangeRate * sendAmount, fee: null };
-        }
+        extractedRate = parseFloat(rateMatch[1].replace(/,/g, ''));
       }
     }
 
-    // 2. Get receive amount from "They receive" or "You receive" section
+    // 2. Receive amount confirmation: "They receive" / "You receive" section
+    let confirmedRate = null;
     const receiveSection = $('div').filter((_, el) => {
       const text = $(el).text().trim();
       return text.includes('They receive') || text.includes('You receive');
@@ -59,22 +58,28 @@ module.exports = {
       if (match) {
         const recvAmt = parseFloat(match[1].replace(/,/g, ''));
         if (recvAmt > 0) {
-          const exchangeRate = recvAmt / sendAmount;
-          return { exchangeRate, receiveAmount: exchangeRate * sendAmount, fee: null };
+          confirmedRate = recvAmt / sendAmount;
         }
       }
     }
 
-    // 3. Fallback: scan body text with regex
-    const bodyText = $('body').text();
-    const rateMatch = bodyText.match(
-      new RegExp(`1\\s+${sendCurrency}\\s*=\\s*([\\d.,]+)\\s*${receiveCurrency}`, 'i')
-    );
-    if (rateMatch) {
-      const exchangeRate = parseFloat(rateMatch[1].replace(/,/g, ''));
-      if (exchangeRate > 0) {
-        return { exchangeRate, receiveAmount: exchangeRate * sendAmount, fee: null };
+    // Prefer confirmed rate from "They receive" if both exist
+    if (confirmedRate && extractedRate) {
+      const ratio = Math.max(confirmedRate, extractedRate) / Math.min(confirmedRate, extractedRate);
+      extractedRate = ratio < 1.05 ? confirmedRate : extractedRate;
+    } else if (confirmedRate) {
+      extractedRate = confirmedRate;
+    }
+
+    if (extractedRate && extractedRate > 0) {
+      const bounds = getBounds(sendCurrency, receiveCurrency);
+      if (bounds) {
+        const orderOfMag = Math.abs(Math.log10(extractedRate / bounds.mid));
+        if (orderOfMag > 2) {
+          return { exchangeRate: null, receiveAmount: null, fee: null };
+        }
       }
+      return { exchangeRate: extractedRate, receiveAmount: extractedRate * sendAmount, fee: null };
     }
 
     return { exchangeRate: null, receiveAmount: null, fee: null };
