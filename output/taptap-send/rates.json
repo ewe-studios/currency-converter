@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-17T08:18:24.036Z",
+  "timestamp": "2026-05-17T09:05:04.155Z",
   "count": 49,
   "results": [
     {
@@ -7,19 +7,19 @@
       "sendCurrency": "AED",
       "receiveCurrency": "GHS",
       "sendAmount": 1000,
-      "exchangeRate": null,
-      "receiveAmount": null,
+      "exchangeRate": 3,
+      "receiveAmount": 3000,
       "fee": null,
-      "timestamp": "2026-05-17T08:15:30.313Z",
-      "success": false,
-      "error": "rate rejected: GHS rate too low",
+      "timestamp": "2026-05-17T09:02:02.520Z",
+      "success": true,
+      "error": null,
       "validation": {
-        "status": "invalid",
-        "deviationFromMid": -26.829268292682922,
-        "boundsMin": 3.4849999999999994,
-        "boundsMax": 4.714999999999999,
+        "status": "suspect",
+        "deviationFromMid": -26.8,
+        "boundsMin": 3.48,
+        "boundsMax": 4.71,
         "expectedMid": 4.1,
-        "reason": "GHS rate too low",
+        "reason": "outside 15% bounds but within 30%",
         "retryAttempted": true,
         "retrySucceeded": false
       }
@@ -32,7 +32,7 @@
       "exchangeRate": 25.95,
       "receiveAmount": 25950,
       "fee": null,
-      "timestamp": "2026-05-17T08:15:35.786Z",
+      "timestamp": "2026-05-17T09:02:11.737Z",
       "success": true,
       "error": null,
       "validation": {
@@ -51,7 +51,7 @@
       "exchangeRate": 34.7,
       "receiveAmount": 34700,
       "fee": null,
-      "timestamp": "2026-05-17T08:15:38.595Z",
+      "timestamp": "2026-05-17T09:02:14.549Z",
       "success": true,
       "error": null,
       "validation": {
@@ -70,7 +70,7 @@
       "exchangeRate": 4.68,
       "receiveAmount": 4680,
       "fee": null,
-      "timestamp": "2026-05-17T08:15:41.407Z",
+      "timestamp": "2026-05-17T09:02:17.359Z",
       "success": true,
       "error": null,
       "validation": {
@@ -89,7 +89,7 @@
       "exchangeRate": 370,
       "receiveAmount": 370000,
       "fee": null,
-      "timestamp": "2026-05-17T08:15:44.217Z",
+      "timestamp": "2026-05-17T09:02:20.169Z",
       "success": true,
       "error": null,
       "validation": {
@@ -108,7 +108,7 @@
       "exchangeRate": 16.2,
       "receiveAmount": 16200,
       "fee": null,
-      "timestamp": "2026-05-17T08:15:47.027Z",
+      "timestamp": "2026-05-17T09:02:22.979Z",
       "success": true,
       "error": null,
       "validation": {
@@ -127,7 +127,7 @@
       "exchangeRate": 76.4,
       "receiveAmount": 76400,
       "fee": null,
-      "timestamp": "2026-05-17T08:15:49.840Z",
+      "timestamp": "2026-05-17T09:02:25.792Z",
       "success": true,
       "error": null,
       "validation": {
@@ -146,7 +146,7 @@
       "exchangeRate": 8.15,
       "receiveAmount": 8150,
       "fee": null,
-      "timestamp": "2026-05-17T08:15:52.650Z",
+      "timestamp": "2026-05-17T09:02:28.602Z",
       "success": true,
       "error": null,
       "validation": {
@@ -165,7 +165,7 @@
       "exchangeRate": 69,
       "receiveAmount": 69000,
       "fee": null,
-      "timestamp": "2026-05-17T08:15:56.267Z",
+      "timestamp": "2026-05-17T09:02:32.218Z",
       "success": true,
       "error": null,
       "validation": {
@@ -187,7 +187,7 @@
       "exchangeRate": 90,
       "receiveAmount": 90000,
       "fee": null,
-      "timestamp": "2026-05-17T08:16:02.498Z",
+      "timestamp": "2026-05-17T09:02:38.536Z",
       "success": true,
       "error": null,
       "validation": {
@@ -206,7 +206,7 @@
       "exchangeRate": 12.28,
       "receiveAmount": 12280,
       "fee": null,
-      "timestamp": "2026-05-17T08:16:05.308Z",
+      "timestamp": "2026-05-17T09:02:41.346Z",
       "success": true,
       "error": null,
       "validation": {
@@ -225,7 +225,7 @@
       "exchangeRate": 990,
       "receiveAmount": 990000,
       "fee": null,
-      "timestamp": "2026-05-17T08:16:08.118Z",
+      "timestamp": "2026-05-17T09:02:44.155Z",
       "success": true,
       "error": null,
       "validation": {
@@ -244,7 +244,7 @@
       "exchangeRate": 43.7,
       "receiveAmount": 43700,
       "fee": null,
-      "timestamp": "2026-05-17T08:16:10.926Z",
+      "timestamp": "2026-05-17T09:02:46.965Z",
       "success": true,
       "error": null,
       "validation": {
@@ -266,7 +266,7 @@
       "exchangeRate": 200,
       "receiveAmount": 200000,
       "fee": null,
-      "timestamp": "2026-05-17T08:16:17.080Z",
+      "timestamp": "2026-05-17T09:02:53.320Z",
       "success": true,
       "error": null,
       "validation": {
@@ -285,7 +285,7 @@
       "exchangeRate": 8.28,
       "receiveAmount": 8280,
       "fee": null,
-      "timestamp": "2026-05-17T08:16:19.891Z",
+      "timestamp": "2026-05-17T09:02:56.130Z",
       "success": true,
       "error": null,
       "validation": {
@@ -307,7 +307,7 @@
       "exchangeRate": 70,
       "receiveAmount": 70000,
       "fee": null,
-      "timestamp": "2026-05-17T08:16:26.880Z",
+      "timestamp": "2026-05-17T09:03:03.235Z",
       "success": true,
       "error": null,
       "validation": {
@@ -326,7 +326,7 @@
       "exchangeRate": 92,
       "receiveAmount": 92000,
       "fee": null,
-      "timestamp": "2026-05-17T08:16:29.691Z",
+      "timestamp": "2026-05-17T09:03:06.045Z",
       "success": true,
       "error": null,
       "validation": {
@@ -345,7 +345,7 @@
       "exchangeRate": 12.55,
       "receiveAmount": 12550,
       "fee": null,
-      "timestamp": "2026-05-17T08:16:32.501Z",
+      "timestamp": "2026-05-17T09:03:08.854Z",
       "success": true,
       "error": null,
       "validation": {
@@ -364,7 +364,7 @@
       "exchangeRate": null,
       "receiveAmount": null,
       "fee": null,
-      "timestamp": "2026-05-17T08:16:35.310Z",
+      "timestamp": "2026-05-17T09:03:11.664Z",
       "success": false,
       "error": "rate rejected: rate equals sendAmount (likely parsing bug)",
       "validation": {
@@ -386,7 +386,7 @@
       "exchangeRate": 44.3,
       "receiveAmount": 44300,
       "fee": null,
-      "timestamp": "2026-05-17T08:16:38.121Z",
+      "timestamp": "2026-05-17T09:03:14.475Z",
       "success": true,
       "error": null,
       "validation": {
@@ -405,7 +405,7 @@
       "exchangeRate": 203,
       "receiveAmount": 203000,
       "fee": null,
-      "timestamp": "2026-05-17T08:16:40.933Z",
+      "timestamp": "2026-05-17T09:03:17.287Z",
       "success": true,
       "error": null,
       "validation": {
@@ -424,7 +424,7 @@
       "exchangeRate": 13.28,
       "receiveAmount": 13280,
       "fee": null,
-      "timestamp": "2026-05-17T08:16:43.742Z",
+      "timestamp": "2026-05-17T09:03:20.101Z",
       "success": true,
       "error": null,
       "validation": {
@@ -446,7 +446,7 @@
       "exchangeRate": 111.61,
       "receiveAmount": 111610,
       "fee": null,
-      "timestamp": "2026-05-17T08:16:50.762Z",
+      "timestamp": "2026-05-17T09:03:27.266Z",
       "success": true,
       "error": null,
       "validation": {
@@ -468,7 +468,7 @@
       "exchangeRate": 148,
       "receiveAmount": 148000,
       "fee": null,
-      "timestamp": "2026-05-17T08:16:57.033Z",
+      "timestamp": "2026-05-17T09:03:33.650Z",
       "success": true,
       "error": null,
       "validation": {
@@ -487,7 +487,7 @@
       "exchangeRate": 19.98,
       "receiveAmount": 19980,
       "fee": null,
-      "timestamp": "2026-05-17T08:16:59.841Z",
+      "timestamp": "2026-05-17T09:03:36.460Z",
       "success": true,
       "error": null,
       "validation": {
@@ -506,7 +506,7 @@
       "exchangeRate": 1600,
       "receiveAmount": 1600000,
       "fee": null,
-      "timestamp": "2026-05-17T08:17:02.651Z",
+      "timestamp": "2026-05-17T09:03:39.270Z",
       "success": true,
       "error": null,
       "validation": {
@@ -525,7 +525,7 @@
       "exchangeRate": 71,
       "receiveAmount": 71000,
       "fee": null,
-      "timestamp": "2026-05-17T08:17:05.461Z",
+      "timestamp": "2026-05-17T09:03:42.079Z",
       "success": true,
       "error": null,
       "validation": {
@@ -544,7 +544,7 @@
       "exchangeRate": 326,
       "receiveAmount": 326000,
       "fee": null,
-      "timestamp": "2026-05-17T08:17:08.271Z",
+      "timestamp": "2026-05-17T09:03:44.890Z",
       "success": true,
       "error": null,
       "validation": {
@@ -563,7 +563,7 @@
       "exchangeRate": 15.34,
       "receiveAmount": 15340,
       "fee": null,
-      "timestamp": "2026-05-17T08:17:11.081Z",
+      "timestamp": "2026-05-17T09:03:47.705Z",
       "success": true,
       "error": null,
       "validation": {
@@ -585,7 +585,7 @@
       "exchangeRate": 128,
       "receiveAmount": 128000,
       "fee": null,
-      "timestamp": "2026-05-17T08:17:18.015Z",
+      "timestamp": "2026-05-17T09:03:54.683Z",
       "success": true,
       "error": null,
       "validation": {
@@ -604,7 +604,7 @@
       "exchangeRate": 170.3,
       "receiveAmount": 170300,
       "fee": null,
-      "timestamp": "2026-05-17T08:17:20.825Z",
+      "timestamp": "2026-05-17T09:03:57.494Z",
       "success": true,
       "error": null,
       "validation": {
@@ -623,7 +623,7 @@
       "exchangeRate": 22.89,
       "receiveAmount": 22890,
       "fee": null,
-      "timestamp": "2026-05-17T08:17:23.635Z",
+      "timestamp": "2026-05-17T09:04:00.304Z",
       "success": true,
       "error": null,
       "validation": {
@@ -642,7 +642,7 @@
       "exchangeRate": 1830,
       "receiveAmount": 1830000,
       "fee": null,
-      "timestamp": "2026-05-17T08:17:26.445Z",
+      "timestamp": "2026-05-17T09:04:03.115Z",
       "success": true,
       "error": null,
       "validation": {
@@ -661,7 +661,7 @@
       "exchangeRate": 81.5,
       "receiveAmount": 81500,
       "fee": null,
-      "timestamp": "2026-05-17T08:17:29.256Z",
+      "timestamp": "2026-05-17T09:04:05.926Z",
       "success": true,
       "error": null,
       "validation": {
@@ -680,7 +680,7 @@
       "exchangeRate": 374,
       "receiveAmount": 374000,
       "fee": null,
-      "timestamp": "2026-05-17T08:17:32.065Z",
+      "timestamp": "2026-05-17T09:04:08.737Z",
       "success": true,
       "error": null,
       "validation": {
@@ -696,19 +696,19 @@
       "sendCurrency": "PLN",
       "receiveCurrency": "GHS",
       "sendAmount": 1000,
-      "exchangeRate": null,
-      "receiveAmount": null,
+      "exchangeRate": 3.11,
+      "receiveAmount": 3110,
       "fee": null,
-      "timestamp": "2026-05-17T08:17:34.875Z",
-      "success": false,
-      "error": "rate rejected: GHS rate too low",
+      "timestamp": "2026-05-17T09:04:11.549Z",
+      "success": true,
+      "error": null,
       "validation": {
-        "status": "invalid",
-        "deviationFromMid": -18.157894736842103,
+        "status": "suspect",
+        "deviationFromMid": -18.2,
         "boundsMin": 3.23,
-        "boundsMax": 4.369999999999999,
+        "boundsMax": 4.37,
         "expectedMid": 3.8,
-        "reason": "GHS rate too low",
+        "reason": "outside 15% bounds but within 30%",
         "retryAttempted": true,
         "retrySucceeded": false
       }
@@ -721,7 +721,7 @@
       "exchangeRate": 26.05,
       "receiveAmount": 26050,
       "fee": null,
-      "timestamp": "2026-05-17T08:17:38.492Z",
+      "timestamp": "2026-05-17T09:04:18.505Z",
       "success": true,
       "error": null,
       "validation": {
@@ -743,7 +743,7 @@
       "exchangeRate": 35.03,
       "receiveAmount": 35030,
       "fee": null,
-      "timestamp": "2026-05-17T08:17:44.676Z",
+      "timestamp": "2026-05-17T09:04:24.683Z",
       "success": true,
       "error": null,
       "validation": {
@@ -762,7 +762,7 @@
       "exchangeRate": 4.7,
       "receiveAmount": 4700,
       "fee": null,
-      "timestamp": "2026-05-17T08:17:47.487Z",
+      "timestamp": "2026-05-17T09:04:27.494Z",
       "success": true,
       "error": null,
       "validation": {
@@ -781,7 +781,7 @@
       "exchangeRate": 372.43,
       "receiveAmount": 372430,
       "fee": null,
-      "timestamp": "2026-05-17T08:17:50.295Z",
+      "timestamp": "2026-05-17T09:04:30.304Z",
       "success": true,
       "error": null,
       "validation": {
@@ -800,7 +800,7 @@
       "exchangeRate": 16.91,
       "receiveAmount": 16910,
       "fee": null,
-      "timestamp": "2026-05-17T08:17:53.105Z",
+      "timestamp": "2026-05-17T09:04:33.116Z",
       "success": true,
       "error": null,
       "validation": {
@@ -822,7 +822,7 @@
       "exchangeRate": 75.7,
       "receiveAmount": 75700,
       "fee": null,
-      "timestamp": "2026-05-17T08:17:59.229Z",
+      "timestamp": "2026-05-17T09:04:39.299Z",
       "success": true,
       "error": null,
       "validation": {
@@ -841,7 +841,7 @@
       "exchangeRate": 11.32,
       "receiveAmount": 11320,
       "fee": null,
-      "timestamp": "2026-05-17T08:18:02.039Z",
+      "timestamp": "2026-05-17T09:04:42.108Z",
       "success": true,
       "error": null,
       "validation": {
@@ -863,7 +863,7 @@
       "exchangeRate": 96.03,
       "receiveAmount": 96030,
       "fee": null,
-      "timestamp": "2026-05-17T08:18:09.142Z",
+      "timestamp": "2026-05-17T09:04:49.267Z",
       "success": true,
       "error": null,
       "validation": {
@@ -882,7 +882,7 @@
       "exchangeRate": 127,
       "receiveAmount": 127000,
       "fee": null,
-      "timestamp": "2026-05-17T08:18:11.953Z",
+      "timestamp": "2026-05-17T09:04:52.076Z",
       "success": true,
       "error": null,
       "validation": {
@@ -901,7 +901,7 @@
       "exchangeRate": 17.25,
       "receiveAmount": 17250,
       "fee": null,
-      "timestamp": "2026-05-17T08:18:14.764Z",
+      "timestamp": "2026-05-17T09:04:54.886Z",
       "success": true,
       "error": null,
       "validation": {
@@ -920,7 +920,7 @@
       "exchangeRate": 1350,
       "receiveAmount": 1350000,
       "fee": null,
-      "timestamp": "2026-05-17T08:18:17.575Z",
+      "timestamp": "2026-05-17T09:04:57.701Z",
       "success": true,
       "error": null,
       "validation": {
@@ -939,7 +939,7 @@
       "exchangeRate": 61.2,
       "receiveAmount": 61200,
       "fee": null,
-      "timestamp": "2026-05-17T08:18:20.384Z",
+      "timestamp": "2026-05-17T09:05:00.513Z",
       "success": true,
       "error": null,
       "validation": {
@@ -958,7 +958,7 @@
       "exchangeRate": 280.1,
       "receiveAmount": 280100,
       "fee": null,
-      "timestamp": "2026-05-17T08:18:23.194Z",
+      "timestamp": "2026-05-17T09:05:03.324Z",
       "success": true,
       "error": null,
       "validation": {

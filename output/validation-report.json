@@ -1,19 +1,28 @@
 {
-  "generatedAt": "2026-05-17T08:18:24.036Z",
+  "generatedAt": "2026-05-17T09:05:04.156Z",
   "totalRates": 49,
   "validRates": 37,
-  "suspectRates": 9,
+  "suspectRates": 11,
   "invalidRates": 0,
-  "nullRates": 3,
+  "nullRates": 1,
   "byProvider": {
     "Taptap Send": {
       "valid": 37,
-      "suspect": 9,
+      "suspect": 11,
       "invalid": 0,
-      "null": 3
+      "null": 1
     }
   },
   "anomalies": [
+    {
+      "provider": "Taptap Send",
+      "pair": "AED/GHS",
+      "extractedRate": 3,
+      "expectedMid": 4.1,
+      "deviation": -26.8,
+      "status": "suspect",
+      "reason": "outside 15% bounds but within 30%"
+    },
     {
       "provider": "Taptap Send",
       "pair": "AUD/INR",
@@ -65,6 +74,15 @@
       "extractedRate": 15.34,
       "expectedMid": 20,
       "deviation": -23.3,
+      "status": "suspect",
+      "reason": "outside 15% bounds but within 30%"
+    },
+    {
+      "provider": "Taptap Send",
+      "pair": "PLN/GHS",
+      "extractedRate": 3.11,
+      "expectedMid": 3.8,
+      "deviation": -18.2,
       "status": "suspect",
       "reason": "outside 15% bounds but within 30%"
     },
