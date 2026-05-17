@@ -189,6 +189,113 @@ Remitly,EUR,GHS,1000,12.9864,12986.4,,2026-04-26T...,true,
 | `receiveAmount` | numeric | empty |
 | `error` | empty | `unable to acquire` |
 
+## Rate Validation
+
+The scraper validates every extracted rate against reference mid-rates to catch extraction bugs (e.g., parsing a whole number as a per-unit rate).
+
+### How It Works
+
+`src/market-rates.js` defines a reference mid-rate and tolerance for each currency pair. `src/validator.js` classifies each rate into one of three categories:
+
+| Status | Meaning |
+|---|---|
+| `valid` | Within tolerance of the reference mid-rate |
+| `suspect` | Outside tolerance but within 2x tolerance — may be a real market shift or extraction error |
+| `invalid` | Exceeds 2x tolerance — almost certainly an extraction bug |
+
+NGN pairs use a wider tolerance (25%) due to higher volatility.
+
+### Strict Mode
+
+Pass `--strict` to reject suspect rates rather than accepting them:
+
+```bash
+node src/index.js --all --strict
+```
+
+### Validation Report
+
+After every run, a `output/validation-report.json` file is generated with:
+
+- Per-provider breakdown of valid/suspect/invalid/null rates
+- Anomaly list with extracted rate, expected mid-rate, and deviation percentage
+- Cross-provider comparison — flags providers whose rates deviate >20% from the pair median
+
+```json
+{
+  "generatedAt": "2026-05-17T06:00:00.000Z",
+  "totalRates": 500,
+  "validRates": 480,
+  "suspectRates": 15,
+  "invalidRates": 3,
+  "nullRates": 2,
+  "byProvider": { "Wise": { "valid": 49, "suspect": 0, "invalid": 0, "null": 0 }, ... },
+  "anomalies": [ ... ],
+  "crossProvider": [ ... ]
+}
+```
+
+## Cloudflare D1 API
+
+Scraped rates can be persisted to a Cloudflare D1 SQLite database and queried via a serverless REST API.
+
+### Setup
+
+```bash
+# 1. Create the D1 database
+npx wrangler d1 create currency-rates
+# Copy the database_id into api/wrangler.toml
+
+# 2. Initialise the schema
+npm run d1:init
+
+# 3. Deploy the Worker
+npx wrangler deploy
+```
+
+### API Endpoints
+
+| Endpoint | Description |
+|---|---|
+| `GET /api/rates?provider=Wise&send=EUR&receive=GHS&limit=100` | Query rates with filters |
+| `GET /api/latest?send=EUR&receive=GHS` | Most recent successful rate for a pair |
+| `GET /api/providers` | List all providers with stored data |
+| `GET /api/summary` | Per-provider success counts and last scrape time |
+| `GET /api/validation?status=suspect` | Query validation results |
+
+All responses include CORS headers for browser access.
+
+### SQL Generation
+
+Convert NDJSON output to SQL INSERT statements:
+
+```bash
+# Generate SQL for a specific provider
+npm run generate-sql -- "Wise"
+
+# Manually execute against D1
+wrangler d1 execute currency-rates --remote --file=./output/insert-rates.sql
+```
+
+The SQL generator includes validation fields (`validation_status`, `deviation_from_mid`, `bounds_min`, `bounds_max`) from the rate validator.
+
+## CI/CD Pipeline
+
+A GitHub Actions workflow (`.github/workflows/scrape.yml`) runs daily at 06:00 UTC:
+
+1. Installs Node.js, dependencies, and Playwright Chromium
+2. Scrapes each provider **individually** with a 15-minute timeout per provider
+3. Generates SQL from the NDJSON output
+4. Pushes to D1 — successful providers are committed even if others fail
+5. Runs in `--strict` validation mode
+
+Trigger manually via the GitHub Actions "Run workflow" button. Required secrets:
+
+| Secret | Description |
+|---|---|
+| `CF_API_TOKEN` | Cloudflare API token with D1 + Workers permissions |
+| `CF_ACCOUNT_ID` | Cloudflare account ID |
+
 ## Configuration
 
 `src/config.js` controls global settings:
@@ -205,12 +312,19 @@ Remitly,EUR,GHS,1000,12.9864,12986.4,,2026-04-26T...,true,
 ## Architecture
 
 ```
-src/index.js        Entry point: parses args, loads CSV, calls scraper
-src/scraper.js      Orchestrates browser, iterates providers + pairs
-src/output.js       Writes rates.ndjson, rates.csv, rates.json, logs
-src/csv-parser.js   Parses Provider.csv into provider/pair structure
-src/config.js       Global settings (timeouts, browser options)
-src/providers/      Individual provider scrapers
+src/index.js            Entry point: parses args, loads CSV, calls scraper, runs validation
+src/scraper.js          Orchestrates browser, iterates providers + pairs, validates rates
+src/output.js           Writes rates.ndjson, rates.csv, rates.json, logs
+src/csv-parser.js       Parses Provider.csv into provider/pair structure
+src/config.js           Global settings (timeouts, browser options)
+src/validator.js        Rate validation against market reference rates
+src/market-rates.js     Reference mid-rates and tolerance bounds per pair
+src/providers/          Individual provider scrapers
+scripts/generate-sql.js Converts NDJSON output to SQL INSERTs for D1
+api/src/index.ts        Cloudflare Worker REST API
+api/wrangler.toml       Cloudflare Worker + D1 configuration
+schema.sql              D1 database schema
+.github/workflows/      GitHub Actions CI/CD pipeline
 ```
 
 Provider modules reuse a single page per session and track the current send currency to skip redundant dropdown clicks when consecutive pairs share the same send currency.
