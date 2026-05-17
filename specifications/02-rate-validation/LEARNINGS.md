@@ -71,15 +71,22 @@ After `page.reload()`, the `#cmpwrapper` CMP overlay reappeared but wasn't dismi
 
 ---
 
-## Taptap Send Deep Dive (2026-05-16)
+## Taptap Send Deep Dive (2026-05-16 → 2026-05-17)
 
-### Problem: AED rates match USD rates (rate=17.25 for all pairs)
+### Problem: 40/49 pairs failing with same rate (rate=17.25 for all pairs)
 
-**Root cause**: `page.selectOption()` on `<select>` elements doesn't trigger React's event handlers. The option value changes in the DOM but the React component state doesn't update, so the rate calculation uses the previous currency.
+**Root cause 1**: Original code used `page.selectOption()` but the first attempted fix replaced it with `opt.click()` via `page.evaluate()`. Direct `<option>.click()` doesn't trigger Webflow's custom select change handling.
 
-**Attempted fix**: Replaced `page.selectOption()` with clicking the `<option>` element via `page.evaluate()`. This also didn't work — the currency doesn't actually change.
+**Root cause 2**: The fix using `page.evaluate()` had a template literal bug: `` document.querySelectorAll(`${selectId} option`) `` — the `${selectId}` template literal was evaluated in the browser context (where `selectId` is undefined), not the Node.js context. Playwright stringifies the evaluate function, so JS template literals inside it don't have access to outer function variables. Must pass as an object argument instead.
 
-**Status**: NOT FIXED. 40/49 pairs fail because the currency selection mechanism doesn't work with their SPA. Need a different approach — likely dispatching the correct React events or finding the internal state management mechanism.
+**Root cause 3**: Select options load asynchronously after `domcontentloaded`. On initial page load, `#origin-currency` exists but has 0 options. Must wait for `sel.options.length > 5` before attempting selection.
+
+**Fix**: Use `page.selectOption(selectId, optionValue)` where `optionValue` is found via `page.evaluate()` with object argument `{ selector, code }`. Wait for select options to populate after page load.
+
+**Result**: 46/49 success (37 valid, 9 suspect, 3 null). The 3 nulls are legitimate:
+- AED→GHS (rate=3, sanity check: GHS rate too low)
+- PLN→GHS (rate=3.11, sanity check: GHS rate too low)
+- CAD→NGN (rate=1000, sanity check: rate equals sendAmount)
 
 ---
 

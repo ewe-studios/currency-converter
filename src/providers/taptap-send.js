@@ -17,13 +17,18 @@ module.exports = {
       await page.goto('https://www.taptapsend.com/', { waitUntil: 'domcontentloaded', timeout: TIMEOUTS.navigation });
       await dismissCookieBanner(page);
       await page.locator('#origin-amount').waitFor({ timeout: 5000 });
+      // Wait for select options to populate (they load async after domcontentloaded)
+      await page.waitForFunction(() => {
+        const sel = document.getElementById('origin-currency');
+        return sel && sel.options && sel.options.length > 5;
+      }, { timeout: 5000 }).catch(() => {});
       currentPage = page;
       currentOriginCurrency = null;
     }
 
     // Change origin currency if different
     if (sendCurrency !== currentOriginCurrency) {
-      const changed = await selectCurrencyByClick(page, '#origin-currency', sendCurrency);
+      const changed = await selectCurrencyBySelect(page, '#origin-currency', sendCurrency);
       if (!changed) {
         await page.reload({ waitUntil: 'domcontentloaded' }).catch(() => {});
         currentOriginCurrency = null;
@@ -33,7 +38,7 @@ module.exports = {
     }
 
     // Always change destination currency
-    await selectCurrencyByClick(page, '#destination-currency', receiveCurrency);
+    await selectCurrencyBySelect(page, '#destination-currency', receiveCurrency);
 
     // Fill send amount via native input setter
     await page.evaluate((val) => {
@@ -51,16 +56,6 @@ module.exports = {
       const dest = document.getElementById('destination-amount');
       return dest && dest.value && parseFloat(dest.value.replace(/,/g, '')) > 0;
     }, { timeout: 5000 }).catch(() => {});
-
-    // Verify the displayed currency actually matches what we selected
-    const displayed = await page.evaluate(() => {
-      const originEl = document.getElementById('origin-currency');
-      const destEl = document.getElementById('destination-amount');
-      return {
-        originText: originEl?.textContent?.trim() || '',
-        destValue: destEl?.value || '',
-      };
-    });
 
     // Read live values via JS
     const amounts = await page.evaluate(() => {
@@ -109,29 +104,26 @@ async function dismissCookieBanner(page) {
   } catch {}
 }
 
-async function selectCurrencyByClick(page, selectId, currencyCode) {
+async function selectCurrencyBySelect(page, selectId, currencyCode) {
   try {
-    // Open the dropdown by clicking the select
-    const selectEl = page.locator(selectId).first();
-    await selectEl.click();
-    await page.waitForTimeout(500);
-
-    // Find and click the option by text — exact match approach instead of selectOption
-    const clicked = await page.evaluate((code) => {
-      const options = Array.from(document.querySelectorAll('option'));
+    const optionValue = await page.evaluate(({ selector, code }) => {
+      const options = Array.from(document.querySelectorAll(selector + ' option'));
       for (const opt of options) {
-        if (opt.text.includes(code) || opt.textContent.includes(code)) {
-          opt.click();
-          return true;
+        if (opt.value.includes(code)) {
+          return opt.value;
         }
       }
-      return false;
-    }, currencyCode);
+      return null;
+    }, { selector: selectId, code: currencyCode });
 
-    if (clicked) {
-      await page.waitForTimeout(500);
-      return true;
+    if (!optionValue) {
+      return false;
     }
-  } catch {}
-  return false;
+
+    await page.selectOption(selectId, optionValue);
+    await page.waitForTimeout(800);
+    return true;
+  } catch {
+    return false;
+  }
 }
