@@ -1,115 +1,43 @@
 {
-  "generatedAt": "2026-05-17T09:05:04.156Z",
+  "generatedAt": "2026-05-17T10:19:26.261Z",
   "totalRates": 49,
-  "validRates": 37,
-  "suspectRates": 11,
+  "validRates": 11,
+  "suspectRates": 3,
   "invalidRates": 0,
-  "nullRates": 1,
+  "nullRates": 35,
   "byProvider": {
-    "Taptap Send": {
-      "valid": 37,
-      "suspect": 11,
+    "Remitly": {
+      "valid": 11,
+      "suspect": 3,
       "invalid": 0,
-      "null": 1
+      "null": 35
     }
   },
   "anomalies": [
     {
-      "provider": "Taptap Send",
+      "provider": "Remitly",
       "pair": "AED/GHS",
-      "extractedRate": 3,
+      "extractedRate": 3.1155,
       "expectedMid": 4.1,
-      "deviation": -26.8,
+      "deviation": -24,
       "status": "suspect",
       "reason": "outside 15% bounds but within 30%"
     },
     {
-      "provider": "Taptap Send",
-      "pair": "AUD/INR",
-      "extractedRate": 69,
-      "expectedMid": 54.5,
-      "deviation": 26.6,
-      "status": "suspect",
-      "reason": "outside 15% bounds but within 30%"
-    },
-    {
-      "provider": "Taptap Send",
-      "pair": "AUD/PHP",
-      "extractedRate": 43.7,
-      "expectedMid": 36.8,
-      "deviation": 18.8,
-      "status": "suspect",
-      "reason": "outside 15% bounds but within 30%"
-    },
-    {
-      "provider": "Taptap Send",
-      "pair": "CAD/GHS",
-      "extractedRate": 8.28,
-      "expectedMid": 11,
-      "deviation": -24.7,
-      "status": "suspect",
-      "reason": "outside 15% bounds but within 30%"
-    },
-    {
-      "provider": "Taptap Send",
-      "pair": "EUR/GHS",
-      "extractedRate": 13.28,
-      "expectedMid": 17,
-      "deviation": -21.9,
-      "status": "suspect",
-      "reason": "outside 15% bounds but within 30%"
-    },
-    {
-      "provider": "Taptap Send",
-      "pair": "EUR/INR",
-      "extractedRate": 111.61,
-      "expectedMid": 96.5,
-      "deviation": 15.7,
-      "status": "suspect",
-      "reason": "outside 15% bounds but within 30%"
-    },
-    {
-      "provider": "Taptap Send",
-      "pair": "GBP/GHS",
-      "extractedRate": 15.34,
-      "expectedMid": 20,
-      "deviation": -23.3,
-      "status": "suspect",
-      "reason": "outside 15% bounds but within 30%"
-    },
-    {
-      "provider": "Taptap Send",
+      "provider": "Remitly",
       "pair": "PLN/GHS",
-      "extractedRate": 3.11,
+      "extractedRate": 3.0542,
       "expectedMid": 3.8,
-      "deviation": -18.2,
+      "deviation": -19.6,
       "status": "suspect",
       "reason": "outside 15% bounds but within 30%"
     },
     {
-      "provider": "Taptap Send",
+      "provider": "Remitly",
       "pair": "PLN/INR",
-      "extractedRate": 26.05,
+      "extractedRate": 26.13,
       "expectedMid": 21.5,
-      "deviation": 21.2,
-      "status": "suspect",
-      "reason": "outside 15% bounds but within 30%"
-    },
-    {
-      "provider": "Taptap Send",
-      "pair": "PLN/PHP",
-      "extractedRate": 16.91,
-      "expectedMid": 14.6,
-      "deviation": 15.8,
-      "status": "suspect",
-      "reason": "outside 15% bounds but within 30%"
-    },
-    {
-      "provider": "Taptap Send",
-      "pair": "USD/GHS",
-      "extractedRate": 11.32,
-      "expectedMid": 15,
-      "deviation": -24.5,
+      "deviation": 21.5,
       "status": "suspect",
       "reason": "outside 15% bounds but within 30%"
     }

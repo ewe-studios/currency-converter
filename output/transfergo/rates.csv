@@ -1,6 +1,0 @@
-provider,sendCurrency,receiveCurrency,sendAmount,exchangeRate,receiveAmount,fee,timestamp,success,error,validationStatus,deviationFromMid,boundsMin,boundsMax
-TransferGo,EUR,INR,1000,111.65059,111650.59,,2026-05-16T11:35:41.790Z,true,,suspect,15.7,82.02,110.97
-TransferGo,EUR,NGN,1000,1596.37318,1596373.18,,2026-05-16T11:35:52.987Z,true,,valid,-9.3,1320,2200
-TransferGo,GBP,INR,1000,127.9656,127965.59999999999,,2026-05-16T11:35:58.539Z,true,,valid,12.7,96.47,130.52
-TransferGo,GBP,NGN,1000,1829.6438600000001,1829643.86,,2026-05-16T11:36:04.117Z,true,,valid,-10.7,1537.5,2562.5
-TransferGo,PLN,NGN,1000,376.1941,376194.1,,2026-05-16T11:36:09.670Z,true,,valid,-4.3,294.75,491.25
