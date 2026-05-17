@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-17T10:19:26.260Z",
+  "timestamp": "2026-05-17T14:53:50.660Z",
   "count": 49,
   "results": [
     {
@@ -10,7 +10,7 @@
       "exchangeRate": 3.1155,
       "receiveAmount": 3115.5,
       "fee": null,
-      "timestamp": "2026-05-17T10:15:44.411Z",
+      "timestamp": "2026-05-17T14:50:18.976Z",
       "success": true,
       "error": null,
       "validation": {
@@ -29,15 +29,15 @@
       "sendCurrency": "AED",
       "receiveCurrency": "INR",
       "sendAmount": 1000,
-      "exchangeRate": 26.18,
-      "receiveAmount": 26180,
+      "exchangeRate": 26.24,
+      "receiveAmount": 26240,
       "fee": null,
-      "timestamp": "2026-05-17T10:15:51.361Z",
+      "timestamp": "2026-05-17T14:50:25.376Z",
       "success": true,
       "error": null,
       "validation": {
         "status": "valid",
-        "deviationFromMid": 12.4,
+        "deviationFromMid": 12.6,
         "boundsMin": 19.8,
         "boundsMax": 26.79,
         "expectedMid": 23.3
@@ -48,156 +48,259 @@
       "sendCurrency": "AED",
       "receiveCurrency": "KES",
       "sendAmount": 1000,
-      "exchangeRate": null,
-      "receiveAmount": null,
+      "exchangeRate": 35.05,
+      "receiveAmount": 35050,
       "fee": null,
-      "timestamp": "2026-05-17T10:15:54.930Z",
-      "success": false,
-      "error": "unable to acquire"
+      "timestamp": "2026-05-17T14:50:28.986Z",
+      "success": true,
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": -1,
+        "boundsMin": 30.09,
+        "boundsMax": 40.71,
+        "expectedMid": 35.4
+      }
     },
     {
       "provider": "Remitly",
       "sendCurrency": "AED",
       "receiveCurrency": "MXN",
       "sendAmount": 1000,
-      "exchangeRate": null,
-      "receiveAmount": null,
+      "exchangeRate": 4.7095,
+      "receiveAmount": 4709.5,
       "fee": null,
-      "timestamp": "2026-05-17T10:15:59.635Z",
-      "success": false,
-      "error": "unable to acquire"
+      "timestamp": "2026-05-17T14:50:32.663Z",
+      "success": true,
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": -11.1,
+        "boundsMin": 4.5,
+        "boundsMax": 6.09,
+        "expectedMid": 5.3
+      }
     },
     {
       "provider": "Remitly",
       "sendCurrency": "AED",
       "receiveCurrency": "NGN",
       "sendAmount": 1000,
-      "exchangeRate": null,
-      "receiveAmount": null,
+      "exchangeRate": 372.96,
+      "receiveAmount": 372960,
       "fee": null,
-      "timestamp": "2026-05-17T10:16:04.261Z",
-      "success": false,
-      "error": "unable to acquire"
+      "timestamp": "2026-05-17T14:50:36.413Z",
+      "success": true,
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": -11.6,
+        "boundsMin": 316.5,
+        "boundsMax": 527.5,
+        "expectedMid": 422
+      }
     },
     {
       "provider": "Remitly",
       "sendCurrency": "AED",
       "receiveCurrency": "PHP",
       "sendAmount": 1000,
-      "exchangeRate": null,
-      "receiveAmount": null,
+      "exchangeRate": 16.84,
+      "receiveAmount": 16840,
       "fee": null,
-      "timestamp": "2026-05-17T10:16:08.831Z",
-      "success": false,
-      "error": "unable to acquire"
+      "timestamp": "2026-05-17T14:50:40.211Z",
+      "success": true,
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": 6.6,
+        "boundsMin": 13.43,
+        "boundsMax": 18.17,
+        "expectedMid": 15.8
+      }
     },
     {
       "provider": "Remitly",
       "sendCurrency": "AED",
       "receiveCurrency": "PKR",
       "sendAmount": 1000,
-      "exchangeRate": null,
-      "receiveAmount": null,
+      "exchangeRate": 76.66,
+      "receiveAmount": 76660,
       "fee": null,
-      "timestamp": "2026-05-17T10:16:13.394Z",
-      "success": false,
-      "error": "unable to acquire"
+      "timestamp": "2026-05-17T14:50:43.806Z",
+      "success": true,
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": -0.4,
+        "boundsMin": 65.45,
+        "boundsMax": 88.55,
+        "expectedMid": 77
+      }
     },
     {
       "provider": "Remitly",
       "sendCurrency": "AUD",
       "receiveCurrency": "GHS",
       "sendAmount": 1000,
-      "exchangeRate": null,
-      "receiveAmount": null,
+      "exchangeRate": 8.1163,
+      "receiveAmount": 8116.300000000001,
       "fee": null,
-      "timestamp": "2026-05-17T10:16:18.058Z",
-      "success": false,
-      "error": "unable to acquire"
+      "timestamp": "2026-05-17T14:50:47.596Z",
+      "success": true,
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": -14.6,
+        "boundsMin": 8.07,
+        "boundsMax": 10.92,
+        "expectedMid": 9.5
+      }
     },
     {
       "provider": "Remitly",
       "sendCurrency": "AUD",
       "receiveCurrency": "INR",
       "sendAmount": 1000,
-      "exchangeRate": null,
-      "receiveAmount": null,
+      "exchangeRate": 69.28,
+      "receiveAmount": 69280,
       "fee": null,
-      "timestamp": "2026-05-17T10:16:22.709Z",
-      "success": false,
-      "error": "unable to acquire"
+      "timestamp": "2026-05-17T14:50:51.407Z",
+      "success": true,
+      "error": null,
+      "validation": {
+        "status": "suspect",
+        "deviationFromMid": 27.1,
+        "boundsMin": 46.32,
+        "boundsMax": 62.67,
+        "expectedMid": 54.5,
+        "reason": "outside 15% bounds but within 30%",
+        "retryAttempted": true,
+        "retrySucceeded": false
+      }
     },
     {
       "provider": "Remitly",
       "sendCurrency": "AUD",
       "receiveCurrency": "KES",
       "sendAmount": 1000,
-      "exchangeRate": null,
-      "receiveAmount": null,
+      "exchangeRate": 94.89,
+      "receiveAmount": 94890,
       "fee": null,
-      "timestamp": "2026-05-17T10:16:27.320Z",
-      "success": false,
-      "error": "unable to acquire"
+      "timestamp": "2026-05-17T14:50:57.717Z",
+      "success": true,
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": 14.3,
+        "boundsMin": 70.55,
+        "boundsMax": 95.45,
+        "expectedMid": 83
+      }
     },
     {
       "provider": "Remitly",
       "sendCurrency": "AUD",
       "receiveCurrency": "MXN",
       "sendAmount": 1000,
-      "exchangeRate": null,
-      "receiveAmount": null,
+      "exchangeRate": 12.3,
+      "receiveAmount": 12300,
       "fee": null,
-      "timestamp": "2026-05-17T10:16:31.973Z",
-      "success": false,
-      "error": "unable to acquire"
+      "timestamp": "2026-05-17T14:51:01.265Z",
+      "success": true,
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": 0,
+        "boundsMin": 10.46,
+        "boundsMax": 14.14,
+        "expectedMid": 12.3
+      }
     },
     {
       "provider": "Remitly",
       "sendCurrency": "AUD",
       "receiveCurrency": "NGN",
       "sendAmount": 1000,
-      "exchangeRate": null,
-      "receiveAmount": null,
+      "exchangeRate": 1010.97,
+      "receiveAmount": 1010970,
       "fee": null,
-      "timestamp": "2026-05-17T10:16:36.600Z",
-      "success": false,
-      "error": "unable to acquire"
+      "timestamp": "2026-05-17T14:51:05.104Z",
+      "success": true,
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": 3.2,
+        "boundsMin": 735,
+        "boundsMax": 1225,
+        "expectedMid": 980
+      }
     },
     {
       "provider": "Remitly",
       "sendCurrency": "AUD",
       "receiveCurrency": "PHP",
       "sendAmount": 1000,
-      "exchangeRate": null,
-      "receiveAmount": null,
+      "exchangeRate": 45.47,
+      "receiveAmount": 45470,
       "fee": null,
-      "timestamp": "2026-05-17T10:16:41.217Z",
-      "success": false,
-      "error": "unable to acquire"
+      "timestamp": "2026-05-17T14:51:08.798Z",
+      "success": true,
+      "error": null,
+      "validation": {
+        "status": "suspect",
+        "deviationFromMid": 23.6,
+        "boundsMin": 31.28,
+        "boundsMax": 42.32,
+        "expectedMid": 36.8,
+        "reason": "outside 15% bounds but within 30%",
+        "retryAttempted": true,
+        "retrySucceeded": false
+      }
     },
     {
       "provider": "Remitly",
       "sendCurrency": "AUD",
       "receiveCurrency": "PKR",
       "sendAmount": 1000,
-      "exchangeRate": null,
-      "receiveAmount": null,
+      "exchangeRate": 207.36,
+      "receiveAmount": 207360,
       "fee": null,
-      "timestamp": "2026-05-17T10:16:45.860Z",
-      "success": false,
-      "error": "unable to acquire"
+      "timestamp": "2026-05-17T14:51:15.275Z",
+      "success": true,
+      "error": null,
+      "validation": {
+        "status": "suspect",
+        "deviationFromMid": 15.2,
+        "boundsMin": 153,
+        "boundsMax": 207,
+        "expectedMid": 180,
+        "reason": "outside 15% bounds but within 30%",
+        "retryAttempted": true,
+        "retrySucceeded": false
+      }
     },
     {
       "provider": "Remitly",
       "sendCurrency": "CAD",
       "receiveCurrency": "GHS",
       "sendAmount": 1000,
-      "exchangeRate": null,
-      "receiveAmount": null,
+      "exchangeRate": 8.1938,
+      "receiveAmount": 8193.8,
       "fee": null,
-      "timestamp": "2026-05-17T10:16:50.487Z",
-      "success": false,
-      "error": "unable to acquire"
+      "timestamp": "2026-05-17T14:51:21.434Z",
+      "success": true,
+      "error": null,
+      "validation": {
+        "status": "suspect",
+        "deviationFromMid": -25.5,
+        "boundsMin": 9.35,
+        "boundsMax": 12.65,
+        "expectedMid": 11,
+        "reason": "outside 15% bounds but within 30%",
+        "retryAttempted": true,
+        "retrySucceeded": false
+      }
     },
     {
       "provider": "Remitly",
@@ -207,7 +310,7 @@
       "exchangeRate": 70.79,
       "receiveAmount": 70790,
       "fee": null,
-      "timestamp": "2026-05-17T10:16:55.055Z",
+      "timestamp": "2026-05-17T14:51:27.725Z",
       "success": true,
       "error": null,
       "validation": {
@@ -226,7 +329,7 @@
       "exchangeRate": 96.71,
       "receiveAmount": 96710,
       "fee": null,
-      "timestamp": "2026-05-17T10:16:59.096Z",
+      "timestamp": "2026-05-17T14:51:31.409Z",
       "success": true,
       "error": null,
       "validation": {
@@ -242,15 +345,15 @@
       "sendCurrency": "CAD",
       "receiveCurrency": "MXN",
       "sendAmount": 1000,
-      "exchangeRate": 13.1,
-      "receiveAmount": 13100,
+      "exchangeRate": 13.09,
+      "receiveAmount": 13090,
       "fee": null,
-      "timestamp": "2026-05-17T10:17:02.811Z",
+      "timestamp": "2026-05-17T14:51:35.068Z",
       "success": true,
       "error": null,
       "validation": {
         "status": "valid",
-        "deviationFromMid": -7.7,
+        "deviationFromMid": -7.8,
         "boundsMin": 12.07,
         "boundsMax": 16.33,
         "expectedMid": 14.2
@@ -261,10 +364,10 @@
       "sendCurrency": "CAD",
       "receiveCurrency": "NGN",
       "sendAmount": 1000,
-      "exchangeRate": 1021.6,
-      "receiveAmount": 1021600,
+      "exchangeRate": 1021.53,
+      "receiveAmount": 1021530,
       "fee": null,
-      "timestamp": "2026-05-17T10:17:06.730Z",
+      "timestamp": "2026-05-17T14:51:38.864Z",
       "success": true,
       "error": null,
       "validation": {
@@ -280,156 +383,256 @@
       "sendCurrency": "CAD",
       "receiveCurrency": "PHP",
       "sendAmount": 1000,
-      "exchangeRate": null,
-      "receiveAmount": null,
+      "exchangeRate": 45.46,
+      "receiveAmount": 45460,
       "fee": null,
-      "timestamp": "2026-05-17T10:17:10.422Z",
-      "success": false,
-      "error": "unable to acquire"
+      "timestamp": "2026-05-17T14:51:42.669Z",
+      "success": true,
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": 7,
+        "boundsMin": 36.13,
+        "boundsMax": 48.87,
+        "expectedMid": 42.5
+      }
     },
     {
       "provider": "Remitly",
       "sendCurrency": "CAD",
       "receiveCurrency": "PKR",
       "sendAmount": 1000,
-      "exchangeRate": null,
-      "receiveAmount": null,
+      "exchangeRate": 206.9,
+      "receiveAmount": 206900,
       "fee": null,
-      "timestamp": "2026-05-17T10:17:15.018Z",
-      "success": false,
-      "error": "unable to acquire"
+      "timestamp": "2026-05-17T14:51:46.497Z",
+      "success": true,
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": 0,
+        "boundsMin": 175.95,
+        "boundsMax": 238.05,
+        "expectedMid": 207
+      }
     },
     {
       "provider": "Remitly",
       "sendCurrency": "EUR",
       "receiveCurrency": "GHS",
       "sendAmount": 1000,
-      "exchangeRate": null,
-      "receiveAmount": null,
+      "exchangeRate": 13.2185,
+      "receiveAmount": 13218.5,
       "fee": null,
-      "timestamp": "2026-05-17T10:17:19.666Z",
-      "success": false,
-      "error": "unable to acquire"
+      "timestamp": "2026-05-17T14:51:50.216Z",
+      "success": true,
+      "error": null,
+      "validation": {
+        "status": "suspect",
+        "deviationFromMid": -22.2,
+        "boundsMin": 14.45,
+        "boundsMax": 19.55,
+        "expectedMid": 17,
+        "reason": "outside 15% bounds but within 30%",
+        "retryAttempted": true,
+        "retrySucceeded": false
+      }
     },
     {
       "provider": "Remitly",
       "sendCurrency": "EUR",
       "receiveCurrency": "INR",
       "sendAmount": 1000,
-      "exchangeRate": null,
-      "receiveAmount": null,
+      "exchangeRate": 112.43,
+      "receiveAmount": 112430,
       "fee": null,
-      "timestamp": "2026-05-17T10:17:24.217Z",
-      "success": false,
-      "error": "unable to acquire"
+      "timestamp": "2026-05-17T14:51:56.482Z",
+      "success": true,
+      "error": null,
+      "validation": {
+        "status": "suspect",
+        "deviationFromMid": 16.5,
+        "boundsMin": 82.02,
+        "boundsMax": 110.97,
+        "expectedMid": 96.5,
+        "reason": "outside 15% bounds but within 30%",
+        "retryAttempted": true,
+        "retrySucceeded": false
+      }
     },
     {
       "provider": "Remitly",
       "sendCurrency": "EUR",
       "receiveCurrency": "KES",
       "sendAmount": 1000,
-      "exchangeRate": null,
-      "receiveAmount": null,
+      "exchangeRate": 152.14,
+      "receiveAmount": 152140,
       "fee": null,
-      "timestamp": "2026-05-17T10:17:28.781Z",
-      "success": false,
-      "error": "unable to acquire"
+      "timestamp": "2026-05-17T14:52:02.875Z",
+      "success": true,
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": 3.5,
+        "boundsMin": 124.95,
+        "boundsMax": 169.05,
+        "expectedMid": 147
+      }
     },
     {
       "provider": "Remitly",
       "sendCurrency": "EUR",
       "receiveCurrency": "MXN",
       "sendAmount": 1000,
-      "exchangeRate": null,
-      "receiveAmount": null,
+      "exchangeRate": 20.22,
+      "receiveAmount": 20220,
       "fee": null,
-      "timestamp": "2026-05-17T10:17:33.459Z",
-      "success": false,
-      "error": "unable to acquire"
+      "timestamp": "2026-05-17T14:52:06.611Z",
+      "success": true,
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": -8.1,
+        "boundsMin": 18.7,
+        "boundsMax": 25.3,
+        "expectedMid": 22
+      }
     },
     {
       "provider": "Remitly",
       "sendCurrency": "EUR",
       "receiveCurrency": "NGN",
       "sendAmount": 1000,
-      "exchangeRate": null,
-      "receiveAmount": null,
+      "exchangeRate": 1612.04,
+      "receiveAmount": 1612040,
       "fee": null,
-      "timestamp": "2026-05-17T10:17:38.021Z",
-      "success": false,
-      "error": "unable to acquire"
+      "timestamp": "2026-05-17T14:52:10.151Z",
+      "success": true,
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": -8.4,
+        "boundsMin": 1320,
+        "boundsMax": 2200,
+        "expectedMid": 1760
+      }
     },
     {
       "provider": "Remitly",
       "sendCurrency": "EUR",
       "receiveCurrency": "PHP",
       "sendAmount": 1000,
-      "exchangeRate": null,
-      "receiveAmount": null,
+      "exchangeRate": 71.75,
+      "receiveAmount": 71750,
       "fee": null,
-      "timestamp": "2026-05-17T10:17:42.665Z",
-      "success": false,
-      "error": "unable to acquire"
+      "timestamp": "2026-05-17T14:52:13.847Z",
+      "success": true,
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": 9.5,
+        "boundsMin": 55.67,
+        "boundsMax": 75.32,
+        "expectedMid": 65.5
+      }
     },
     {
       "provider": "Remitly",
       "sendCurrency": "EUR",
       "receiveCurrency": "PKR",
       "sendAmount": 1000,
-      "exchangeRate": null,
-      "receiveAmount": null,
+      "exchangeRate": 329.22,
+      "receiveAmount": 329220,
       "fee": null,
-      "timestamp": "2026-05-17T10:17:47.362Z",
-      "success": false,
-      "error": "unable to acquire"
+      "timestamp": "2026-05-17T14:52:17.763Z",
+      "success": true,
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": 2.9,
+        "boundsMin": 272,
+        "boundsMax": 368,
+        "expectedMid": 320
+      }
     },
     {
       "provider": "Remitly",
       "sendCurrency": "GBP",
       "receiveCurrency": "GHS",
       "sendAmount": 1000,
-      "exchangeRate": null,
-      "receiveAmount": null,
+      "exchangeRate": 15.2559,
+      "receiveAmount": 15255.9,
       "fee": null,
-      "timestamp": "2026-05-17T10:17:52.059Z",
-      "success": false,
-      "error": "unable to acquire"
+      "timestamp": "2026-05-17T14:52:21.394Z",
+      "success": true,
+      "error": null,
+      "validation": {
+        "status": "suspect",
+        "deviationFromMid": -23.7,
+        "boundsMin": 17,
+        "boundsMax": 23,
+        "expectedMid": 20,
+        "reason": "outside 15% bounds but within 30%",
+        "retryAttempted": true,
+        "retrySucceeded": false
+      }
     },
     {
       "provider": "Remitly",
       "sendCurrency": "GBP",
       "receiveCurrency": "INR",
       "sendAmount": 1000,
-      "exchangeRate": null,
-      "receiveAmount": null,
+      "exchangeRate": 129.1,
+      "receiveAmount": 129100,
       "fee": null,
-      "timestamp": "2026-05-17T10:17:56.618Z",
-      "success": false,
-      "error": "unable to acquire"
+      "timestamp": "2026-05-17T14:52:27.745Z",
+      "success": true,
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": 13.7,
+        "boundsMin": 96.47,
+        "boundsMax": 130.52,
+        "expectedMid": 113.5
+      }
     },
     {
       "provider": "Remitly",
       "sendCurrency": "GBP",
       "receiveCurrency": "KES",
       "sendAmount": 1000,
-      "exchangeRate": null,
-      "receiveAmount": null,
+      "exchangeRate": 170.33,
+      "receiveAmount": 170330,
       "fee": null,
-      "timestamp": "2026-05-17T10:18:01.287Z",
-      "success": false,
-      "error": "unable to acquire"
+      "timestamp": "2026-05-17T14:52:31.281Z",
+      "success": true,
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": -1,
+        "boundsMin": 146.2,
+        "boundsMax": 197.8,
+        "expectedMid": 172
+      }
     },
     {
       "provider": "Remitly",
       "sendCurrency": "GBP",
       "receiveCurrency": "MXN",
       "sendAmount": 1000,
-      "exchangeRate": null,
-      "receiveAmount": null,
+      "exchangeRate": 22.82,
+      "receiveAmount": 22820,
       "fee": null,
-      "timestamp": "2026-05-17T10:18:06.007Z",
-      "success": false,
-      "error": "unable to acquire"
+      "timestamp": "2026-05-17T14:52:34.819Z",
+      "success": true,
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": -11.6,
+        "boundsMin": 21.93,
+        "boundsMax": 29.67,
+        "expectedMid": 25.8
+      }
     },
     {
       "provider": "Remitly",
@@ -439,7 +642,7 @@
       "exchangeRate": 1862.05,
       "receiveAmount": 1862050,
       "fee": null,
-      "timestamp": "2026-05-17T10:18:10.640Z",
+      "timestamp": "2026-05-17T14:52:38.557Z",
       "success": true,
       "error": null,
       "validation": {
@@ -458,7 +661,7 @@
       "exchangeRate": 83.48,
       "receiveAmount": 83480,
       "fee": null,
-      "timestamp": "2026-05-17T10:18:15.632Z",
+      "timestamp": "2026-05-17T14:52:42.306Z",
       "success": true,
       "error": null,
       "validation": {
@@ -477,7 +680,7 @@
       "exchangeRate": 376.17,
       "receiveAmount": 376170,
       "fee": null,
-      "timestamp": "2026-05-17T10:18:19.539Z",
+      "timestamp": "2026-05-17T14:52:46.313Z",
       "success": true,
       "error": null,
       "validation": {
@@ -496,7 +699,7 @@
       "exchangeRate": 3.0542,
       "receiveAmount": 3054.2,
       "fee": null,
-      "timestamp": "2026-05-17T10:18:23.135Z",
+      "timestamp": "2026-05-17T14:52:50.002Z",
       "success": true,
       "error": null,
       "validation": {
@@ -518,7 +721,7 @@
       "exchangeRate": 26.13,
       "receiveAmount": 26130,
       "fee": null,
-      "timestamp": "2026-05-17T10:18:29.499Z",
+      "timestamp": "2026-05-17T14:52:56.142Z",
       "success": true,
       "error": null,
       "validation": {
@@ -540,7 +743,7 @@
       "exchangeRate": 35.31,
       "receiveAmount": 35310,
       "fee": null,
-      "timestamp": "2026-05-17T10:18:35.721Z",
+      "timestamp": "2026-05-17T14:53:02.612Z",
       "success": true,
       "error": null,
       "validation": {
@@ -556,15 +759,15 @@
       "sendCurrency": "PLN",
       "receiveCurrency": "MXN",
       "sendAmount": 1000,
-      "exchangeRate": 4.733,
-      "receiveAmount": 4733,
+      "exchangeRate": 4.7305,
+      "receiveAmount": 4730.5,
       "fee": null,
-      "timestamp": "2026-05-17T10:18:39.543Z",
+      "timestamp": "2026-05-17T14:53:06.361Z",
       "success": true,
       "error": null,
       "validation": {
         "status": "valid",
-        "deviationFromMid": -3.4,
+        "deviationFromMid": -3.5,
         "boundsMin": 4.17,
         "boundsMax": 5.63,
         "expectedMid": 4.9
@@ -575,10 +778,10 @@
       "sendCurrency": "PLN",
       "receiveCurrency": "NGN",
       "sendAmount": 1000,
-      "exchangeRate": 376.9,
-      "receiveAmount": 376900,
+      "exchangeRate": 376.88,
+      "receiveAmount": 376880,
       "fee": null,
-      "timestamp": "2026-05-17T10:18:43.182Z",
+      "timestamp": "2026-05-17T14:53:10.358Z",
       "success": true,
       "error": null,
       "validation": {
@@ -594,108 +797,177 @@
       "sendCurrency": "PLN",
       "receiveCurrency": "PHP",
       "sendAmount": 1000,
-      "exchangeRate": null,
-      "receiveAmount": null,
+      "exchangeRate": 16.87,
+      "receiveAmount": 16870,
       "fee": null,
-      "timestamp": "2026-05-17T10:18:46.706Z",
-      "success": false,
-      "error": "unable to acquire"
+      "timestamp": "2026-05-17T14:53:13.997Z",
+      "success": true,
+      "error": null,
+      "validation": {
+        "status": "suspect",
+        "deviationFromMid": 15.5,
+        "boundsMin": 12.41,
+        "boundsMax": 16.79,
+        "expectedMid": 14.6,
+        "reason": "outside 15% bounds but within 30%",
+        "retryAttempted": true,
+        "retrySucceeded": false
+      }
     },
     {
       "provider": "Remitly",
       "sendCurrency": "PLN",
       "receiveCurrency": "PKR",
       "sendAmount": 1000,
-      "exchangeRate": null,
-      "receiveAmount": null,
+      "exchangeRate": 76.12,
+      "receiveAmount": 76120,
       "fee": null,
-      "timestamp": "2026-05-17T10:18:51.353Z",
-      "success": false,
-      "error": "unable to acquire"
+      "timestamp": "2026-05-17T14:53:20.472Z",
+      "success": true,
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": 7.2,
+        "boundsMin": 60.35,
+        "boundsMax": 81.65,
+        "expectedMid": 71
+      }
     },
     {
       "provider": "Remitly",
       "sendCurrency": "USD",
       "receiveCurrency": "GHS",
       "sendAmount": 1000,
-      "exchangeRate": null,
-      "receiveAmount": null,
+      "exchangeRate": 11.3529,
+      "receiveAmount": 11352.9,
       "fee": null,
-      "timestamp": "2026-05-17T10:18:55.984Z",
-      "success": false,
-      "error": "unable to acquire"
+      "timestamp": "2026-05-17T14:53:24.174Z",
+      "success": true,
+      "error": null,
+      "validation": {
+        "status": "suspect",
+        "deviationFromMid": -24.3,
+        "boundsMin": 12.75,
+        "boundsMax": 17.25,
+        "expectedMid": 15,
+        "reason": "outside 15% bounds but within 30%",
+        "retryAttempted": true,
+        "retrySucceeded": false
+      }
     },
     {
       "provider": "Remitly",
       "sendCurrency": "USD",
       "receiveCurrency": "INR",
       "sendAmount": 1000,
-      "exchangeRate": null,
-      "receiveAmount": null,
+      "exchangeRate": 96.25,
+      "receiveAmount": 96250,
       "fee": null,
-      "timestamp": "2026-05-17T10:19:00.562Z",
-      "success": false,
-      "error": "unable to acquire"
+      "timestamp": "2026-05-17T14:53:30.605Z",
+      "success": true,
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": 12.6,
+        "boundsMin": 72.67,
+        "boundsMax": 98.32,
+        "expectedMid": 85.5
+      }
     },
     {
       "provider": "Remitly",
       "sendCurrency": "USD",
       "receiveCurrency": "KES",
       "sendAmount": 1000,
-      "exchangeRate": null,
-      "receiveAmount": null,
+      "exchangeRate": 131.5,
+      "receiveAmount": 131500,
       "fee": null,
-      "timestamp": "2026-05-17T10:19:05.147Z",
-      "success": false,
-      "error": "unable to acquire"
+      "timestamp": "2026-05-17T14:53:34.381Z",
+      "success": true,
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": 1.2,
+        "boundsMin": 110.5,
+        "boundsMax": 149.5,
+        "expectedMid": 130
+      }
     },
     {
       "provider": "Remitly",
       "sendCurrency": "USD",
       "receiveCurrency": "MXN",
       "sendAmount": 1000,
-      "exchangeRate": null,
-      "receiveAmount": null,
+      "exchangeRate": 17.66,
+      "receiveAmount": 17660,
       "fee": null,
-      "timestamp": "2026-05-17T10:19:09.718Z",
-      "success": false,
-      "error": "unable to acquire"
+      "timestamp": "2026-05-17T14:53:37.964Z",
+      "success": true,
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": -9.4,
+        "boundsMin": 16.57,
+        "boundsMax": 22.42,
+        "expectedMid": 19.5
+      }
     },
     {
       "provider": "Remitly",
       "sendCurrency": "USD",
       "receiveCurrency": "NGN",
       "sendAmount": 1000,
-      "exchangeRate": null,
-      "receiveAmount": null,
+      "exchangeRate": 1398.94,
+      "receiveAmount": 1398940,
       "fee": null,
-      "timestamp": "2026-05-17T10:19:14.369Z",
-      "success": false,
-      "error": "unable to acquire"
+      "timestamp": "2026-05-17T14:53:41.638Z",
+      "success": true,
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": -9.7,
+        "boundsMin": 1162.5,
+        "boundsMax": 1937.5,
+        "expectedMid": 1550
+      }
     },
     {
       "provider": "Remitly",
       "sendCurrency": "USD",
       "receiveCurrency": "PHP",
       "sendAmount": 1000,
-      "exchangeRate": null,
-      "receiveAmount": null,
+      "exchangeRate": 62.9,
+      "receiveAmount": 62900,
       "fee": null,
-      "timestamp": "2026-05-17T10:19:19.014Z",
-      "success": false,
-      "error": "unable to acquire"
+      "timestamp": "2026-05-17T14:53:45.392Z",
+      "success": true,
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": 8.4,
+        "boundsMin": 49.3,
+        "boundsMax": 66.7,
+        "expectedMid": 58
+      }
     },
     {
       "provider": "Remitly",
       "sendCurrency": "USD",
       "receiveCurrency": "PKR",
       "sendAmount": 1000,
-      "exchangeRate": null,
-      "receiveAmount": null,
+      "exchangeRate": 280.85,
+      "receiveAmount": 280850,
       "fee": null,
-      "timestamp": "2026-05-17T10:19:23.650Z",
-      "success": false,
-      "error": "unable to acquire"
+      "timestamp": "2026-05-17T14:53:49.082Z",
+      "success": true,
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": -0.8,
+        "boundsMin": 240.55,
+        "boundsMax": 325.45,
+        "expectedMid": 283
+      }
     }
   ]
 }

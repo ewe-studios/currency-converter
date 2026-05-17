@@ -1,16 +1,16 @@
 {
-  "generatedAt": "2026-05-17T10:19:26.261Z",
+  "generatedAt": "2026-05-17T14:53:50.661Z",
   "totalRates": 49,
-  "validRates": 11,
-  "suspectRates": 3,
+  "validRates": 37,
+  "suspectRates": 12,
   "invalidRates": 0,
-  "nullRates": 35,
+  "nullRates": 0,
   "byProvider": {
     "Remitly": {
-      "valid": 11,
-      "suspect": 3,
+      "valid": 37,
+      "suspect": 12,
       "invalid": 0,
-      "null": 35
+      "null": 0
     }
   },
   "anomalies": [
@@ -20,6 +20,69 @@
       "extractedRate": 3.1155,
       "expectedMid": 4.1,
       "deviation": -24,
+      "status": "suspect",
+      "reason": "outside 15% bounds but within 30%"
+    },
+    {
+      "provider": "Remitly",
+      "pair": "AUD/INR",
+      "extractedRate": 69.28,
+      "expectedMid": 54.5,
+      "deviation": 27.1,
+      "status": "suspect",
+      "reason": "outside 15% bounds but within 30%"
+    },
+    {
+      "provider": "Remitly",
+      "pair": "AUD/PHP",
+      "extractedRate": 45.47,
+      "expectedMid": 36.8,
+      "deviation": 23.6,
+      "status": "suspect",
+      "reason": "outside 15% bounds but within 30%"
+    },
+    {
+      "provider": "Remitly",
+      "pair": "AUD/PKR",
+      "extractedRate": 207.36,
+      "expectedMid": 180,
+      "deviation": 15.2,
+      "status": "suspect",
+      "reason": "outside 15% bounds but within 30%"
+    },
+    {
+      "provider": "Remitly",
+      "pair": "CAD/GHS",
+      "extractedRate": 8.1938,
+      "expectedMid": 11,
+      "deviation": -25.5,
+      "status": "suspect",
+      "reason": "outside 15% bounds but within 30%"
+    },
+    {
+      "provider": "Remitly",
+      "pair": "EUR/GHS",
+      "extractedRate": 13.2185,
+      "expectedMid": 17,
+      "deviation": -22.2,
+      "status": "suspect",
+      "reason": "outside 15% bounds but within 30%"
+    },
+    {
+      "provider": "Remitly",
+      "pair": "EUR/INR",
+      "extractedRate": 112.43,
+      "expectedMid": 96.5,
+      "deviation": 16.5,
+      "status": "suspect",
+      "reason": "outside 15% bounds but within 30%"
+    },
+    {
+      "provider": "Remitly",
+      "pair": "GBP/GHS",
+      "extractedRate": 15.2559,
+      "expectedMid": 20,
+      "deviation": -23.7,
       "status": "suspect",
       "reason": "outside 15% bounds but within 30%"
     },
@@ -38,6 +101,24 @@
       "extractedRate": 26.13,
       "expectedMid": 21.5,
       "deviation": 21.5,
+      "status": "suspect",
+      "reason": "outside 15% bounds but within 30%"
+    },
+    {
+      "provider": "Remitly",
+      "pair": "PLN/PHP",
+      "extractedRate": 16.87,
+      "expectedMid": 14.6,
+      "deviation": 15.5,
+      "status": "suspect",
+      "reason": "outside 15% bounds but within 30%"
+    },
+    {
+      "provider": "Remitly",
+      "pair": "USD/GHS",
+      "extractedRate": 11.3529,
+      "expectedMid": 15,
+      "deviation": -24.3,
       "status": "suspect",
       "reason": "outside 15% bounds but within 30%"
     }
