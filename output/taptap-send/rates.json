@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-04-28T02:01:48.254Z",
+  "timestamp": "2026-05-17T08:18:24.036Z",
   "count": 49,
   "results": [
     {
@@ -7,156 +7,256 @@
       "sendCurrency": "AED",
       "receiveCurrency": "GHS",
       "sendAmount": 1000,
-      "exchangeRate": 0.0173,
-      "receiveAmount": 17.3,
+      "exchangeRate": null,
+      "receiveAmount": null,
       "fee": null,
-      "timestamp": "2026-04-28T00:50:58.147Z",
-      "success": true,
-      "error": null
+      "timestamp": "2026-05-17T08:15:30.313Z",
+      "success": false,
+      "error": "rate rejected: GHS rate too low",
+      "validation": {
+        "status": "invalid",
+        "deviationFromMid": -26.829268292682922,
+        "boundsMin": 3.4849999999999994,
+        "boundsMax": 4.714999999999999,
+        "expectedMid": 4.1,
+        "reason": "GHS rate too low",
+        "retryAttempted": true,
+        "retrySucceeded": false
+      }
     },
     {
       "provider": "Taptap Send",
       "sendCurrency": "AED",
       "receiveCurrency": "INR",
       "sendAmount": 1000,
-      "exchangeRate": 94.2,
-      "receiveAmount": 94200,
+      "exchangeRate": 25.95,
+      "receiveAmount": 25950,
       "fee": null,
-      "timestamp": "2026-04-28T00:51:01.822Z",
+      "timestamp": "2026-05-17T08:15:35.786Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": 11.4,
+        "boundsMin": 19.8,
+        "boundsMax": 26.79,
+        "expectedMid": 23.3
+      }
     },
     {
       "provider": "Taptap Send",
       "sendCurrency": "AED",
       "receiveCurrency": "KES",
       "sendAmount": 1000,
-      "exchangeRate": 128,
-      "receiveAmount": 128000,
+      "exchangeRate": 34.7,
+      "receiveAmount": 34700,
       "fee": null,
-      "timestamp": "2026-04-28T00:51:03.832Z",
+      "timestamp": "2026-05-17T08:15:38.595Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": -2,
+        "boundsMin": 30.09,
+        "boundsMax": 40.71,
+        "expectedMid": 35.4
+      }
     },
     {
       "provider": "Taptap Send",
       "sendCurrency": "AED",
       "receiveCurrency": "MXN",
       "sendAmount": 1000,
-      "exchangeRate": 17.3,
-      "receiveAmount": 17300,
+      "exchangeRate": 4.68,
+      "receiveAmount": 4680,
       "fee": null,
-      "timestamp": "2026-04-28T00:51:05.838Z",
+      "timestamp": "2026-05-17T08:15:41.407Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": -11.7,
+        "boundsMin": 4.5,
+        "boundsMax": 6.09,
+        "expectedMid": 5.3
+      }
     },
     {
       "provider": "Taptap Send",
       "sendCurrency": "AED",
       "receiveCurrency": "NGN",
       "sendAmount": 1000,
-      "exchangeRate": 1370,
-      "receiveAmount": 1370000,
+      "exchangeRate": 370,
+      "receiveAmount": 370000,
       "fee": null,
-      "timestamp": "2026-04-28T00:51:07.843Z",
+      "timestamp": "2026-05-17T08:15:44.217Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": -12.3,
+        "boundsMin": 316.5,
+        "boundsMax": 527.5,
+        "expectedMid": 422
+      }
     },
     {
       "provider": "Taptap Send",
       "sendCurrency": "AED",
       "receiveCurrency": "PHP",
       "sendAmount": 1000,
-      "exchangeRate": 60.6,
-      "receiveAmount": 60600,
+      "exchangeRate": 16.2,
+      "receiveAmount": 16200,
       "fee": null,
-      "timestamp": "2026-04-28T00:51:09.849Z",
+      "timestamp": "2026-05-17T08:15:47.027Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": 2.5,
+        "boundsMin": 13.43,
+        "boundsMax": 18.17,
+        "expectedMid": 15.8
+      }
     },
     {
       "provider": "Taptap Send",
       "sendCurrency": "AED",
       "receiveCurrency": "PKR",
       "sendAmount": 1000,
-      "exchangeRate": 281.5,
-      "receiveAmount": 281500,
+      "exchangeRate": 76.4,
+      "receiveAmount": 76400,
       "fee": null,
-      "timestamp": "2026-04-28T00:51:11.856Z",
+      "timestamp": "2026-05-17T08:15:49.840Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": -0.8,
+        "boundsMin": 65.45,
+        "boundsMax": 88.55,
+        "expectedMid": 77
+      }
     },
     {
       "provider": "Taptap Send",
       "sendCurrency": "AUD",
       "receiveCurrency": "GHS",
       "sendAmount": 1000,
-      "exchangeRate": 7.93,
-      "receiveAmount": 7930,
+      "exchangeRate": 8.15,
+      "receiveAmount": 8150,
       "fee": null,
-      "timestamp": "2026-04-28T00:51:13.863Z",
+      "timestamp": "2026-05-17T08:15:52.650Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": -14.2,
+        "boundsMin": 8.07,
+        "boundsMax": 10.92,
+        "expectedMid": 9.5
+      }
     },
     {
       "provider": "Taptap Send",
       "sendCurrency": "AUD",
       "receiveCurrency": "INR",
       "sendAmount": 1000,
-      "exchangeRate": 67.6,
-      "receiveAmount": 67600,
+      "exchangeRate": 69,
+      "receiveAmount": 69000,
       "fee": null,
-      "timestamp": "2026-04-28T00:51:15.872Z",
+      "timestamp": "2026-05-17T08:15:56.267Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "suspect",
+        "deviationFromMid": 26.6,
+        "boundsMin": 46.32,
+        "boundsMax": 62.67,
+        "expectedMid": 54.5,
+        "reason": "outside 15% bounds but within 30%",
+        "retryAttempted": true,
+        "retrySucceeded": false
+      }
     },
     {
       "provider": "Taptap Send",
       "sendCurrency": "AUD",
       "receiveCurrency": "KES",
       "sendAmount": 1000,
-      "exchangeRate": 91.31,
-      "receiveAmount": 91310,
+      "exchangeRate": 90,
+      "receiveAmount": 90000,
       "fee": null,
-      "timestamp": "2026-04-28T00:51:17.877Z",
+      "timestamp": "2026-05-17T08:16:02.498Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": 8.4,
+        "boundsMin": 70.55,
+        "boundsMax": 95.45,
+        "expectedMid": 83
+      }
     },
     {
       "provider": "Taptap Send",
       "sendCurrency": "AUD",
       "receiveCurrency": "MXN",
       "sendAmount": 1000,
-      "exchangeRate": 12.38,
-      "receiveAmount": 12380,
+      "exchangeRate": 12.28,
+      "receiveAmount": 12280,
       "fee": null,
-      "timestamp": "2026-04-28T00:51:19.883Z",
+      "timestamp": "2026-05-17T08:16:05.308Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": -0.2,
+        "boundsMin": 10.46,
+        "boundsMax": 14.14,
+        "expectedMid": 12.3
+      }
     },
     {
       "provider": "Taptap Send",
       "sendCurrency": "AUD",
       "receiveCurrency": "NGN",
       "sendAmount": 1000,
-      "exchangeRate": 982,
-      "receiveAmount": 982000,
+      "exchangeRate": 990,
+      "receiveAmount": 990000,
       "fee": null,
-      "timestamp": "2026-04-28T00:51:21.890Z",
+      "timestamp": "2026-05-17T08:16:08.118Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": 1,
+        "boundsMin": 735,
+        "boundsMax": 1225,
+        "expectedMid": 980
+      }
     },
     {
       "provider": "Taptap Send",
       "sendCurrency": "AUD",
       "receiveCurrency": "PHP",
       "sendAmount": 1000,
-      "exchangeRate": 43.5,
-      "receiveAmount": 43500,
+      "exchangeRate": 43.7,
+      "receiveAmount": 43700,
       "fee": null,
-      "timestamp": "2026-04-28T00:51:23.896Z",
+      "timestamp": "2026-05-17T08:16:10.926Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "suspect",
+        "deviationFromMid": 18.8,
+        "boundsMin": 31.28,
+        "boundsMax": 42.32,
+        "expectedMid": 36.8,
+        "reason": "outside 15% bounds but within 30%",
+        "retryAttempted": true,
+        "retrySucceeded": false
+      }
     },
     {
       "provider": "Taptap Send",
@@ -166,153 +266,256 @@
       "exchangeRate": 200,
       "receiveAmount": 200000,
       "fee": null,
-      "timestamp": "2026-04-28T00:51:25.902Z",
+      "timestamp": "2026-05-17T08:16:17.080Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": 11.1,
+        "boundsMin": 153,
+        "boundsMax": 207,
+        "expectedMid": 180
+      }
     },
     {
       "provider": "Taptap Send",
       "sendCurrency": "CAD",
       "receiveCurrency": "GHS",
       "sendAmount": 1000,
-      "exchangeRate": 8.12,
-      "receiveAmount": 8119.999999999999,
+      "exchangeRate": 8.28,
+      "receiveAmount": 8280,
       "fee": null,
-      "timestamp": "2026-04-28T00:51:27.908Z",
+      "timestamp": "2026-05-17T08:16:19.891Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "suspect",
+        "deviationFromMid": -24.7,
+        "boundsMin": 9.35,
+        "boundsMax": 12.65,
+        "expectedMid": 11,
+        "reason": "outside 15% bounds but within 30%",
+        "retryAttempted": true,
+        "retrySucceeded": false
+      }
     },
     {
       "provider": "Taptap Send",
       "sendCurrency": "CAD",
       "receiveCurrency": "INR",
       "sendAmount": 1000,
-      "exchangeRate": 69,
-      "receiveAmount": 69000,
+      "exchangeRate": 70,
+      "receiveAmount": 70000,
       "fee": null,
-      "timestamp": "2026-04-28T00:51:29.920Z",
+      "timestamp": "2026-05-17T08:16:26.880Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": 12,
+        "boundsMin": 53.13,
+        "boundsMax": 71.88,
+        "expectedMid": 62.5
+      }
     },
     {
       "provider": "Taptap Send",
       "sendCurrency": "CAD",
       "receiveCurrency": "KES",
       "sendAmount": 1000,
-      "exchangeRate": 91,
-      "receiveAmount": 91000,
+      "exchangeRate": 92,
+      "receiveAmount": 92000,
       "fee": null,
-      "timestamp": "2026-04-28T00:51:31.926Z",
+      "timestamp": "2026-05-17T08:16:29.691Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": -3.2,
+        "boundsMin": 80.75,
+        "boundsMax": 109.25,
+        "expectedMid": 95
+      }
     },
     {
       "provider": "Taptap Send",
       "sendCurrency": "CAD",
       "receiveCurrency": "MXN",
       "sendAmount": 1000,
-      "exchangeRate": 12.4,
-      "receiveAmount": 12400,
+      "exchangeRate": 12.55,
+      "receiveAmount": 12550,
       "fee": null,
-      "timestamp": "2026-04-28T00:51:33.932Z",
+      "timestamp": "2026-05-17T08:16:32.501Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": -11.6,
+        "boundsMin": 12.07,
+        "boundsMax": 16.33,
+        "expectedMid": 14.2
+      }
     },
     {
       "provider": "Taptap Send",
       "sendCurrency": "CAD",
       "receiveCurrency": "NGN",
       "sendAmount": 1000,
-      "exchangeRate": 1010,
-      "receiveAmount": 1010000,
+      "exchangeRate": null,
+      "receiveAmount": null,
       "fee": null,
-      "timestamp": "2026-04-28T00:51:35.938Z",
-      "success": true,
-      "error": null
+      "timestamp": "2026-05-17T08:16:35.310Z",
+      "success": false,
+      "error": "rate rejected: rate equals sendAmount (likely parsing bug)",
+      "validation": {
+        "status": "invalid",
+        "deviationFromMid": -11.504424778761061,
+        "boundsMin": 847.5,
+        "boundsMax": 1412.5,
+        "expectedMid": 1130,
+        "reason": "rate equals sendAmount (likely parsing bug)",
+        "retryAttempted": true,
+        "retrySucceeded": false
+      }
     },
     {
       "provider": "Taptap Send",
       "sendCurrency": "CAD",
       "receiveCurrency": "PHP",
       "sendAmount": 1000,
-      "exchangeRate": 44,
-      "receiveAmount": 44000,
+      "exchangeRate": 44.3,
+      "receiveAmount": 44300,
       "fee": null,
-      "timestamp": "2026-04-28T00:51:37.944Z",
+      "timestamp": "2026-05-17T08:16:38.121Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": 4.2,
+        "boundsMin": 36.13,
+        "boundsMax": 48.87,
+        "expectedMid": 42.5
+      }
     },
     {
       "provider": "Taptap Send",
       "sendCurrency": "CAD",
       "receiveCurrency": "PKR",
       "sendAmount": 1000,
-      "exchangeRate": 205,
-      "receiveAmount": 205000,
+      "exchangeRate": 203,
+      "receiveAmount": 203000,
       "fee": null,
-      "timestamp": "2026-04-28T00:51:39.952Z",
+      "timestamp": "2026-05-17T08:16:40.933Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": -1.9,
+        "boundsMin": 175.95,
+        "boundsMax": 238.05,
+        "expectedMid": 207
+      }
     },
     {
       "provider": "Taptap Send",
       "sendCurrency": "EUR",
       "receiveCurrency": "GHS",
       "sendAmount": 1000,
-      "exchangeRate": 12.99,
-      "receiveAmount": 12990,
+      "exchangeRate": 13.28,
+      "receiveAmount": 13280,
       "fee": null,
-      "timestamp": "2026-04-28T00:51:41.958Z",
+      "timestamp": "2026-05-17T08:16:43.742Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "suspect",
+        "deviationFromMid": -21.9,
+        "boundsMin": 14.45,
+        "boundsMax": 19.55,
+        "expectedMid": 17,
+        "reason": "outside 15% bounds but within 30%",
+        "retryAttempted": true,
+        "retrySucceeded": false
+      }
     },
     {
       "provider": "Taptap Send",
       "sendCurrency": "EUR",
       "receiveCurrency": "INR",
       "sendAmount": 1000,
-      "exchangeRate": 110.3,
-      "receiveAmount": 110300,
+      "exchangeRate": 111.61,
+      "receiveAmount": 111610,
       "fee": null,
-      "timestamp": "2026-04-28T00:51:43.968Z",
+      "timestamp": "2026-05-17T08:16:50.762Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "suspect",
+        "deviationFromMid": 15.7,
+        "boundsMin": 82.02,
+        "boundsMax": 110.97,
+        "expectedMid": 96.5,
+        "reason": "outside 15% bounds but within 30%",
+        "retryAttempted": true,
+        "retrySucceeded": false
+      }
     },
     {
       "provider": "Taptap Send",
       "sendCurrency": "EUR",
       "receiveCurrency": "KES",
       "sendAmount": 1000,
-      "exchangeRate": 149,
-      "receiveAmount": 149000,
+      "exchangeRate": 148,
+      "receiveAmount": 148000,
       "fee": null,
-      "timestamp": "2026-04-28T00:51:45.974Z",
+      "timestamp": "2026-05-17T08:16:57.033Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": 0.7,
+        "boundsMin": 124.95,
+        "boundsMax": 169.05,
+        "expectedMid": 147
+      }
     },
     {
       "provider": "Taptap Send",
       "sendCurrency": "EUR",
       "receiveCurrency": "MXN",
       "sendAmount": 1000,
-      "exchangeRate": 20.18,
-      "receiveAmount": 20180,
+      "exchangeRate": 19.98,
+      "receiveAmount": 19980,
       "fee": null,
-      "timestamp": "2026-04-28T00:51:47.981Z",
+      "timestamp": "2026-05-17T08:16:59.841Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": -9.2,
+        "boundsMin": 18.7,
+        "boundsMax": 25.3,
+        "expectedMid": 22
+      }
     },
     {
       "provider": "Taptap Send",
       "sendCurrency": "EUR",
       "receiveCurrency": "NGN",
       "sendAmount": 1000,
-      "exchangeRate": 1615,
-      "receiveAmount": 1615000,
+      "exchangeRate": 1600,
+      "receiveAmount": 1600000,
       "fee": null,
-      "timestamp": "2026-04-28T00:51:49.989Z",
+      "timestamp": "2026-05-17T08:17:02.651Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": -9.1,
+        "boundsMin": 1320,
+        "boundsMax": 2200,
+        "expectedMid": 1760
+      }
     },
     {
       "provider": "Taptap Send",
@@ -322,273 +525,449 @@
       "exchangeRate": 71,
       "receiveAmount": 71000,
       "fee": null,
-      "timestamp": "2026-04-28T00:51:51.996Z",
+      "timestamp": "2026-05-17T08:17:05.461Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": 8.4,
+        "boundsMin": 55.67,
+        "boundsMax": 75.32,
+        "expectedMid": 65.5
+      }
     },
     {
       "provider": "Taptap Send",
       "sendCurrency": "EUR",
       "receiveCurrency": "PKR",
       "sendAmount": 1000,
-      "exchangeRate": 330,
-      "receiveAmount": 330000,
+      "exchangeRate": 326,
+      "receiveAmount": 326000,
       "fee": null,
-      "timestamp": "2026-04-28T00:51:54.001Z",
+      "timestamp": "2026-05-17T08:17:08.271Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": 1.9,
+        "boundsMin": 272,
+        "boundsMax": 368,
+        "expectedMid": 320
+      }
     },
     {
       "provider": "Taptap Send",
       "sendCurrency": "GBP",
       "receiveCurrency": "GHS",
       "sendAmount": 1000,
-      "exchangeRate": 14.98,
-      "receiveAmount": 14980,
+      "exchangeRate": 15.34,
+      "receiveAmount": 15340,
       "fee": null,
-      "timestamp": "2026-04-28T00:51:56.007Z",
+      "timestamp": "2026-05-17T08:17:11.081Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "suspect",
+        "deviationFromMid": -23.3,
+        "boundsMin": 17,
+        "boundsMax": 23,
+        "expectedMid": 20,
+        "reason": "outside 15% bounds but within 30%",
+        "retryAttempted": true,
+        "retrySucceeded": false
+      }
     },
     {
       "provider": "Taptap Send",
       "sendCurrency": "GBP",
       "receiveCurrency": "INR",
-      "sendAmount": 1000,
-      "exchangeRate": 127.5,
-      "receiveAmount": 127500,
-      "fee": null,
-      "timestamp": "2026-04-28T00:51:58.018Z",
-      "success": true,
-      "error": null
-    },
-    {
-      "provider": "Taptap Send",
-      "sendCurrency": "GBP",
-      "receiveCurrency": "KES",
-      "sendAmount": 1000,
-      "exchangeRate": 173,
-      "receiveAmount": 173000,
-      "fee": null,
-      "timestamp": "2026-04-28T00:52:00.024Z",
-      "success": true,
-      "error": null
-    },
-    {
-      "provider": "Taptap Send",
-      "sendCurrency": "GBP",
-      "receiveCurrency": "MXN",
-      "sendAmount": 1000,
-      "exchangeRate": 23.31,
-      "receiveAmount": 23310,
-      "fee": null,
-      "timestamp": "2026-04-28T00:52:02.031Z",
-      "success": true,
-      "error": null
-    },
-    {
-      "provider": "Taptap Send",
-      "sendCurrency": "GBP",
-      "receiveCurrency": "NGN",
-      "sendAmount": 1000,
-      "exchangeRate": 1850,
-      "receiveAmount": 1850000,
-      "fee": null,
-      "timestamp": "2026-04-28T00:52:04.037Z",
-      "success": true,
-      "error": null
-    },
-    {
-      "provider": "Taptap Send",
-      "sendCurrency": "GBP",
-      "receiveCurrency": "PHP",
-      "sendAmount": 1000,
-      "exchangeRate": 81,
-      "receiveAmount": 81000,
-      "fee": null,
-      "timestamp": "2026-04-28T00:52:06.042Z",
-      "success": true,
-      "error": null
-    },
-    {
-      "provider": "Taptap Send",
-      "sendCurrency": "GBP",
-      "receiveCurrency": "PKR",
-      "sendAmount": 1000,
-      "exchangeRate": 382,
-      "receiveAmount": 382000,
-      "fee": null,
-      "timestamp": "2026-04-28T00:52:08.049Z",
-      "success": true,
-      "error": null
-    },
-    {
-      "provider": "Taptap Send",
-      "sendCurrency": "PLN",
-      "receiveCurrency": "GHS",
-      "sendAmount": 1000,
-      "exchangeRate": 3.04,
-      "receiveAmount": 3040,
-      "fee": null,
-      "timestamp": "2026-04-28T00:52:10.055Z",
-      "success": true,
-      "error": null
-    },
-    {
-      "provider": "Taptap Send",
-      "sendCurrency": "PLN",
-      "receiveCurrency": "INR",
-      "sendAmount": 1000,
-      "exchangeRate": 25.77,
-      "receiveAmount": 25770,
-      "fee": null,
-      "timestamp": "2026-04-28T00:52:12.065Z",
-      "success": true,
-      "error": null
-    },
-    {
-      "provider": "Taptap Send",
-      "sendCurrency": "PLN",
-      "receiveCurrency": "KES",
-      "sendAmount": 1000,
-      "exchangeRate": 35.38,
-      "receiveAmount": 35380,
-      "fee": null,
-      "timestamp": "2026-04-28T00:52:14.070Z",
-      "success": true,
-      "error": null
-    },
-    {
-      "provider": "Taptap Send",
-      "sendCurrency": "PLN",
-      "receiveCurrency": "MXN",
-      "sendAmount": 1000,
-      "exchangeRate": 4.75,
-      "receiveAmount": 4750,
-      "fee": null,
-      "timestamp": "2026-04-28T00:52:16.076Z",
-      "success": true,
-      "error": null
-    },
-    {
-      "provider": "Taptap Send",
-      "sendCurrency": "PLN",
-      "receiveCurrency": "NGN",
-      "sendAmount": 1000,
-      "exchangeRate": 371.76,
-      "receiveAmount": 371760,
-      "fee": null,
-      "timestamp": "2026-04-28T00:52:18.083Z",
-      "success": true,
-      "error": null
-    },
-    {
-      "provider": "Taptap Send",
-      "sendCurrency": "PLN",
-      "receiveCurrency": "PHP",
-      "sendAmount": 1000,
-      "exchangeRate": 16.6,
-      "receiveAmount": 16600,
-      "fee": null,
-      "timestamp": "2026-04-28T00:52:20.089Z",
-      "success": true,
-      "error": null
-    },
-    {
-      "provider": "Taptap Send",
-      "sendCurrency": "PLN",
-      "receiveCurrency": "PKR",
-      "sendAmount": 1000,
-      "exchangeRate": 76.22,
-      "receiveAmount": 76220,
-      "fee": null,
-      "timestamp": "2026-04-28T00:52:22.096Z",
-      "success": true,
-      "error": null
-    },
-    {
-      "provider": "Taptap Send",
-      "sendCurrency": "USD",
-      "receiveCurrency": "GHS",
-      "sendAmount": 1000,
-      "exchangeRate": 11.1,
-      "receiveAmount": 11100,
-      "fee": null,
-      "timestamp": "2026-04-28T00:52:24.101Z",
-      "success": true,
-      "error": null
-    },
-    {
-      "provider": "Taptap Send",
-      "sendCurrency": "USD",
-      "receiveCurrency": "INR",
-      "sendAmount": 1000,
-      "exchangeRate": 94.2,
-      "receiveAmount": 94200,
-      "fee": null,
-      "timestamp": "2026-04-28T00:52:26.116Z",
-      "success": true,
-      "error": null
-    },
-    {
-      "provider": "Taptap Send",
-      "sendCurrency": "USD",
-      "receiveCurrency": "KES",
       "sendAmount": 1000,
       "exchangeRate": 128,
       "receiveAmount": 128000,
       "fee": null,
-      "timestamp": "2026-04-28T00:52:28.123Z",
+      "timestamp": "2026-05-17T08:17:18.015Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": 12.8,
+        "boundsMin": 96.47,
+        "boundsMax": 130.52,
+        "expectedMid": 113.5
+      }
+    },
+    {
+      "provider": "Taptap Send",
+      "sendCurrency": "GBP",
+      "receiveCurrency": "KES",
+      "sendAmount": 1000,
+      "exchangeRate": 170.3,
+      "receiveAmount": 170300,
+      "fee": null,
+      "timestamp": "2026-05-17T08:17:20.825Z",
+      "success": true,
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": -1,
+        "boundsMin": 146.2,
+        "boundsMax": 197.8,
+        "expectedMid": 172
+      }
+    },
+    {
+      "provider": "Taptap Send",
+      "sendCurrency": "GBP",
+      "receiveCurrency": "MXN",
+      "sendAmount": 1000,
+      "exchangeRate": 22.89,
+      "receiveAmount": 22890,
+      "fee": null,
+      "timestamp": "2026-05-17T08:17:23.635Z",
+      "success": true,
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": -11.3,
+        "boundsMin": 21.93,
+        "boundsMax": 29.67,
+        "expectedMid": 25.8
+      }
+    },
+    {
+      "provider": "Taptap Send",
+      "sendCurrency": "GBP",
+      "receiveCurrency": "NGN",
+      "sendAmount": 1000,
+      "exchangeRate": 1830,
+      "receiveAmount": 1830000,
+      "fee": null,
+      "timestamp": "2026-05-17T08:17:26.445Z",
+      "success": true,
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": -10.7,
+        "boundsMin": 1537.5,
+        "boundsMax": 2562.5,
+        "expectedMid": 2050
+      }
+    },
+    {
+      "provider": "Taptap Send",
+      "sendCurrency": "GBP",
+      "receiveCurrency": "PHP",
+      "sendAmount": 1000,
+      "exchangeRate": 81.5,
+      "receiveAmount": 81500,
+      "fee": null,
+      "timestamp": "2026-05-17T08:17:29.256Z",
+      "success": true,
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": 6.1,
+        "boundsMin": 65.28,
+        "boundsMax": 88.32,
+        "expectedMid": 76.8
+      }
+    },
+    {
+      "provider": "Taptap Send",
+      "sendCurrency": "GBP",
+      "receiveCurrency": "PKR",
+      "sendAmount": 1000,
+      "exchangeRate": 374,
+      "receiveAmount": 374000,
+      "fee": null,
+      "timestamp": "2026-05-17T08:17:32.065Z",
+      "success": true,
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": -0.3,
+        "boundsMin": 318.75,
+        "boundsMax": 431.25,
+        "expectedMid": 375
+      }
+    },
+    {
+      "provider": "Taptap Send",
+      "sendCurrency": "PLN",
+      "receiveCurrency": "GHS",
+      "sendAmount": 1000,
+      "exchangeRate": null,
+      "receiveAmount": null,
+      "fee": null,
+      "timestamp": "2026-05-17T08:17:34.875Z",
+      "success": false,
+      "error": "rate rejected: GHS rate too low",
+      "validation": {
+        "status": "invalid",
+        "deviationFromMid": -18.157894736842103,
+        "boundsMin": 3.23,
+        "boundsMax": 4.369999999999999,
+        "expectedMid": 3.8,
+        "reason": "GHS rate too low",
+        "retryAttempted": true,
+        "retrySucceeded": false
+      }
+    },
+    {
+      "provider": "Taptap Send",
+      "sendCurrency": "PLN",
+      "receiveCurrency": "INR",
+      "sendAmount": 1000,
+      "exchangeRate": 26.05,
+      "receiveAmount": 26050,
+      "fee": null,
+      "timestamp": "2026-05-17T08:17:38.492Z",
+      "success": true,
+      "error": null,
+      "validation": {
+        "status": "suspect",
+        "deviationFromMid": 21.2,
+        "boundsMin": 18.27,
+        "boundsMax": 24.72,
+        "expectedMid": 21.5,
+        "reason": "outside 15% bounds but within 30%",
+        "retryAttempted": true,
+        "retrySucceeded": false
+      }
+    },
+    {
+      "provider": "Taptap Send",
+      "sendCurrency": "PLN",
+      "receiveCurrency": "KES",
+      "sendAmount": 1000,
+      "exchangeRate": 35.03,
+      "receiveAmount": 35030,
+      "fee": null,
+      "timestamp": "2026-05-17T08:17:44.676Z",
+      "success": true,
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": 6.8,
+        "boundsMin": 27.88,
+        "boundsMax": 37.72,
+        "expectedMid": 32.8
+      }
+    },
+    {
+      "provider": "Taptap Send",
+      "sendCurrency": "PLN",
+      "receiveCurrency": "MXN",
+      "sendAmount": 1000,
+      "exchangeRate": 4.7,
+      "receiveAmount": 4700,
+      "fee": null,
+      "timestamp": "2026-05-17T08:17:47.487Z",
+      "success": true,
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": -4.1,
+        "boundsMin": 4.17,
+        "boundsMax": 5.63,
+        "expectedMid": 4.9
+      }
+    },
+    {
+      "provider": "Taptap Send",
+      "sendCurrency": "PLN",
+      "receiveCurrency": "NGN",
+      "sendAmount": 1000,
+      "exchangeRate": 372.43,
+      "receiveAmount": 372430,
+      "fee": null,
+      "timestamp": "2026-05-17T08:17:50.295Z",
+      "success": true,
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": -5.2,
+        "boundsMin": 294.75,
+        "boundsMax": 491.25,
+        "expectedMid": 393
+      }
+    },
+    {
+      "provider": "Taptap Send",
+      "sendCurrency": "PLN",
+      "receiveCurrency": "PHP",
+      "sendAmount": 1000,
+      "exchangeRate": 16.91,
+      "receiveAmount": 16910,
+      "fee": null,
+      "timestamp": "2026-05-17T08:17:53.105Z",
+      "success": true,
+      "error": null,
+      "validation": {
+        "status": "suspect",
+        "deviationFromMid": 15.8,
+        "boundsMin": 12.41,
+        "boundsMax": 16.79,
+        "expectedMid": 14.6,
+        "reason": "outside 15% bounds but within 30%",
+        "retryAttempted": true,
+        "retrySucceeded": false
+      }
+    },
+    {
+      "provider": "Taptap Send",
+      "sendCurrency": "PLN",
+      "receiveCurrency": "PKR",
+      "sendAmount": 1000,
+      "exchangeRate": 75.7,
+      "receiveAmount": 75700,
+      "fee": null,
+      "timestamp": "2026-05-17T08:17:59.229Z",
+      "success": true,
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": 6.6,
+        "boundsMin": 60.35,
+        "boundsMax": 81.65,
+        "expectedMid": 71
+      }
+    },
+    {
+      "provider": "Taptap Send",
+      "sendCurrency": "USD",
+      "receiveCurrency": "GHS",
+      "sendAmount": 1000,
+      "exchangeRate": 11.32,
+      "receiveAmount": 11320,
+      "fee": null,
+      "timestamp": "2026-05-17T08:18:02.039Z",
+      "success": true,
+      "error": null,
+      "validation": {
+        "status": "suspect",
+        "deviationFromMid": -24.5,
+        "boundsMin": 12.75,
+        "boundsMax": 17.25,
+        "expectedMid": 15,
+        "reason": "outside 15% bounds but within 30%",
+        "retryAttempted": true,
+        "retrySucceeded": false
+      }
+    },
+    {
+      "provider": "Taptap Send",
+      "sendCurrency": "USD",
+      "receiveCurrency": "INR",
+      "sendAmount": 1000,
+      "exchangeRate": 96.03,
+      "receiveAmount": 96030,
+      "fee": null,
+      "timestamp": "2026-05-17T08:18:09.142Z",
+      "success": true,
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": 12.3,
+        "boundsMin": 72.67,
+        "boundsMax": 98.32,
+        "expectedMid": 85.5
+      }
+    },
+    {
+      "provider": "Taptap Send",
+      "sendCurrency": "USD",
+      "receiveCurrency": "KES",
+      "sendAmount": 1000,
+      "exchangeRate": 127,
+      "receiveAmount": 127000,
+      "fee": null,
+      "timestamp": "2026-05-17T08:18:11.953Z",
+      "success": true,
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": -2.3,
+        "boundsMin": 110.5,
+        "boundsMax": 149.5,
+        "expectedMid": 130
+      }
     },
     {
       "provider": "Taptap Send",
       "sendCurrency": "USD",
       "receiveCurrency": "MXN",
       "sendAmount": 1000,
-      "exchangeRate": 17.3,
-      "receiveAmount": 17300,
+      "exchangeRate": 17.25,
+      "receiveAmount": 17250,
       "fee": null,
-      "timestamp": "2026-04-28T00:52:30.128Z",
+      "timestamp": "2026-05-17T08:18:14.764Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": -11.5,
+        "boundsMin": 16.57,
+        "boundsMax": 22.42,
+        "expectedMid": 19.5
+      }
     },
     {
       "provider": "Taptap Send",
       "sendCurrency": "USD",
       "receiveCurrency": "NGN",
       "sendAmount": 1000,
-      "exchangeRate": 1370,
-      "receiveAmount": 1370000,
+      "exchangeRate": 1350,
+      "receiveAmount": 1350000,
       "fee": null,
-      "timestamp": "2026-04-28T00:52:32.134Z",
+      "timestamp": "2026-05-17T08:18:17.575Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": -12.9,
+        "boundsMin": 1162.5,
+        "boundsMax": 1937.5,
+        "expectedMid": 1550
+      }
     },
     {
       "provider": "Taptap Send",
       "sendCurrency": "USD",
       "receiveCurrency": "PHP",
       "sendAmount": 1000,
-      "exchangeRate": 60.6,
-      "receiveAmount": 60600,
+      "exchangeRate": 61.2,
+      "receiveAmount": 61200,
       "fee": null,
-      "timestamp": "2026-04-28T00:52:34.140Z",
+      "timestamp": "2026-05-17T08:18:20.384Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": 5.5,
+        "boundsMin": 49.3,
+        "boundsMax": 66.7,
+        "expectedMid": 58
+      }
     },
     {
       "provider": "Taptap Send",
       "sendCurrency": "USD",
       "receiveCurrency": "PKR",
       "sendAmount": 1000,
-      "exchangeRate": 281.5,
-      "receiveAmount": 281500,
+      "exchangeRate": 280.1,
+      "receiveAmount": 280100,
       "fee": null,
-      "timestamp": "2026-04-28T00:52:36.148Z",
+      "timestamp": "2026-05-17T08:18:23.194Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": -1,
+        "boundsMin": 240.55,
+        "boundsMax": 325.45,
+        "expectedMid": 283
+      }
     }
   ]
 }

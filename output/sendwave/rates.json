@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-04-28T02:01:48.255Z",
+  "timestamp": "2026-05-16T12:56:09.274Z",
   "count": 28,
   "results": [
     {
@@ -7,336 +7,543 @@
       "sendCurrency": "CAD",
       "receiveCurrency": "GHS",
       "sendAmount": 1000,
-      "exchangeRate": 8.12,
-      "receiveAmount": 8119.999999999999,
+      "exchangeRate": 8.23,
+      "receiveAmount": 8230,
       "fee": null,
-      "timestamp": "2026-04-28T00:56:00.242Z",
+      "timestamp": "2026-05-16T12:48:57.666Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "suspect",
+        "deviationFromMid": -25.2,
+        "boundsMin": 9.35,
+        "boundsMax": 12.65,
+        "expectedMid": 11,
+        "reason": "outside 15% bounds but within 30%",
+        "retryAttempted": true,
+        "retrySucceeded": false
+      }
     },
     {
       "provider": "Sendwave",
       "sendCurrency": "CAD",
       "receiveCurrency": "INR",
       "sendAmount": 1000,
-      "exchangeRate": 68.76,
-      "receiveAmount": 68760,
+      "exchangeRate": 69.27,
+      "receiveAmount": 69270,
       "fee": null,
-      "timestamp": "2026-04-28T00:56:19.666Z",
+      "timestamp": "2026-05-16T12:49:30.088Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": 10.8,
+        "boundsMin": 53.13,
+        "boundsMax": 71.88,
+        "expectedMid": 62.5
+      }
     },
     {
       "provider": "Sendwave",
       "sendCurrency": "CAD",
       "receiveCurrency": "KES",
       "sendAmount": 1000,
-      "exchangeRate": 94.33,
-      "receiveAmount": 94330,
+      "exchangeRate": 92.43,
+      "receiveAmount": 92430,
       "fee": null,
-      "timestamp": "2026-04-28T00:56:31.047Z",
+      "timestamp": "2026-05-16T12:49:43.445Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": -2.7,
+        "boundsMin": 80.75,
+        "boundsMax": 109.25,
+        "expectedMid": 95
+      }
     },
     {
       "provider": "Sendwave",
       "sendCurrency": "CAD",
       "receiveCurrency": "MXN",
       "sendAmount": 1000,
-      "exchangeRate": 12.66,
-      "receiveAmount": 12660,
+      "exchangeRate": 12.51,
+      "receiveAmount": 12510,
       "fee": null,
-      "timestamp": "2026-04-28T00:56:42.799Z",
+      "timestamp": "2026-05-16T12:49:56.822Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": -11.9,
+        "boundsMin": 12.07,
+        "boundsMax": 16.33,
+        "expectedMid": 14.2
+      }
     },
     {
       "provider": "Sendwave",
       "sendCurrency": "CAD",
       "receiveCurrency": "NGN",
       "sendAmount": 1000,
-      "exchangeRate": 1009.16,
-      "receiveAmount": 1009160,
+      "exchangeRate": 993.33,
+      "receiveAmount": 993330,
       "fee": null,
-      "timestamp": "2026-04-28T00:56:54.165Z",
+      "timestamp": "2026-05-16T12:50:10.153Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": -12.1,
+        "boundsMin": 847.5,
+        "boundsMax": 1412.5,
+        "expectedMid": 1130
+      }
     },
     {
       "provider": "Sendwave",
       "sendCurrency": "CAD",
       "receiveCurrency": "PHP",
       "sendAmount": 1000,
-      "exchangeRate": 44.73,
-      "receiveAmount": 44730,
+      "exchangeRate": 44.6,
+      "receiveAmount": 44600,
       "fee": null,
-      "timestamp": "2026-04-28T00:57:05.494Z",
+      "timestamp": "2026-05-16T12:50:23.505Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": 4.9,
+        "boundsMin": 36.13,
+        "boundsMax": 48.87,
+        "expectedMid": 42.5
+      }
     },
     {
       "provider": "Sendwave",
       "sendCurrency": "CAD",
       "receiveCurrency": "PKR",
       "sendAmount": 1000,
-      "exchangeRate": 207.75,
-      "receiveAmount": 207750,
+      "exchangeRate": 204.47,
+      "receiveAmount": 204470,
       "fee": null,
-      "timestamp": "2026-04-28T00:57:16.865Z",
+      "timestamp": "2026-05-16T12:50:36.912Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": -1.2,
+        "boundsMin": 175.95,
+        "boundsMax": 238.05,
+        "expectedMid": 207
+      }
     },
     {
       "provider": "Sendwave",
       "sendCurrency": "EUR",
       "receiveCurrency": "GHS",
       "sendAmount": 1000,
-      "exchangeRate": 12.98,
-      "receiveAmount": 12980,
+      "exchangeRate": 13.28,
+      "receiveAmount": 13280,
       "fee": null,
-      "timestamp": "2026-04-28T00:57:28.217Z",
+      "timestamp": "2026-05-16T12:50:50.412Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "suspect",
+        "deviationFromMid": -21.9,
+        "boundsMin": 14.45,
+        "boundsMax": 19.55,
+        "expectedMid": 17,
+        "reason": "outside 15% bounds but within 30%",
+        "retryAttempted": true,
+        "retrySucceeded": false
+      }
     },
     {
       "provider": "Sendwave",
       "sendCurrency": "EUR",
       "receiveCurrency": "INR",
       "sendAmount": 1000,
-      "exchangeRate": 109.92,
-      "receiveAmount": 109920,
+      "exchangeRate": 110.96,
+      "receiveAmount": 110960,
       "fee": null,
-      "timestamp": "2026-04-28T00:57:39.629Z",
+      "timestamp": "2026-05-16T12:51:16.343Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": 15,
+        "boundsMin": 82.02,
+        "boundsMax": 110.97,
+        "expectedMid": 96.5
+      }
     },
     {
       "provider": "Sendwave",
       "sendCurrency": "EUR",
       "receiveCurrency": "KES",
       "sendAmount": 1000,
-      "exchangeRate": 150.01,
-      "receiveAmount": 150010,
+      "exchangeRate": 148.35,
+      "receiveAmount": 148350,
       "fee": null,
-      "timestamp": "2026-04-28T00:57:50.972Z",
+      "timestamp": "2026-05-16T12:51:29.674Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": 0.9,
+        "boundsMin": 124.95,
+        "boundsMax": 169.05,
+        "expectedMid": 147
+      }
     },
     {
       "provider": "Sendwave",
       "sendCurrency": "EUR",
       "receiveCurrency": "MXN",
       "sendAmount": 1000,
-      "exchangeRate": 20.25,
-      "receiveAmount": 20250,
+      "exchangeRate": 20.04,
+      "receiveAmount": 20040,
       "fee": null,
-      "timestamp": "2026-04-28T00:58:02.346Z",
+      "timestamp": "2026-05-16T12:51:43.006Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": -8.9,
+        "boundsMin": 18.7,
+        "boundsMax": 25.3,
+        "expectedMid": 22
+      }
     },
     {
       "provider": "Sendwave",
       "sendCurrency": "EUR",
       "receiveCurrency": "NGN",
       "sendAmount": 1000,
-      "exchangeRate": 1606.2,
-      "receiveAmount": 1606200,
+      "exchangeRate": 1584.21,
+      "receiveAmount": 1584210,
       "fee": null,
-      "timestamp": "2026-04-28T00:58:13.699Z",
+      "timestamp": "2026-05-16T12:51:56.334Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": -10,
+        "boundsMin": 1320,
+        "boundsMax": 2200,
+        "expectedMid": 1760
+      }
     },
     {
       "provider": "Sendwave",
       "sendCurrency": "EUR",
       "receiveCurrency": "PHP",
       "sendAmount": 1000,
-      "exchangeRate": 71.29,
-      "receiveAmount": 71290,
+      "exchangeRate": 71.33,
+      "receiveAmount": 71330,
       "fee": null,
-      "timestamp": "2026-04-28T00:58:25.077Z",
+      "timestamp": "2026-05-16T12:52:09.672Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": 8.9,
+        "boundsMin": 55.67,
+        "boundsMax": 75.32,
+        "expectedMid": 65.5
+      }
     },
     {
       "provider": "Sendwave",
       "sendCurrency": "EUR",
       "receiveCurrency": "PKR",
       "sendAmount": 1000,
-      "exchangeRate": 329.49,
-      "receiveAmount": 329490,
+      "exchangeRate": 324.92,
+      "receiveAmount": 324920,
       "fee": null,
-      "timestamp": "2026-04-28T00:58:36.412Z",
+      "timestamp": "2026-05-16T12:52:23.023Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": 1.5,
+        "boundsMin": 272,
+        "boundsMax": 368,
+        "expectedMid": 320
+      }
     },
     {
       "provider": "Sendwave",
       "sendCurrency": "GBP",
       "receiveCurrency": "GHS",
       "sendAmount": 1000,
-      "exchangeRate": 14.98,
-      "receiveAmount": 14980,
+      "exchangeRate": 15.34,
+      "receiveAmount": 15340,
       "fee": null,
-      "timestamp": "2026-04-28T00:58:47.742Z",
-      "success": true,
-      "error": null
+      "timestamp": "2026-05-16T12:52:36.473Z",
+      "success": false,
+      "error": "unable to acquire",
+      "validation": {
+        "status": "suspect",
+        "deviationFromMid": -23.3,
+        "boundsMin": 17,
+        "boundsMax": 23,
+        "expectedMid": 20,
+        "reason": "outside 15% bounds but within 30%",
+        "retryAttempted": true
+      }
     },
     {
       "provider": "Sendwave",
       "sendCurrency": "GBP",
       "receiveCurrency": "INR",
       "sendAmount": 1000,
-      "exchangeRate": 126.94,
-      "receiveAmount": 126940,
+      "exchangeRate": 127.19,
+      "receiveAmount": 127190,
       "fee": null,
-      "timestamp": "2026-04-28T00:59:39.893Z",
+      "timestamp": "2026-05-16T12:52:58.050Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": 12.1,
+        "boundsMin": 96.47,
+        "boundsMax": 130.52,
+        "expectedMid": 113.5
+      }
     },
     {
       "provider": "Sendwave",
       "sendCurrency": "GBP",
       "receiveCurrency": "KES",
       "sendAmount": 1000,
-      "exchangeRate": 177.88,
-      "receiveAmount": 177880,
+      "exchangeRate": 170.94,
+      "receiveAmount": 170940,
       "fee": null,
-      "timestamp": "2026-04-28T00:59:51.239Z",
+      "timestamp": "2026-05-16T12:53:11.367Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": -0.6,
+        "boundsMin": 146.2,
+        "boundsMax": 197.8,
+        "expectedMid": 172
+      }
     },
     {
       "provider": "Sendwave",
       "sendCurrency": "GBP",
       "receiveCurrency": "MXN",
       "sendAmount": 1000,
-      "exchangeRate": 23.29,
-      "receiveAmount": 23290,
+      "exchangeRate": 22.88,
+      "receiveAmount": 22880,
       "fee": null,
-      "timestamp": "2026-04-28T01:00:02.608Z",
+      "timestamp": "2026-05-16T12:53:24.752Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": -11.3,
+        "boundsMin": 21.93,
+        "boundsMax": 29.67,
+        "expectedMid": 25.8
+      }
     },
     {
       "provider": "Sendwave",
       "sendCurrency": "GBP",
       "receiveCurrency": "NGN",
       "sendAmount": 1000,
-      "exchangeRate": 1865.74,
-      "receiveAmount": 1865740,
+      "exchangeRate": 1819.03,
+      "receiveAmount": 1819030,
       "fee": null,
-      "timestamp": "2026-04-28T01:00:13.955Z",
+      "timestamp": "2026-05-16T12:53:38.150Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": -11.3,
+        "boundsMin": 1537.5,
+        "boundsMax": 2562.5,
+        "expectedMid": 2050
+      }
     },
     {
       "provider": "Sendwave",
       "sendCurrency": "GBP",
       "receiveCurrency": "PHP",
       "sendAmount": 1000,
-      "exchangeRate": 83.02,
-      "receiveAmount": 83020,
+      "exchangeRate": 82.3,
+      "receiveAmount": 82300,
       "fee": null,
-      "timestamp": "2026-04-28T01:00:25.322Z",
+      "timestamp": "2026-05-16T12:53:51.568Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": 7.2,
+        "boundsMin": 65.28,
+        "boundsMax": 88.32,
+        "expectedMid": 76.8
+      }
     },
     {
       "provider": "Sendwave",
       "sendCurrency": "GBP",
       "receiveCurrency": "PKR",
       "sendAmount": 1000,
-      "exchangeRate": 380.87,
-      "receiveAmount": 380870,
+      "exchangeRate": 372.81,
+      "receiveAmount": 372810,
       "fee": null,
-      "timestamp": "2026-04-28T01:00:36.644Z",
+      "timestamp": "2026-05-16T12:54:04.901Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": -0.6,
+        "boundsMin": 318.75,
+        "boundsMax": 431.25,
+        "expectedMid": 375
+      }
     },
     {
       "provider": "Sendwave",
       "sendCurrency": "USD",
       "receiveCurrency": "GHS",
       "sendAmount": 1000,
-      "exchangeRate": 11.1,
-      "receiveAmount": 11100,
+      "exchangeRate": 11.37,
+      "receiveAmount": 11370,
       "fee": null,
-      "timestamp": "2026-04-28T01:00:48.037Z",
+      "timestamp": "2026-05-16T12:54:18.232Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "suspect",
+        "deviationFromMid": -24.2,
+        "boundsMin": 12.75,
+        "boundsMax": 17.25,
+        "expectedMid": 15,
+        "reason": "outside 15% bounds but within 30%",
+        "retryAttempted": true,
+        "retrySucceeded": false
+      }
     },
     {
       "provider": "Sendwave",
       "sendCurrency": "USD",
       "receiveCurrency": "INR",
       "sendAmount": 1000,
-      "exchangeRate": 93.76,
-      "receiveAmount": 93760,
+      "exchangeRate": 95.44,
+      "receiveAmount": 95440,
       "fee": null,
-      "timestamp": "2026-04-28T01:01:40.184Z",
+      "timestamp": "2026-05-16T12:54:43.950Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": 11.6,
+        "boundsMin": 72.67,
+        "boundsMax": 98.32,
+        "expectedMid": 85.5
+      }
     },
     {
       "provider": "Sendwave",
       "sendCurrency": "USD",
       "receiveCurrency": "KES",
       "sendAmount": 1000,
-      "exchangeRate": 128.26,
-      "receiveAmount": 128259.99999999999,
+      "exchangeRate": 128.95,
+      "receiveAmount": 128949.99999999999,
       "fee": null,
-      "timestamp": "2026-04-28T01:01:51.551Z",
+      "timestamp": "2026-05-16T12:54:57.281Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": -0.8,
+        "boundsMin": 110.5,
+        "boundsMax": 149.5,
+        "expectedMid": 130
+      }
     },
     {
       "provider": "Sendwave",
       "sendCurrency": "USD",
       "receiveCurrency": "MXN",
       "sendAmount": 1000,
-      "exchangeRate": 17.27,
-      "receiveAmount": 17270,
+      "exchangeRate": 17.23,
+      "receiveAmount": 17230,
       "fee": null,
-      "timestamp": "2026-04-28T01:02:02.884Z",
+      "timestamp": "2026-05-16T12:55:17.881Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": -11.6,
+        "boundsMin": 16.57,
+        "boundsMax": 22.42,
+        "expectedMid": 19.5
+      }
     },
     {
       "provider": "Sendwave",
       "sendCurrency": "USD",
       "receiveCurrency": "NGN",
       "sendAmount": 1000,
-      "exchangeRate": 1372.13,
-      "receiveAmount": 1372130,
+      "exchangeRate": 1360.05,
+      "receiveAmount": 1360050,
       "fee": null,
-      "timestamp": "2026-04-28T01:02:14.242Z",
+      "timestamp": "2026-05-16T12:55:31.219Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": -12.3,
+        "boundsMin": 1162.5,
+        "boundsMax": 1937.5,
+        "expectedMid": 1550
+      }
     },
     {
       "provider": "Sendwave",
       "sendCurrency": "USD",
       "receiveCurrency": "PHP",
       "sendAmount": 1000,
-      "exchangeRate": 61.05,
-      "receiveAmount": 61050,
+      "exchangeRate": 61.24,
+      "receiveAmount": 61240,
       "fee": null,
-      "timestamp": "2026-04-28T01:02:25.586Z",
+      "timestamp": "2026-05-16T12:55:44.561Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": 5.6,
+        "boundsMin": 49.3,
+        "boundsMax": 66.7,
+        "expectedMid": 58
+      }
     },
     {
       "provider": "Sendwave",
       "sendCurrency": "USD",
       "receiveCurrency": "PKR",
       "sendAmount": 1000,
-      "exchangeRate": 284.39,
-      "receiveAmount": 284390,
+      "exchangeRate": 281.52,
+      "receiveAmount": 281520,
       "fee": null,
-      "timestamp": "2026-04-28T01:02:36.902Z",
+      "timestamp": "2026-05-16T12:55:57.917Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": -0.5,
+        "boundsMin": 240.55,
+        "boundsMax": 325.45,
+        "expectedMid": 283
+      }
     }
   ]
 }

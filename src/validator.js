@@ -90,8 +90,8 @@ function sanityCheck(result) {
   if (receiveCurrency === 'PKR' && magnitude < 1.5) {
     return 'PKR rate too low (expected hundreds)';
   }
-  if (['GHS', 'MXN'].includes(receiveCurrency) && magnitude < 0.5) {
-    return `${receiveCurrency} rate too low`;
+  if (['GHS', 'MXN'].includes(receiveCurrency) && magnitude < 0) {
+    return `${receiveCurrency} rate below 1 (order of magnitude error)`;
   }
 
   return null;

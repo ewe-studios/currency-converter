@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-04-28T02:01:48.255Z",
+  "timestamp": "2026-05-16T12:50:55.793Z",
   "count": 25,
   "results": [
     {
@@ -10,7 +10,7 @@
       "exchangeRate": null,
       "receiveAmount": null,
       "fee": null,
-      "timestamp": "2026-04-28T00:54:23.984Z",
+      "timestamp": "2026-05-16T12:49:01.809Z",
       "success": false,
       "error": "unable to acquire"
     },
@@ -19,12 +19,22 @@
       "sendCurrency": "AUD",
       "receiveCurrency": "INR",
       "sendAmount": 1000,
-      "exchangeRate": 69.6554,
-      "receiveAmount": 69655.4,
+      "exchangeRate": 70.3964,
+      "receiveAmount": 70396.4,
       "fee": null,
-      "timestamp": "2026-04-28T00:54:25.985Z",
+      "timestamp": "2026-05-16T12:49:03.811Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "suspect",
+        "deviationFromMid": 29.2,
+        "boundsMin": 46.32,
+        "boundsMax": 62.67,
+        "expectedMid": 54.5,
+        "reason": "outside 15% bounds but within 30%",
+        "retryAttempted": true,
+        "retrySucceeded": false
+      }
     },
     {
       "provider": "Panda Remit",
@@ -34,7 +44,7 @@
       "exchangeRate": null,
       "receiveAmount": null,
       "fee": null,
-      "timestamp": "2026-04-28T00:54:32.166Z",
+      "timestamp": "2026-05-16T12:49:12.663Z",
       "success": false,
       "error": "unable to acquire"
     },
@@ -43,24 +53,41 @@
       "sendCurrency": "AUD",
       "receiveCurrency": "PHP",
       "sendAmount": 1000,
-      "exchangeRate": 44.1873,
-      "receiveAmount": 44187.3,
+      "exchangeRate": 44.5439,
+      "receiveAmount": 44543.9,
       "fee": null,
-      "timestamp": "2026-04-28T00:54:34.168Z",
+      "timestamp": "2026-05-16T12:49:14.665Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "suspect",
+        "deviationFromMid": 21,
+        "boundsMin": 31.28,
+        "boundsMax": 42.32,
+        "expectedMid": 36.8,
+        "reason": "outside 15% bounds but within 30%",
+        "retryAttempted": true,
+        "retrySucceeded": false
+      }
     },
     {
       "provider": "Panda Remit",
       "sendCurrency": "AUD",
       "receiveCurrency": "PKR",
       "sendAmount": 1000,
-      "exchangeRate": 199.623,
-      "receiveAmount": 199623,
+      "exchangeRate": 198.3064,
+      "receiveAmount": 198306.4,
       "fee": null,
-      "timestamp": "2026-04-28T00:54:38.503Z",
+      "timestamp": "2026-05-16T12:49:24.252Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": 10.2,
+        "boundsMin": 153,
+        "boundsMax": 207,
+        "expectedMid": 180
+      }
     },
     {
       "provider": "Panda Remit",
@@ -70,7 +97,7 @@
       "exchangeRate": null,
       "receiveAmount": null,
       "fee": null,
-      "timestamp": "2026-04-28T00:54:42.608Z",
+      "timestamp": "2026-05-16T12:49:28.603Z",
       "success": false,
       "error": "unable to acquire"
     },
@@ -79,36 +106,57 @@
       "sendCurrency": "CAD",
       "receiveCurrency": "INR",
       "sendAmount": 1000,
-      "exchangeRate": 70.3661,
-      "receiveAmount": 70366.1,
+      "exchangeRate": 71.0077,
+      "receiveAmount": 71007.7,
       "fee": null,
-      "timestamp": "2026-04-28T00:54:44.609Z",
+      "timestamp": "2026-05-16T12:49:30.603Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": 13.6,
+        "boundsMin": 53.13,
+        "boundsMax": 71.88,
+        "expectedMid": 62.5
+      }
     },
     {
       "provider": "Panda Remit",
       "sendCurrency": "CAD",
       "receiveCurrency": "MXN",
       "sendAmount": 1000,
-      "exchangeRate": 12.782399999999999,
-      "receiveAmount": 12782.4,
+      "exchangeRate": 12.6184,
+      "receiveAmount": 12618.4,
       "fee": null,
-      "timestamp": "2026-04-28T00:54:48.774Z",
+      "timestamp": "2026-05-16T12:49:34.733Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": -11.1,
+        "boundsMin": 12.07,
+        "boundsMax": 16.33,
+        "expectedMid": 14.2
+      }
     },
     {
       "provider": "Panda Remit",
       "sendCurrency": "CAD",
       "receiveCurrency": "PHP",
       "sendAmount": 1000,
-      "exchangeRate": 45.1902,
-      "receiveAmount": 45190.2,
+      "exchangeRate": 45.394,
+      "receiveAmount": 45394,
       "fee": null,
-      "timestamp": "2026-04-28T00:54:52.893Z",
+      "timestamp": "2026-05-16T12:49:39.086Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": 6.8,
+        "boundsMin": 36.13,
+        "boundsMax": 48.87,
+        "expectedMid": 42.5
+      }
     },
     {
       "provider": "Panda Remit",
@@ -118,7 +166,7 @@
       "exchangeRate": null,
       "receiveAmount": null,
       "fee": null,
-      "timestamp": "2026-04-28T00:54:56.985Z",
+      "timestamp": "2026-05-16T12:49:43.228Z",
       "success": false,
       "error": "unable to acquire"
     },
@@ -127,24 +175,41 @@
       "sendCurrency": "EUR",
       "receiveCurrency": "GHS",
       "sendAmount": 1000,
-      "exchangeRate": 12.7373,
-      "receiveAmount": 12737.3,
+      "exchangeRate": 12.946299999999999,
+      "receiveAmount": 12946.3,
       "fee": null,
-      "timestamp": "2026-04-28T00:55:04.169Z",
+      "timestamp": "2026-05-16T12:49:49.603Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "suspect",
+        "deviationFromMid": -23.8,
+        "boundsMin": 14.45,
+        "boundsMax": 19.55,
+        "expectedMid": 17,
+        "reason": "outside 15% bounds but within 30%",
+        "retryAttempted": true,
+        "retrySucceeded": false
+      }
     },
     {
       "provider": "Panda Remit",
       "sendCurrency": "EUR",
       "receiveCurrency": "INR",
       "sendAmount": 1000,
-      "exchangeRate": 110.4482,
-      "receiveAmount": 110448.2,
+      "exchangeRate": 110.8517,
+      "receiveAmount": 110851.7,
       "fee": null,
-      "timestamp": "2026-04-28T00:55:11.481Z",
+      "timestamp": "2026-05-16T12:49:57.007Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": 14.9,
+        "boundsMin": 82.02,
+        "boundsMax": 110.97,
+        "expectedMid": 96.5
+      }
     },
     {
       "provider": "Panda Remit",
@@ -154,7 +219,7 @@
       "exchangeRate": null,
       "receiveAmount": null,
       "fee": null,
-      "timestamp": "2026-04-28T00:55:15.797Z",
+      "timestamp": "2026-05-16T12:50:01.138Z",
       "success": false,
       "error": "unable to acquire"
     },
@@ -163,12 +228,19 @@
       "sendCurrency": "EUR",
       "receiveCurrency": "PHP",
       "sendAmount": 1000,
-      "exchangeRate": 70.6238,
-      "receiveAmount": 70623.8,
+      "exchangeRate": 71.0408,
+      "receiveAmount": 71040.8,
       "fee": null,
-      "timestamp": "2026-04-28T00:55:17.798Z",
+      "timestamp": "2026-05-16T12:50:03.138Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": 8.5,
+        "boundsMin": 55.67,
+        "boundsMax": 75.32,
+        "expectedMid": 65.5
+      }
     },
     {
       "provider": "Panda Remit",
@@ -178,7 +250,7 @@
       "exchangeRate": null,
       "receiveAmount": null,
       "fee": null,
-      "timestamp": "2026-04-28T00:55:21.997Z",
+      "timestamp": "2026-05-16T12:50:07.330Z",
       "success": false,
       "error": "unable to acquire"
     },
@@ -187,24 +259,41 @@
       "sendCurrency": "GBP",
       "receiveCurrency": "GHS",
       "sendAmount": 1000,
-      "exchangeRate": 15.0122,
-      "receiveAmount": 15012.2,
+      "exchangeRate": 15.211,
+      "receiveAmount": 15211,
       "fee": null,
-      "timestamp": "2026-04-28T00:55:23.998Z",
+      "timestamp": "2026-05-16T12:50:09.331Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "suspect",
+        "deviationFromMid": -23.9,
+        "boundsMin": 17,
+        "boundsMax": 23,
+        "expectedMid": 20,
+        "reason": "outside 15% bounds but within 30%",
+        "retryAttempted": true,
+        "retrySucceeded": false
+      }
     },
     {
       "provider": "Panda Remit",
       "sendCurrency": "GBP",
       "receiveCurrency": "INR",
       "sendAmount": 1000,
-      "exchangeRate": 128.04510000000002,
-      "receiveAmount": 128045.10000000002,
+      "exchangeRate": 128.4155,
+      "receiveAmount": 128415.50000000001,
       "fee": null,
-      "timestamp": "2026-04-28T00:55:28.079Z",
+      "timestamp": "2026-05-16T12:50:16.628Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": 13.1,
+        "boundsMin": 96.47,
+        "boundsMax": 130.52,
+        "expectedMid": 113.5
+      }
     },
     {
       "provider": "Panda Remit",
@@ -214,7 +303,7 @@
       "exchangeRate": null,
       "receiveAmount": null,
       "fee": null,
-      "timestamp": "2026-04-28T00:55:32.219Z",
+      "timestamp": "2026-05-16T12:50:20.875Z",
       "success": false,
       "error": "unable to acquire"
     },
@@ -223,12 +312,19 @@
       "sendCurrency": "GBP",
       "receiveCurrency": "PHP",
       "sendAmount": 1000,
-      "exchangeRate": 81.785,
-      "receiveAmount": 81785,
+      "exchangeRate": 81.6402,
+      "receiveAmount": 81640.2,
       "fee": null,
-      "timestamp": "2026-04-28T00:55:34.220Z",
+      "timestamp": "2026-05-16T12:50:22.875Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": 6.3,
+        "boundsMin": 65.28,
+        "boundsMax": 88.32,
+        "expectedMid": 76.8
+      }
     },
     {
       "provider": "Panda Remit",
@@ -238,7 +334,7 @@
       "exchangeRate": null,
       "receiveAmount": null,
       "fee": null,
-      "timestamp": "2026-04-28T00:55:38.307Z",
+      "timestamp": "2026-05-16T12:50:27.005Z",
       "success": false,
       "error": "unable to acquire"
     },
@@ -247,60 +343,98 @@
       "sendCurrency": "USD",
       "receiveCurrency": "GHS",
       "sendAmount": 1000,
-      "exchangeRate": null,
-      "receiveAmount": null,
+      "exchangeRate": 11.388,
+      "receiveAmount": 11388,
       "fee": null,
-      "timestamp": "2026-04-28T00:55:45.601Z",
-      "success": false,
-      "error": "unable to acquire"
+      "timestamp": "2026-05-16T12:50:33.331Z",
+      "success": true,
+      "error": null,
+      "validation": {
+        "status": "suspect",
+        "deviationFromMid": -24.1,
+        "boundsMin": 12.75,
+        "boundsMax": 17.25,
+        "expectedMid": 15,
+        "reason": "outside 15% bounds but within 30%",
+        "retryAttempted": true,
+        "retrySucceeded": false
+      }
     },
     {
       "provider": "Panda Remit",
       "sendCurrency": "USD",
       "receiveCurrency": "INR",
       "sendAmount": 1000,
-      "exchangeRate": 94.6512,
-      "receiveAmount": 94651.2,
+      "exchangeRate": 96.4169,
+      "receiveAmount": 96416.9,
       "fee": null,
-      "timestamp": "2026-04-28T00:55:47.602Z",
+      "timestamp": "2026-05-16T12:50:40.829Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": 12.8,
+        "boundsMin": 72.67,
+        "boundsMax": 98.32,
+        "expectedMid": 85.5
+      }
     },
     {
       "provider": "Panda Remit",
       "sendCurrency": "USD",
       "receiveCurrency": "MXN",
       "sendAmount": 1000,
-      "exchangeRate": 17.766299999999998,
-      "receiveAmount": 17766.3,
+      "exchangeRate": 17.7035,
+      "receiveAmount": 17703.5,
       "fee": null,
-      "timestamp": "2026-04-28T00:55:51.743Z",
+      "timestamp": "2026-05-16T12:50:44.988Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": -9.2,
+        "boundsMin": 16.57,
+        "boundsMax": 22.42,
+        "expectedMid": 19.5
+      }
     },
     {
       "provider": "Panda Remit",
       "sendCurrency": "USD",
       "receiveCurrency": "PHP",
       "sendAmount": 1000,
-      "exchangeRate": 61.4094,
-      "receiveAmount": 61409.4,
+      "exchangeRate": 62.95,
+      "receiveAmount": 62950,
       "fee": null,
-      "timestamp": "2026-04-28T00:55:56.028Z",
+      "timestamp": "2026-05-16T12:50:49.434Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": 8.5,
+        "boundsMin": 49.3,
+        "boundsMax": 66.7,
+        "expectedMid": 58
+      }
     },
     {
       "provider": "Panda Remit",
       "sendCurrency": "USD",
       "receiveCurrency": "PKR",
       "sendAmount": 1000,
-      "exchangeRate": null,
-      "receiveAmount": null,
+      "exchangeRate": 279.0509,
+      "receiveAmount": 279050.9,
       "fee": null,
-      "timestamp": "2026-04-28T00:56:00.222Z",
-      "success": false,
-      "error": "unable to acquire"
+      "timestamp": "2026-05-16T12:50:53.629Z",
+      "success": true,
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": -1.4,
+        "boundsMin": 240.55,
+        "boundsMax": 325.45,
+        "expectedMid": 283
+      }
     }
   ]
 }

@@ -1,0 +1,39 @@
+﻿provider\_name,send\_currency,receive\_currency,error\_message,failure\_count
+MoneyGram,AED,GHS,unable to acquire,3
+MoneyGram,AED,INR,unable to acquire,3
+MoneyGram,AED,KES,unable to acquire,3
+MoneyGram,AED,MXN,unable to acquire,3
+MoneyGram,AED,NGN,unable to acquire,3
+MoneyGram,AED,PHP,unable to acquire,3
+MoneyGram,AED,PKR,unable to acquire,3
+MoneyGram,AUD,GHS,unable to acquire,3
+MoneyGram,AUD,INR,unable to acquire,3
+MoneyGram,AUD,KES,unable to acquire,3
+MoneyGram,AUD,MXN,unable to acquire,3
+MoneyGram,AUD,NGN,unable to acquire,3
+MoneyGram,AUD,PHP,unable to acquire,3
+MoneyGram,AUD,PKR,unable to acquire,3
+Panda Remit,AUD,GHS,unable to acquire,3
+Panda Remit,AUD,MXN,unable to acquire,3
+Panda Remit,CAD,GHS,unable to acquire,3
+Panda Remit,CAD,PKR,unable to acquire,3
+Panda Remit,EUR,GHS,unable to acquire,1
+Panda Remit,EUR,MXN,unable to acquire,3
+Panda Remit,EUR,PKR,unable to acquire,3
+Panda Remit,GBP,INR,unable to acquire,2
+Panda Remit,GBP,MXN,unable to acquire,3
+Panda Remit,GBP,PKR,unable to acquire,3
+Panda Remit,USD,GHS,unable to acquire,3
+Panda Remit,USD,PKR,unable to acquire,3
+Sendwave,CAD,GHS,unable to acquire,2
+Sendwave,CAD,INR,unable to acquire,2
+Sendwave,CAD,KES,unable to acquire,2
+Sendwave,CAD,MXN,unable to acquire,2
+Sendwave,CAD,NGN,unable to acquire,2
+Sendwave,CAD,PHP,unable to acquire,2
+Sendwave,CAD,PKR,unable to acquire,2
+Sendwave,EUR,GHS,unable to acquire,2
+Sendwave,EUR,INR,unable to acquire,2
+Sendwave,EUR,KES,unable to acquire,2
+Sendwave,EUR,MXN,unable to acquire,2
+Sendwave,EUR,NGN,unable to acquire,2

@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-04-28T02:01:48.255Z",
+  "timestamp": "2026-05-16T11:36:13.275Z",
   "count": 5,
   "results": [
     {
@@ -7,60 +7,98 @@
       "sendCurrency": "EUR",
       "receiveCurrency": "INR",
       "sendAmount": 1000,
-      "exchangeRate": 0.1,
-      "receiveAmount": 100,
+      "exchangeRate": 111.65059,
+      "receiveAmount": 111650.59,
       "fee": null,
-      "timestamp": "2026-04-28T01:02:46.303Z",
+      "timestamp": "2026-05-16T11:35:41.790Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "suspect",
+        "deviationFromMid": 15.7,
+        "boundsMin": 82.02,
+        "boundsMax": 110.97,
+        "expectedMid": 96.5,
+        "reason": "outside 15% bounds but within 30%",
+        "retryAttempted": true,
+        "retrySucceeded": false
+      }
     },
     {
       "provider": "TransferGo",
       "sendCurrency": "EUR",
       "receiveCurrency": "NGN",
       "sendAmount": 1000,
-      "exchangeRate": 110.45893,
-      "receiveAmount": 110458.93,
+      "exchangeRate": 1596.37318,
+      "receiveAmount": 1596373.18,
       "fee": null,
-      "timestamp": "2026-04-28T01:02:50.870Z",
+      "timestamp": "2026-05-16T11:35:52.987Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": -9.3,
+        "boundsMin": 1320,
+        "boundsMax": 2200,
+        "expectedMid": 1760
+      }
     },
     {
       "provider": "TransferGo",
       "sendCurrency": "GBP",
       "receiveCurrency": "INR",
       "sendAmount": 1000,
-      "exchangeRate": 110.45893,
-      "receiveAmount": 110458.93,
+      "exchangeRate": 127.9656,
+      "receiveAmount": 127965.59999999999,
       "fee": null,
-      "timestamp": "2026-04-28T01:03:22.880Z",
+      "timestamp": "2026-05-16T11:35:58.539Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": 12.7,
+        "boundsMin": 96.47,
+        "boundsMax": 130.52,
+        "expectedMid": 113.5
+      }
     },
     {
       "provider": "TransferGo",
       "sendCurrency": "GBP",
       "receiveCurrency": "NGN",
       "sendAmount": 1000,
-      "exchangeRate": 110.45893,
-      "receiveAmount": 110458.93,
+      "exchangeRate": 1829.6438600000001,
+      "receiveAmount": 1829643.86,
       "fee": null,
-      "timestamp": "2026-04-28T01:04:24.893Z",
+      "timestamp": "2026-05-16T11:36:04.117Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": -10.7,
+        "boundsMin": 1537.5,
+        "boundsMax": 2562.5,
+        "expectedMid": 2050
+      }
     },
     {
       "provider": "TransferGo",
       "sendCurrency": "PLN",
       "receiveCurrency": "NGN",
       "sendAmount": 1000,
-      "exchangeRate": 110.45893,
-      "receiveAmount": 110458.93,
+      "exchangeRate": 376.1941,
+      "receiveAmount": 376194.1,
       "fee": null,
-      "timestamp": "2026-04-28T01:04:56.903Z",
+      "timestamp": "2026-05-16T11:36:09.670Z",
       "success": true,
-      "error": null
+      "error": null,
+      "validation": {
+        "status": "valid",
+        "deviationFromMid": -4.3,
+        "boundsMin": 294.75,
+        "boundsMax": 491.25,
+        "expectedMid": 393
+      }
     }
   ]
 }
