@@ -2,6 +2,32 @@ const { TIMEOUTS, CURRENCY_COUNTRY_MAP } = require('../config');
 const cheerio = require('cheerio');
 const { getBounds } = require('../market-rates');
 
+/**
+ * Parse a number that may use European (13,2185) or US (1,234.56) format.
+ * - "13,2185" → 13.2185  (European: last comma is decimal)
+ * - "1,234.56" → 1234.56 (US: commas are thousands separators)
+ * - "1,234" → 1234       (US thousands, no decimal)
+ */
+function parseLocalizedNumber(str) {
+  if (!str) return NaN;
+  const cleaned = str.trim();
+  const hasPeriod = cleaned.includes('.');
+  const commaCount = (cleaned.match(/,/g) || []).length;
+  if (hasPeriod) {
+    // US format — strip commas as thousands separators
+    return parseFloat(cleaned.replace(/,/g, ''));
+  }
+  if (commaCount === 1) {
+    // Single comma = decimal separator (European)
+    return parseFloat(cleaned.replace(',', '.'));
+  }
+  if (commaCount > 1) {
+    // Multiple commas = thousands separator (European 1.234.567 → 1234567)
+    return parseFloat(cleaned.replace(/,/g, ''));
+  }
+  return parseFloat(cleaned);
+}
+
 module.exports = {
   name: 'Remitly',
 
@@ -41,7 +67,7 @@ module.exports = {
         new RegExp(`1\\s+${sendCurrency}\\s*=\\s*([\\d.,]+)`, 'i')
       );
       if (rateMatch) {
-        extractedRate = parseFloat(rateMatch[1].replace(/,/g, ''));
+        extractedRate = parseLocalizedNumber(rateMatch[1]);
       }
     }
 
@@ -56,7 +82,7 @@ module.exports = {
       const text = receiveSection.text();
       const match = text.match(new RegExp(`([\\d.,]+)\\s*${receiveCurrency}`, 'i'));
       if (match) {
-        const recvAmt = parseFloat(match[1].replace(/,/g, ''));
+        const recvAmt = parseLocalizedNumber(match[1]);
         if (recvAmt > 0) {
           confirmedRate = recvAmt / sendAmount;
         }
