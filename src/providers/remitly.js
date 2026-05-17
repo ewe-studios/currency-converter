@@ -3,28 +3,50 @@ const cheerio = require('cheerio');
 const { getBounds } = require('../market-rates');
 
 /**
- * Parse a number that may use European (13,2185) or US (1,234.56) format.
- * - "13,2185" → 13.2185  (European: last comma is decimal)
- * - "1,234.56" → 1234.56 (US: commas are thousands separators)
- * - "1,234" → 1234       (US thousands, no decimal)
+ * Parse a number that may use localized formats:
+ * - US:        "1,234.56" → 1234.56
+ * - French:    "13,2185"  → 13.2185
+ * - German:    "1.611,86" → 1611.86
+ * Detection:
+ * - Both . and , → look at last separator to decide format
+ * - Only ,       → French (single = decimal, multiple = thousands)
+ * - Only .       → US (last = decimal, others = thousands)
  */
 function parseLocalizedNumber(str) {
   if (!str) return NaN;
   const cleaned = str.trim();
-  const hasPeriod = cleaned.includes('.');
-  const commaCount = (cleaned.match(/,/g) || []).length;
-  if (hasPeriod) {
-    // US format — strip commas as thousands separators
+  const hasDot = cleaned.includes('.');
+  const hasComma = cleaned.includes(',');
+
+  if (hasDot && hasComma) {
+    // Find position of last dot and last comma
+    const lastDot = cleaned.lastIndexOf('.');
+    const lastComma = cleaned.lastIndexOf(',');
+    if (lastComma > lastDot) {
+      // German format: 1.611,86 — dots are thousands, comma is decimal
+      return parseFloat(cleaned.replace(/\./g, '').replace(',', '.'));
+    } else {
+      // US format: 1,234.56 — commas are thousands, dot is decimal
+      return parseFloat(cleaned.replace(/,/g, ''));
+    }
+  }
+
+  if (hasComma && !hasDot) {
+    const commaCount = (cleaned.match(/,/g) || []).length;
+    if (commaCount === 1) {
+      // French European: 13,2185 → comma is decimal
+      return parseFloat(cleaned.replace(',', '.'));
+    }
+    // Multiple commas = thousands (rare for rates)
     return parseFloat(cleaned.replace(/,/g, ''));
   }
-  if (commaCount === 1) {
-    // Single comma = decimal separator (European)
-    return parseFloat(cleaned.replace(',', '.'));
+
+  if (hasDot && !hasComma) {
+    // Single dot = decimal separator (1611.86)
+    // No dot = integer
+    return parseFloat(cleaned);
   }
-  if (commaCount > 1) {
-    // Multiple commas = thousands separator (European 1.234.567 → 1234567)
-    return parseFloat(cleaned.replace(/,/g, ''));
-  }
+
   return parseFloat(cleaned);
 }
 
